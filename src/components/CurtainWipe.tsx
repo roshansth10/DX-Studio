@@ -90,7 +90,7 @@ export const CurtainWipe: React.FC = () => {
         <div className="flex items-center gap-2 mb-4">
           <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
           <span className="font-mono text-xs font-bold tracking-[0.3em] uppercase text-blue-400">
-            DX STUDIO // ATELIER
+            DX STUDIO
           </span>
         </div>
 

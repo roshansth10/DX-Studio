@@ -124,8 +124,8 @@ export const DesignConceptsModal: React.FC<DesignConceptsModalProps> = ({
                           : 'border-neutral-800 bg-neutral-800/40 hover:border-neutral-700 hover:bg-neutral-800/80'
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-1">
-                        <div className="font-heading text-sm font-bold text-white flex items-center gap-2">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 font-heading text-sm font-bold text-white">
                           <span
                             className="h-3 w-3 rounded-full border border-neutral-600"
                             style={{ backgroundColor: concept.dominantColor }}

@@ -125,6 +125,8 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
             borderColor: "var(--theme-border-card)",
           }}
         >
+          {" "}
+          Into Autost Into Autostat next level standard til guard cross section
           {/* Top Status & Controls Bar */}
           <div
             className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b"
@@ -182,7 +184,6 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
               </div>
             </div>
           </div>
-
           {/* Main Editorial Quote */}
           <div className="py-8 sm:py-12">
             <div className="mb-4">
@@ -198,7 +199,6 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
               </blockquote>
             </div>
           </div>
-
           {/* Bottom Attribution & Project Tag */}
           <div
             ref={authorRef}
@@ -226,7 +226,6 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
               </span>
             </div>
           </div>
-
           {/* Subtle Carousel Progress Dots */}
           <div className="mt-8 flex items-center justify-center gap-2">
             {TESTIMONIALS.map((t, idx) => (

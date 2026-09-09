@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { BrandLogo } from './BrandLogo';
-import { ThemeMode } from '../types';
-import { ArrowUp, ArrowUpRight, Globe, Clock } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { BrandLogo } from "./BrandLogo";
+import { ThemeMode } from "../types";
+import { ArrowUp, ArrowUpRight, Globe, Clock } from "lucide-react";
 
 interface FooterProps {
   theme: ThemeMode;
@@ -9,20 +9,20 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
-  const [ktmTime, setKtmTime] = useState('');
+  const [ktmTime, setKtmTime] = useState("");
 
   useEffect(() => {
     const updateTime = () => {
       // Kathmandu is UTC+5:45
       const now = new Date();
       const options: Intl.DateTimeFormatOptions = {
-        timeZone: 'Asia/Kathmandu',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
+        timeZone: "Asia/Kathmandu",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
         hour12: true,
       };
-      setKtmTime(new Intl.DateTimeFormat('en-US', options).format(now));
+      setKtmTime(new Intl.DateTimeFormat("en-US", options).format(now));
     };
 
     updateTime();
@@ -31,22 +31,22 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const isDark = theme === 'obsidian' || theme === 'electric-cobalt';
-  const isSand = theme === 'sand-stone';
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
+  const isSand = theme === "sand-stone";
 
   return (
     <footer
       className={`relative pt-20 pb-12 transition-colors duration-500 ${
         isDark
-          ? theme === 'electric-cobalt'
-            ? 'bg-[#060B18] text-white border-t border-blue-950/80'
-            : 'bg-[#0B0B0D] text-white border-t border-neutral-800'
+          ? theme === "electric-cobalt"
+            ? "bg-[#060B18] text-white border-t border-blue-950/80"
+            : "bg-[#0B0B0D] text-white border-t border-neutral-800"
           : isSand
-          ? 'bg-[#DCD8D0] text-neutral-950 border-t border-[#CBC5B9]'
-          : 'bg-[#EAEAE6] text-neutral-950 border-t border-[#DEDEDA]'
+            ? "bg-[#DCD8D0] text-neutral-950 border-t border-[#CBC5B9]"
+            : "bg-[#EAEAE6] text-neutral-950 border-t border-[#DEDEDA]"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
@@ -56,10 +56,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
             <BrandLogo theme={theme} size="lg" variant="full" />
             <p
               className={`mt-4 text-base leading-relaxed ${
-                isDark ? 'text-neutral-400' : 'text-neutral-600'
+                isDark ? "text-neutral-400" : "text-neutral-600"
               }`}
             >
-              Digital experiences for businesses moving forward. Combining strategy, design, and engineering into enduring digital capital.
+              Digital experiences for businesses moving forward. Combining
+              strategy, design, and engineering into enduring digital capital.
             </p>
           </div>
 
@@ -68,8 +69,8 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               onClick={onOpenConcepts}
               className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-mono tracking-wider transition-colors ${
                 isDark
-                  ? 'border-neutral-700 bg-neutral-800 text-neutral-300 hover:border-neutral-500'
-                  : 'border-neutral-300 bg-white text-neutral-700 hover:border-neutral-400'
+                  ? "border-neutral-700 bg-neutral-800 text-neutral-300 hover:border-neutral-500"
+                  : "border-neutral-300 bg-white text-neutral-700 hover:border-neutral-400"
               }`}
             >
               <span>Design Concepts Gallery</span>
@@ -80,8 +81,8 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               onClick={scrollToTop}
               className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
                 isDark
-                  ? 'border-neutral-700 bg-neutral-800 text-neutral-200 hover:bg-neutral-700'
-                  : 'border-neutral-300 bg-white text-neutral-800 hover:bg-neutral-100'
+                  ? "border-neutral-700 bg-neutral-800 text-neutral-200 hover:bg-neutral-700"
+                  : "border-neutral-300 bg-white text-neutral-800 hover:bg-neutral-100"
               }`}
               title="Back to Top"
             >
@@ -98,12 +99,54 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               Studio
             </div>
             <ul className="space-y-2.5">
-              <li><a href="#work" className="hover:text-blue-600 transition-colors">Selected Work</a></li>
-              <li><a href="#services" className="hover:text-blue-600 transition-colors">Capabilities</a></li>
-              <li><a href="#philosophy" className="hover:text-blue-600 transition-colors">Philosophy</a></li>
-              <li><a href="#process" className="hover:text-blue-600 transition-colors">Process</a></li>
-              <li><a href="#team" className="hover:text-blue-600 transition-colors">Meet the Team</a></li>
-              <li><a href="#sectors" className="hover:text-blue-600 transition-colors">Sectors</a></li>
+              <li>
+                <a
+                  href="#work"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Selected Work
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Capabilities
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#philosophy"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Philosophy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#process"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Process
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#team"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Meet the Team
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#sectors"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Sectors
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -113,40 +156,93 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               Services
             </div>
             <ul className="space-y-2.5">
-              <li><a href="#services" className="hover:text-blue-600 transition-colors">Brand & Identity</a></li>
-              <li><a href="#services" className="hover:text-blue-600 transition-colors">UI/UX & Products</a></li>
-              <li><a href="#services" className="hover:text-blue-600 transition-colors">Web Development</a></li>
-              <li><a href="#services" className="hover:text-blue-600 transition-colors">SEO & Growth</a></li>
-              <li><a href="#services" className="hover:text-blue-600 transition-colors">Creative Technology</a></li>
+              <li>
+                <a
+                  href="#services"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Brand & Identity
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  UI/UX & Products
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Web Development
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  SEO & Growth
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Creative Technology
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Column 3: Connect */}
           <div>
             <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
-              Connect
+              Connect Into Autostat
             </div>
             <ul className="space-y-2.5">
               <li>
-                <a href="mailto:roshan.devworks@gmail.com" className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors">
+                <a
+                  href="mailto:roshan.devworks@gmail.com"
+                  className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
                   <span>roshan.devworks@gmail.com</span>
                   <ArrowUpRight className="h-3 w-3" />
                 </a>
               </li>
               <li>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors">
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
                   <span>Instagram</span>
                   <ArrowUpRight className="h-3 w-3" />
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
                   <span>LinkedIn</span>
                   <ArrowUpRight className="h-3 w-3" />
                 </a>
               </li>
               <li>
-                <a href="https://behance.net" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors">
+                <a
+                  href="https://behance.net"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
                   <span>Behance</span>
                   <ArrowUpRight className="h-3 w-3" />
                 </a>
@@ -162,11 +258,12 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
             <div className="space-y-2">
               <div className="font-medium">Kathmandu, Nepal</div>
               <div className="text-xs text-neutral-400">
-                Patan Creative Quarter, Bagmati
+                {" "}
+                call Goldhunga,Tarkeshwor-5
               </div>
               <div className="mt-4 inline-flex items-center gap-2 rounded-lg border border-inherit px-3 py-1.5 font-mono text-xs">
                 <Clock className="h-3 w-3 text-blue-600" />
-                <span>KTM: {ktmTime || '18:48:00'}</span>
+                <span>KTM: {ktmTime || "18:48:00"}</span>
               </div>
             </div>
           </div>
@@ -175,12 +272,19 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
         {/* Bottom Bar: Legal & Copyright */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs font-mono text-neutral-500">
           <div>
-            © 2026 DX Studio. All rights reserved. Crafted with European Scandinavian rigor.
+            © 2026 DX Studio. All rights reserved. Crafted with European
+            Scandinavian rigor.
           </div>
           <div className="flex gap-6">
-            <a href="#" className="hover:underline">Privacy Policy</a>
-            <a href="#" className="hover:underline">Terms of Engagement</a>
-            <a href="#" className="hover:underline">Accessibility</a>
+            <a href="#" className="hover:underline">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:underline">
+              Terms of Engagement
+            </a>
+            <a href="#" className="hover:underline">
+              Accessibility
+            </a>
           </div>
         </div>
       </div>

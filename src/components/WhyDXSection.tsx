@@ -1,16 +1,16 @@
-import React from 'react';
-import { ThemeMode } from '../types';
-import { PRINCIPLES } from '../data/content';
-import { Target, Compass, Cpu, Check } from 'lucide-react';
-import { SectionAnchor } from './SectionAnchor';
+import React from "react";
+import { ThemeMode } from "../types";
+import { PRINCIPLES } from "../data/content";
+import { Target, Compass, Cpu, Check } from "lucide-react";
+import { SectionAnchor } from "./SectionAnchor";
 
 interface WhyDXSectionProps {
   theme: ThemeMode;
 }
 
 export const WhyDXSection: React.FC<WhyDXSectionProps> = ({ theme }) => {
-  const isDark = theme === 'obsidian' || theme === 'electric-cobalt';
-  const isSand = theme === 'sand-stone';
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
+  const isSand = theme === "sand-stone";
 
   const icons = [Target, Compass, Cpu];
 
@@ -19,12 +19,12 @@ export const WhyDXSection: React.FC<WhyDXSectionProps> = ({ theme }) => {
       id="why-dx"
       className={`relative overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
-          ? theme === 'electric-cobalt'
-            ? 'bg-[#0B132B] text-white border-blue-950/80'
-            : 'bg-[#121214] text-white border-neutral-800'
+          ? theme === "electric-cobalt"
+            ? "bg-[#0B132B] text-white border-blue-950/80"
+            : "bg-[#121214] text-white border-neutral-800"
           : isSand
-          ? 'bg-[#ECE9E2] text-neutral-950 border-[#D8D4CC]'
-          : 'bg-[#F7F7F5] text-neutral-950 border-[#E5E5E2]'
+            ? "bg-[#ECE9E2] text-neutral-950 border-[#D8D4CC]"
+            : "bg-[#F7F7F5] text-neutral-950 border-[#E5E5E2]"
       }`}
     >
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
@@ -37,8 +37,10 @@ export const WhyDXSection: React.FC<WhyDXSectionProps> = ({ theme }) => {
             <SectionAnchor id="why-dx" label="Core Principles" />
           </div>
           <h2 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.08] max-w-4xl text-balance">
-            Strategy before pixels.{' '}
-            <span className="text-blue-600 italic">Purpose before technology.</span>
+            Strategy before pixels.{" "}
+            <span className="text-blue-600 italic">
+              Purpose before technology.
+            </span>
           </h2>
         </div>
 
@@ -52,10 +54,10 @@ export const WhyDXSection: React.FC<WhyDXSectionProps> = ({ theme }) => {
                 key={principle.number}
                 className={`relative flex flex-col justify-between rounded-2xl border p-8 transition-all duration-300 gsap-stagger-item ${
                   isDark
-                    ? 'border-neutral-800 bg-neutral-900/60 hover:border-neutral-700'
+                    ? "border-neutral-800 bg-neutral-900/60 hover:border-neutral-700"
                     : isSand
-                    ? 'border-[#D8D4CC] bg-white/70 hover:border-neutral-400'
-                    : 'border-neutral-200 bg-white hover:border-neutral-300 shadow-xs'
+                      ? "border-[#D8D4CC] bg-white/70 hover:border-neutral-400"
+                      : "border-neutral-200 bg-white hover:border-neutral-300 shadow-xs"
                 }`}
               >
                 <div>
@@ -78,7 +80,7 @@ export const WhyDXSection: React.FC<WhyDXSectionProps> = ({ theme }) => {
 
                   <p
                     className={`text-sm leading-relaxed ${
-                      isDark ? 'text-neutral-400' : 'text-neutral-600'
+                      isDark ? "text-neutral-400" : "text-neutral-600"
                     }`}
                   >
                     {principle.details}
