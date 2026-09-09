@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ThemeMode } from '../types';
-import { CLIENT_SECTORS, TESTIMONIALS } from '../data/content';
-import { ArrowLeft, ArrowRight, Quote, Globe2, TrendingUp } from 'lucide-react';
-import { SectionAnchor } from './SectionAnchor';
+import React, { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ThemeMode } from "../types";
+import { CLIENT_SECTORS, TESTIMONIALS } from "../data/content";
+import { ArrowLeft, ArrowRight, Quote, Globe2, TrendingUp } from "lucide-react";
+import { SectionAnchor } from "./SectionAnchor";
 
 interface TrustSectionProps {
   theme: ThemeMode;
@@ -11,17 +11,17 @@ interface TrustSectionProps {
 
 export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState<'next' | 'prev'>('next');
+  const [direction, setDirection] = useState<"next" | "prev">("next");
   const [isPaused, setIsPaused] = useState(false);
   const quoteRef = useRef<HTMLDivElement>(null);
   const authorRef = useRef<HTMLDivElement>(null);
 
-  const isDark = theme === 'obsidian' || theme === 'electric-cobalt';
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
 
   // GSAP animated transition when currentIndex changes
   useEffect(() => {
     if (quoteRef.current && authorRef.current) {
-      const xOffset = direction === 'next' ? 24 : -24;
+      const xOffset = direction === "next" ? 24 : -24;
 
       gsap.fromTo(
         quoteRef.current,
@@ -33,8 +33,8 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
           opacity: 1,
           x: 0,
           duration: 0.55,
-          ease: 'power2.out',
-        }
+          ease: "power2.out",
+        },
       );
 
       gsap.fromTo(
@@ -48,8 +48,8 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
           y: 0,
           duration: 0.45,
           delay: 0.1,
-          ease: 'power2.out',
-        }
+          ease: "power2.out",
+        },
       );
     }
   }, [currentIndex, direction]);
@@ -59,7 +59,7 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
     if (isPaused) return;
 
     const timer = setInterval(() => {
-      setDirection('next');
+      setDirection("next");
       setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length);
     }, 7000);
 
@@ -67,13 +67,15 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
   }, [isPaused]);
 
   const handleNext = () => {
-    setDirection('next');
+    setDirection("next");
     setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length);
   };
 
   const handlePrev = () => {
-    setDirection('prev');
-    setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+    setDirection("prev");
+    setCurrentIndex(
+      (prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length,
+    );
   };
 
   const currentTestimonial = TESTIMONIALS[currentIndex];
@@ -84,9 +86,9 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
       data-theme={theme}
       className="relative overflow-hidden py-24 sm:py-32 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal theme-bg-page theme-border"
       style={{
-        backgroundColor: 'var(--theme-bg-page)',
-        borderColor: 'var(--theme-border)',
-        color: 'var(--theme-text-primary)',
+        backgroundColor: "var(--theme-bg-page)",
+        borderColor: "var(--theme-border)",
+        color: "var(--theme-text-primary)",
       }}
     >
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
@@ -107,7 +109,9 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
             Built for ambitious businesses.
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed theme-text-muted">
-            We partner with industry pioneers, scaling tech founders, and storied heritage brands who value craft, velocity, and enduring quality.
+            We partner with industry pioneers, scaling tech founders, and
+            storied heritage brands who value craft, velocity, and enduring
+            quality.
           </p>
         </div>
 
@@ -117,14 +121,14 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
           onMouseLeave={() => setIsPaused(false)}
           className="relative mb-20 rounded-3xl border p-8 sm:p-12 lg:p-16 transition-all duration-300 shadow-sm"
           style={{
-            backgroundColor: 'var(--theme-bg-card)',
-            borderColor: 'var(--theme-border-card)',
+            backgroundColor: "var(--theme-bg-card)",
+            borderColor: "var(--theme-border-card)",
           }}
         >
           {/* Top Status & Controls Bar */}
           <div
             className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b"
-            style={{ borderColor: 'var(--theme-border)' }}
+            style={{ borderColor: "var(--theme-border)" }}
           >
             <div className="flex items-center gap-3 font-mono text-xs">
               <span className="font-bold text-blue-600">
@@ -141,8 +145,8 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
               <span
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-xs font-semibold ${
                   isDark
-                    ? 'border border-blue-500/30 bg-blue-950/40 text-blue-400'
-                    : 'border border-blue-200 bg-blue-50 text-blue-700'
+                    ? "border border-blue-500/30 bg-blue-950/40 text-blue-400"
+                    : "border border-blue-200 bg-blue-50 text-blue-700"
                 }`}
               >
                 <TrendingUp className="h-3 w-3" />
@@ -156,9 +160,9 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
                   aria-label="Previous testimonial"
                   className="flex h-9 w-9 items-center justify-center rounded-full border transition-all theme-border theme-bg-card-subtle theme-text-primary hover:border-blue-500"
                   style={{
-                    backgroundColor: 'var(--theme-bg-card-subtle)',
-                    borderColor: 'var(--theme-border)',
-                    color: 'var(--theme-text-primary)',
+                    backgroundColor: "var(--theme-bg-card-subtle)",
+                    borderColor: "var(--theme-border)",
+                    color: "var(--theme-text-primary)",
                   }}
                 >
                   <ArrowLeft className="h-4 w-4" />
@@ -168,9 +172,9 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
                   aria-label="Next testimonial"
                   className="flex h-9 w-9 items-center justify-center rounded-full border transition-all theme-border theme-bg-card-subtle theme-text-primary hover:border-blue-500"
                   style={{
-                    backgroundColor: 'var(--theme-bg-card-subtle)',
-                    borderColor: 'var(--theme-border)',
-                    color: 'var(--theme-text-primary)',
+                    backgroundColor: "var(--theme-bg-card-subtle)",
+                    borderColor: "var(--theme-border)",
+                    color: "var(--theme-text-primary)",
                   }}
                 >
                   <ArrowRight className="h-4 w-4" />
@@ -185,7 +189,10 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
               <Quote className="h-8 w-8 text-blue-600/40" />
             </div>
 
-            <div ref={quoteRef} className="min-h-[140px] sm:min-h-[120px] flex items-center">
+            <div
+              ref={quoteRef}
+              className="min-h-[140px] sm:min-h-[120px] flex items-center"
+            >
               <blockquote className="font-heading text-xl sm:text-2xl lg:text-3xl font-medium tracking-tight leading-relaxed theme-text-primary">
                 "{currentTestimonial.quote}"
               </blockquote>
@@ -196,7 +203,7 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
           <div
             ref={authorRef}
             className="pt-6 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-4"
-            style={{ borderColor: 'var(--theme-border)' }}
+            style={{ borderColor: "var(--theme-border)" }}
           >
             <div>
               <div className="font-heading text-lg font-bold theme-text-primary">
@@ -226,18 +233,18 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
               <button
                 key={t.id}
                 onClick={() => {
-                  setDirection(idx > currentIndex ? 'next' : 'prev');
+                  setDirection(idx > currentIndex ? "next" : "prev");
                   setCurrentIndex(idx);
                 }}
                 aria-label={`Jump to testimonial ${idx + 1}`}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   idx === currentIndex
-                    ? 'w-8 bg-blue-600'
-                    : 'w-2 opacity-40 hover:opacity-80'
+                    ? "w-8 bg-blue-600"
+                    : "w-2 opacity-40 hover:opacity-80"
                 }`}
                 style={
                   idx !== currentIndex
-                    ? { backgroundColor: 'var(--theme-text-muted)' }
+                    ? { backgroundColor: "var(--theme-text-muted)" }
                     : undefined
                 }
               />
@@ -261,8 +268,8 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
               key={sector.name}
               className="rounded-2xl border p-6 transition-all duration-300 gsap-stagger-item hover:shadow-md"
               style={{
-                backgroundColor: 'var(--theme-bg-card)',
-                borderColor: 'var(--theme-border-card)',
+                backgroundColor: "var(--theme-bg-card)",
+                borderColor: "var(--theme-border-card)",
               }}
             >
               <div className="flex items-center justify-between mb-3">
@@ -284,14 +291,15 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
         <div
           className="mt-12 rounded-2xl border p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
           style={{
-            backgroundColor: 'var(--theme-bg-card-subtle)',
-            borderColor: 'var(--theme-border)',
+            backgroundColor: "var(--theme-bg-card-subtle)",
+            borderColor: "var(--theme-border)",
           }}
         >
           <div className="flex items-center gap-3">
             <Globe2 className="h-5 w-5 text-blue-600 shrink-0" />
             <div className="text-sm font-medium theme-text-secondary">
-              Headquartered in Kathmandu • Engineering for teams in London, Zurich, Singapore, and New York.
+              Headquartered in Kathmandu, Nepal • Engineering for teams from
+              Kathmandu.
             </div>
           </div>
           <div className="font-mono text-xs uppercase tracking-widest shrink-0 theme-text-subtle">

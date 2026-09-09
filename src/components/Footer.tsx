@@ -128,8 +128,8 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
             </div>
             <ul className="space-y-2.5">
               <li>
-                <a href="mailto:hello@dxstudio.co" className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors">
-                  <span>hello@dxstudio.co</span>
+                <a href="mailto:roshan.devworks@gmail.com" className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors">
+                  <span>roshan.devworks@gmail.com</span>
                   <ArrowUpRight className="h-3 w-3" />
                 </a>
               </li>

@@ -128,7 +128,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       exploreWork: "Explore our work",
       startProject: "Start a project",
       locationLabel: "Location",
-      locationVal: "Kathmandu • London",
+      locationVal: "Kathmandu, Nepal",
       focusLabel: "Core Focus",
       focusVal: "Design & Engineering",
       methodologyLabel: "Methodology",
@@ -205,7 +205,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       button: "Start a project",
       submitted:
         "Thank you. Our studio partner will reach out within 24 hours.",
-      timezone: "Kathmandu • London • UTC+5:45",
+      timezone: "Kathmandu, Nepal • UTC+5:45",
     },
     footer: {
       tagline:
@@ -241,7 +241,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       exploreWork: "Découvrir nos projets",
       startProject: "Lancer un projet",
       locationLabel: "Localisation",
-      locationVal: "Katmandou • Londres",
+      locationVal: "Katmandou, Népal",
       focusLabel: "Discipline Clé",
       focusVal: "Design & Ingénierie",
       methodologyLabel: "Méthodologie",
