@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
 export const CurtainWipe: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -9,7 +9,9 @@ export const CurtainWipe: React.FC = () => {
 
   useEffect(() => {
     // Check if user prefers reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     if (prefersReducedMotion) {
       setIsDone(true);
       return;
@@ -23,7 +25,7 @@ export const CurtainWipe: React.FC = () => {
       });
 
       // Initial state
-      gsap.set(containerRef.current, { visibility: 'visible' });
+      gsap.set(containerRef.current, { visibility: "visible" });
       gsap.set(insigniaRef.current, { opacity: 0, y: 20 });
       gsap.set(panelsRef.current, { yPercent: 0 });
 
@@ -32,7 +34,7 @@ export const CurtainWipe: React.FC = () => {
         opacity: 1,
         y: 0,
         duration: 0.55,
-        ease: 'power3.out',
+        ease: "power3.out",
       })
         // Step 2: Hold briefly
         .to({}, { duration: 0.35 })
@@ -41,14 +43,14 @@ export const CurtainWipe: React.FC = () => {
           opacity: 0,
           y: -30,
           duration: 0.4,
-          ease: 'power3.in',
+          ease: "power3.in",
         })
         // Step 4: Vertical curtain panels wipe upward in stagger
         .to(panelsRef.current, {
           yPercent: -100,
           duration: 0.85,
           stagger: 0.08,
-          ease: 'expo.inOut',
+          ease: "expo.inOut",
         });
     }, containerRef);
 
@@ -61,7 +63,7 @@ export const CurtainWipe: React.FC = () => {
     <div
       ref={containerRef}
       className="fixed inset-0 z-[100] flex overflow-hidden pointer-events-auto select-none"
-      style={{ visibility: 'hidden' }}
+      style={{ visibility: "hidden" }}
       aria-hidden="true"
     >
       {/* 4 Vertical Curtain Columns */}
@@ -97,10 +99,6 @@ export const CurtainWipe: React.FC = () => {
         </h2>
 
         <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-widest text-neutral-400">
-          <span>Paris</span>
-          <span>•</span>
-          <span>Zürich</span>
-          <span>•</span>
           <span>Kathmandu</span>
         </div>
 
