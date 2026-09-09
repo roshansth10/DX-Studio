@@ -34,8 +34,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-neutral-950/80 backdrop-blur-md overflow-y-auto">
       <div className="relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900 text-white shadow-2xl">
         {/* Header Bar */}
-        <div className="flex items-center justify-between border-b border-neutral-800 px-6 py-4">
-          <div className="flex items-center gap-2">
+        <div className="flex items-start justify-between gap-4 border-b border-neutral-800 px-4 py-4 sm:px-6">
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
             <span className="font-mono text-xs text-blue-500 font-bold">
               {project.number} // CASE STUDY
             </span>
@@ -58,7 +58,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         </div>
 
         {/* Modal Scrollable Content */}
-        <div className="max-h-[80vh] overflow-y-auto p-6 sm:p-8 lg:p-10 space-y-8">
+        <div className="max-h-[80vh] overflow-y-auto p-4 sm:p-8 lg:p-10 space-y-8">
           {/* Title & Tagline */}
           <div>
             <div className="font-mono text-xs uppercase tracking-widest text-neutral-400 mb-2">
@@ -129,7 +129,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         </div>
 
         {/* Modal Footer CTA */}
-        <div className="flex items-center justify-between border-t border-neutral-800 bg-neutral-950 px-6 py-4">
+        <div className="flex flex-col items-stretch gap-3 border-t border-neutral-800 bg-neutral-950 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <span className="font-mono text-xs text-neutral-400">
             Interested in building something similar?
           </span>
@@ -138,7 +138,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               onClose();
               onStartProject();
             }}
-            className="flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2 text-xs font-bold text-white uppercase tracking-wider hover:bg-blue-500 transition-colors"
+            className="flex items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-2 text-xs font-bold text-white uppercase tracking-wider hover:bg-blue-500 transition-colors"
           >
             <span>Inquire for Similar Project</span>
             <ArrowUpRight className="h-3.5 w-3.5" />

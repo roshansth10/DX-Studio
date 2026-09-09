@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
@@ -8,67 +28,67 @@ html {
 @layer base {
   :root,
   [data-theme="warm-light"] {
-    --font-heading: 'Syne', sans-serif;
-    --font-body: 'Plus Jakarta Sans', sans-serif;
-    --font-code: 'JetBrains Mono', monospace;
+    --font-heading: "Syne", sans-serif;
+    --font-body: "Plus Jakarta Sans", sans-serif;
+    --font-code: "JetBrains Mono", monospace;
 
     /* Theme Tokens - Warm Light (Primary Clean Scandinavian) */
-    --theme-bg-page: #F7F7F5;
-    --theme-bg-card: #FFFFFF;
-    --theme-bg-card-subtle: #F3F3F0;
-    --theme-bg-tag: #EFEFEA;
-    --theme-text-primary: #09090B;
-    --theme-text-secondary: #27272A;
-    --theme-text-muted: #52525B;
-    --theme-text-subtle: #71717A;
-    --theme-border: #E4E4DF;
-    --theme-border-card: #E4E4DF;
-    --theme-accent: #2563EB;
+    --theme-bg-page: #f7f7f5;
+    --theme-bg-card: #ffffff;
+    --theme-bg-card-subtle: #f3f3f0;
+    --theme-bg-tag: #efefea;
+    --theme-text-primary: #09090b;
+    --theme-text-secondary: #27272a;
+    --theme-text-muted: #52525b;
+    --theme-text-subtle: #71717a;
+    --theme-border: #e4e4df;
+    --theme-border-card: #e4e4df;
+    --theme-accent: #2563eb;
   }
 
   [data-theme="sand-stone"] {
     /* Theme Tokens - Sand & Stone Editorial */
-    --theme-bg-page: #ECE9E2;
-    --theme-bg-card: #F5F2EB;
-    --theme-bg-card-subtle: #DFDBD2;
-    --theme-bg-tag: #E6E2D8;
-    --theme-text-primary: #18181B;
+    --theme-bg-page: #ece9e2;
+    --theme-bg-card: #f5f2eb;
+    --theme-bg-card-subtle: #dfdbd2;
+    --theme-bg-tag: #e6e2d8;
+    --theme-text-primary: #18181b;
     --theme-text-secondary: #292524;
-    --theme-text-muted: #57534E;
-    --theme-text-subtle: #78716C;
-    --theme-border: #D8D4CC;
-    --theme-border-card: #D8D4CC;
-    --theme-accent: #2563EB;
+    --theme-text-muted: #57534e;
+    --theme-text-subtle: #78716c;
+    --theme-border: #d8d4cc;
+    --theme-border-card: #d8d4cc;
+    --theme-accent: #2563eb;
   }
 
   [data-theme="obsidian"] {
     /* Theme Tokens - Obsidian Dark */
     --theme-bg-page: #121214;
-    --theme-bg-card: #18181B;
+    --theme-bg-card: #18181b;
     --theme-bg-card-subtle: #222226;
-    --theme-bg-tag: #27272A;
-    --theme-text-primary: #FAFAFA;
-    --theme-text-secondary: #F4F4F5;
-    --theme-text-muted: #A1A1AA;
-    --theme-text-subtle: #71717A;
-    --theme-border: #27272A;
-    --theme-border-card: #27272A;
-    --theme-accent: #3B82F6;
+    --theme-bg-tag: #27272a;
+    --theme-text-primary: #fafafa;
+    --theme-text-secondary: #f4f4f5;
+    --theme-text-muted: #a1a1aa;
+    --theme-text-subtle: #71717a;
+    --theme-border: #27272a;
+    --theme-border-card: #27272a;
+    --theme-accent: #3b82f6;
   }
 
   [data-theme="electric-cobalt"] {
     /* Theme Tokens - Electric Cobalt High-Tech Dark */
-    --theme-bg-page: #0B132B;
-    --theme-bg-card: #111D44;
-    --theme-bg-card-subtle: #17275C;
-    --theme-bg-tag: #1E316F;
-    --theme-text-primary: #FFFFFF;
-    --theme-text-secondary: #E2E8F0;
-    --theme-text-muted: #94A3B8;
-    --theme-text-subtle: #64748B;
-    --theme-border: #1E293B;
-    --theme-border-card: #1E3A8A;
-    --theme-accent: #60A5FA;
+    --theme-bg-page: #0b132b;
+    --theme-bg-card: #111d44;
+    --theme-bg-card-subtle: #17275c;
+    --theme-bg-tag: #1e316f;
+    --theme-text-primary: #ffffff;
+    --theme-text-secondary: #e2e8f0;
+    --theme-text-muted: #94a3b8;
+    --theme-text-subtle: #64748b;
+    --theme-border: #1e293b;
+    --theme-border-card: #1e3a8a;
+    --theme-accent: #60a5fa;
   }
 }
 
@@ -147,12 +167,14 @@ html {
 /* Subtle grain overlay */
 .editorial-grid {
   background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
 }
 
 .editorial-grid-dark {
   background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }

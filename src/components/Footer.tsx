@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrandLogo } from "./BrandLogo";
 import { ThemeMode } from "../types";
 import { ArrowUp, ArrowUpRight, Globe, Clock } from "lucide-react";
+import { navigateTo } from "../routing";
 
 interface FooterProps {
   theme: ThemeMode;
@@ -53,7 +54,16 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
         {/* Top Tier: Logo & Statement & Back to Top */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pb-16 border-b border-inherit">
           <div className="max-w-md">
-            <BrandLogo theme={theme} size="lg" variant="full" />
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo("/");
+              }}
+              className="inline-flex"
+            >
+              <BrandLogo theme={theme} size="lg" variant="full" />
+            </a>
             <p
               className={`mt-4 text-base leading-relaxed ${
                 isDark ? "text-neutral-400" : "text-neutral-600"
@@ -101,7 +111,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="#work"
+                  href="/work"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/work");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   Selected Work
@@ -109,7 +123,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   Capabilities
@@ -117,7 +135,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               </li>
               <li>
                 <a
-                  href="#philosophy"
+                  href="/philosophy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/philosophy");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   Philosophy
@@ -125,7 +147,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               </li>
               <li>
                 <a
-                  href="#process"
+                  href="/process"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/process");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   Process
@@ -133,7 +159,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               </li>
               <li>
                 <a
-                  href="#team"
+                  href="/team"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/team");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   Meet the Team
@@ -141,10 +171,26 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               </li>
               <li>
                 <a
-                  href="#sectors"
+                  href="/sectors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/sectors");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   Sectors
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/contact");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Contact
                 </a>
               </li>
             </ul>
@@ -158,7 +204,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="#services"
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   Brand & Identity
@@ -166,7 +216,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   UI/UX & Products
@@ -174,7 +228,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   Web Development
@@ -182,7 +240,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   SEO & Growth
@@ -190,7 +252,11 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
                   className="hover:text-blue-600 transition-colors"
                 >
                   Creative Technology
@@ -202,7 +268,7 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
           {/* Column 3: Connect */}
           <div>
             <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
-              Connect Into Autostat
+              Connect
             </div>
             <ul className="space-y-2.5">
               <li>
@@ -258,8 +324,7 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
             <div className="space-y-2">
               <div className="font-medium">Kathmandu, Nepal</div>
               <div className="text-xs text-neutral-400">
-                {" "}
-                call Goldhunga,Tarkeshwor-5
+                Goldhunga,Tarkeshwor-5
               </div>
               <div className="mt-4 inline-flex items-center gap-2 rounded-lg border border-inherit px-3 py-1.5 font-mono text-xs">
                 <Clock className="h-3 w-3 text-blue-600" />

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { ThemeMode } from '../types';
-import { X, Send, Check, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { ThemeMode } from "../types";
+import { X, Send, Check, ArrowRight } from "lucide-react";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -8,41 +8,45 @@ interface ContactModalProps {
   theme: ThemeMode;
 }
 
-export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, theme }) => {
-  const [services, setServices] = useState<string[]>(['UI/UX Design']);
-  const [budget, setBudget] = useState('$10k - $25k');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+export const ContactModal: React.FC<ContactModalProps> = ({
+  isOpen,
+  onClose,
+  theme,
+}) => {
+  const [services, setServices] = useState<string[]>(["UI/UX Design"]);
+  const [budget, setBudget] = useState("$10k - $25k");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         onClose();
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
   const availableServices = [
-    'Brand & Identity',
-    'UI/UX Design',
-    'Web Development',
-    'E-Commerce',
-    'SEO & Growth',
-    'Creative Technology',
+    "Brand & Identity",
+    "UI/UX Design",
+    "Web Development",
+    "E-Commerce",
+    "SEO & Growth",
+    "Creative Technology",
   ];
 
-  const budgetTiers = ['< $10k', '$10k - $25k', '$25k - $50k', '$50k+'];
+  const budgetTiers = ["< $10k", "$10k - $25k", "$25k - $50k", "$50k+"];
 
   const toggleService = (svc: string) => {
     setServices((prev) =>
-      prev.includes(svc) ? prev.filter((s) => s !== svc) : [...prev, svc]
+      prev.includes(svc) ? prev.filter((s) => s !== svc) : [...prev, svc],
     );
   };
 
@@ -51,17 +55,21 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, the
     setSubmitted(true);
   };
 
-  const isDark = theme === 'obsidian';
+  const isDark = theme === "obsidian";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-neutral-950/85 backdrop-blur-md overflow-y-auto">
       <div className="relative my-auto flex w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900 text-white shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-neutral-800 px-6 py-4">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-xs text-blue-500 font-bold">START A PROJECT</span>
+        <div className="flex items-start justify-between gap-4 border-b border-neutral-800 px-4 py-4 sm:px-6">
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
+            <span className="font-mono text-xs text-blue-500 font-bold">
+              START A PROJECT
+            </span>
             <span className="text-neutral-500">•</span>
-            <span className="text-xs text-neutral-400">DX Studio Client Brief</span>
+            <span className="text-xs text-neutral-400">
+              DX Studio Client Brief
+            </span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -79,15 +87,19 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, the
         </div>
 
         {/* Content */}
-        <div className="p-6 sm:p-8">
+        <div className="p-4 sm:p-8">
           {submitted ? (
             <div className="py-12 text-center space-y-4">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-500 border border-blue-500/40">
                 <Check className="h-8 w-8" />
               </div>
-              <h3 className="font-heading text-2xl sm:text-3xl font-bold">Brief Received</h3>
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold">
+                Brief Received
+              </h3>
               <p className="mx-auto max-w-md text-sm text-neutral-300">
-                Thank you, {name || 'Partner'}. A senior creative director at DX Studio will review your project scope and schedule an introduction within 24 hours.
+                Thank you, {name || "Partner"}. A senior creative director at DX
+                Studio will review your project scope and schedule an
+                introduction within 24 hours.
               </p>
               <button
                 onClick={onClose}
@@ -99,7 +111,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, the
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <h3 className="font-heading text-2xl font-bold mb-1">Let's build something exceptional.</h3>
+                <h3 className="font-heading text-2xl font-bold mb-1">
+                  Let's build something exceptional.
+                </h3>
                 <p className="text-xs font-mono text-neutral-400">
                   Select your required services and outline your vision.
                 </p>
@@ -120,8 +134,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, the
                         onClick={() => toggleService(svc)}
                         className={`rounded-full px-3.5 py-1.5 text-xs font-mono transition-all ${
                           isSelected
-                            ? 'bg-blue-600 text-white font-bold shadow-sm'
-                            : 'border border-neutral-700 bg-neutral-800/80 text-neutral-300 hover:border-neutral-500'
+                            ? "bg-blue-600 text-white font-bold shadow-sm"
+                            : "border border-neutral-700 bg-neutral-800/80 text-neutral-300 hover:border-neutral-500"
                         }`}
                       >
                         {svc}
@@ -144,8 +158,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, the
                       onClick={() => setBudget(tier)}
                       className={`rounded-xl py-2 px-3 text-xs font-mono text-center transition-all ${
                         budget === tier
-                          ? 'border border-blue-500 bg-blue-950/40 text-blue-400 font-bold'
-                          : 'border border-neutral-800 bg-neutral-800/50 text-neutral-400 hover:border-neutral-700'
+                          ? "border border-blue-500 bg-blue-950/40 text-blue-400 font-bold"
+                          : "border border-neutral-800 bg-neutral-800/50 text-neutral-400 hover:border-neutral-700"
                       }`}
                     >
                       {tier}

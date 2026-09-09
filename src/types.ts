@@ -1,5 +1,9 @@
-export type ThemeMode = 'warm-light' | 'obsidian' | 'sand-stone' | 'electric-cobalt';
-export type Language = 'en' | 'fr';
+export type ThemeMode =
+  | "warm-light"
+  | "obsidian"
+  | "sand-stone"
+  | "electric-cobalt";
+export type Language = "en" | "fr";
 
 export interface ProjectItem {
   id: string;
@@ -7,13 +11,19 @@ export interface ProjectItem {
   title: string;
   client: string;
   category: string;
+  portfolioCategory?:
+    | "Ecommerce"
+    | "Travel & Trek"
+    | "Creative Websites"
+    | "Branding"
+    | "Other";
   year: string;
   tagline: string;
   description: string;
   metrics: string[];
   deliverables: string[];
   image: string;
-  aspect: 'wide' | 'tall' | 'square';
+  aspect: "wide" | "tall" | "square";
   colorAccent?: string;
   stats?: { label: string; value: string };
 }
@@ -59,7 +69,7 @@ export interface TeamMember {
   number: string;
   name: string;
   role: string;
-  department: 'leadership' | 'design' | 'engineering' | 'strategy';
+  department: "leadership" | "design" | "engineering" | "strategy";
   location: string;
   bio: string;
   quote: string;

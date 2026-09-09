@@ -1,33 +1,39 @@
-import React from 'react';
-import { ThemeMode, ProjectItem } from '../types';
-import { PROJECTS } from '../data/content';
-import { ArrowUpRight } from 'lucide-react';
-import { TRANSLATIONS } from '../data/translations';
-import { TiltCard } from './TiltCard';
-import { ImageReveal } from './ImageReveal';
-import { SectionAnchor } from './SectionAnchor';
+import React from "react";
+import { ThemeMode, ProjectItem } from "../types";
+import { PROJECTS } from "../data/content";
+import { ArrowUpRight } from "lucide-react";
+import { TRANSLATIONS } from "../data/translations";
+import { TiltCard } from "./TiltCard";
+import { ImageReveal } from "./ImageReveal";
+import { SectionAnchor } from "./SectionAnchor";
+import { navigateTo } from "../routing";
 
 interface FeaturedWorkProps {
   theme: ThemeMode;
   onSelectProject: (project: ProjectItem) => void;
+  preview?: boolean;
 }
 
-export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ theme, onSelectProject }) => {
+export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
+  theme,
+  onSelectProject,
+  preview = false,
+}) => {
   const t = TRANSLATIONS.en;
-  const isDark = theme === 'obsidian' || theme === 'electric-cobalt';
-  const isSand = theme === 'sand-stone';
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
+  const isSand = theme === "sand-stone";
 
   return (
     <section
       id="work"
       className={`relative overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
-          ? theme === 'electric-cobalt'
-            ? 'bg-[#0E1738] text-white border-blue-950/80'
-            : 'bg-[#151518] text-white border-neutral-800'
+          ? theme === "electric-cobalt"
+            ? "bg-[#0E1738] text-white border-blue-950/80"
+            : "bg-[#151518] text-white border-neutral-800"
           : isSand
-          ? 'bg-[#E5E2DA] text-neutral-950 border-[#D2CDC3]'
-          : 'bg-[#F2F2EF] text-neutral-950 border-[#E5E5E2]'
+            ? "bg-[#E5E2DA] text-neutral-950 border-[#D2CDC3]"
+            : "bg-[#F2F2EF] text-neutral-950 border-[#E5E5E2]"
       }`}
     >
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
@@ -46,7 +52,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ theme, onSelectProje
           </div>
           <p
             className={`max-w-md text-base sm:text-lg leading-relaxed ${
-              isDark ? 'text-neutral-400' : 'text-neutral-600'
+              isDark ? "text-neutral-400" : "text-neutral-600"
             }`}
           >
             {t.work.subtitle}
@@ -137,7 +143,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ theme, onSelectProje
                       accentColor="#0D9488"
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
-                      
+
                       <div className="absolute top-6 left-6">
                         <span className="rounded-full bg-neutral-900/60 backdrop-blur-md px-3 py-1 text-xs font-mono text-white border border-white/20">
                           {PROJECTS[1].number} // {PROJECTS[1].category}
@@ -166,12 +172,17 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ theme, onSelectProje
                 <div className="mt-4 flex items-center justify-between px-2">
                   <div className="flex gap-2">
                     {PROJECTS[1].deliverables.slice(0, 2).map((d) => (
-                      <span key={d} className="font-mono text-[11px] text-neutral-500">
+                      <span
+                        key={d}
+                        className="font-mono text-[11px] text-neutral-500"
+                      >
                         • {d}
                       </span>
                     ))}
                   </div>
-                  <span className="font-mono text-xs font-bold text-blue-600">Case Details →</span>
+                  <span className="font-mono text-xs font-bold text-blue-600">
+                    Case Details →
+                  </span>
                 </div>
               </div>
             )}
@@ -224,14 +235,16 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ theme, onSelectProje
                   <div className="font-mono text-[11px] text-neutral-500">
                     2.1M Minutes Streamed
                   </div>
-                  <span className="font-mono text-xs font-bold text-blue-600">Case Details →</span>
+                  <span className="font-mono text-xs font-bold text-blue-600">
+                    Case Details →
+                  </span>
                 </div>
               </div>
             )}
           </div>
 
           {/* Project 04: Lumina Arch (Wide Architecture Monograph) */}
-          {PROJECTS[3] && (
+          {!preview && PROJECTS[3] && (
             <div
               key={PROJECTS[3].id}
               data-cursor="view"
@@ -287,6 +300,16 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({ theme, onSelectProje
             </div>
           )}
         </div>
+        {preview && (
+          <div className="mt-12 flex justify-center">
+            <button
+              onClick={() => navigateTo("/work")}
+              className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-blue-500"
+            >
+              More Work <ArrowUpRight className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

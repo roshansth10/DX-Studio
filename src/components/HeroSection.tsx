@@ -98,12 +98,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </p>
 
             {/* CTAs with Magnetic Hover */}
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            <div className="flex w-full flex-col items-stretch gap-3 mb-10 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
               <MagneticElement strength={0.25}>
                 <button
                   onClick={onExploreWork}
                   id="hero-cta-explore"
-                  className={`group inline-flex items-center gap-3 rounded-full px-7 py-3.5 text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-md ${
+                    className={`group inline-flex w-full items-center justify-center gap-3 rounded-full px-5 py-3.5 text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-md sm:w-auto sm:px-7 ${
                     isDark
                       ? "bg-blue-600 text-white hover:bg-blue-500 hover:shadow-blue-900/30"
                       : "bg-neutral-950 text-white hover:bg-blue-600 hover:shadow-neutral-900/20"
@@ -118,7 +118,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <button
                   onClick={onStartProject}
                   id="hero-cta-start"
-                  className={`inline-flex items-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 ${
+                    className={`inline-flex w-full items-center justify-center gap-2 rounded-full border px-5 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 sm:w-auto sm:px-6 ${
                     isDark
                       ? "border-neutral-700 bg-neutral-800/40 text-neutral-200 hover:bg-neutral-800 hover:border-neutral-500"
                       : "border-neutral-300 bg-white/60 text-neutral-800 hover:bg-white hover:border-neutral-400 shadow-xs"
@@ -131,7 +131,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Editorial Metadata / Studio Signals */}
             <div
-              className={`grid grid-cols-3 gap-6 pt-6 border-t w-full max-w-lg text-left ${
+              className={`grid grid-cols-1 min-[400px]:grid-cols-3 gap-4 min-[400px]:gap-6 pt-6 border-t w-full max-w-lg text-left ${
                 isDark
                   ? "border-neutral-800 text-neutral-400"
                   : "border-neutral-300/80 text-neutral-600"

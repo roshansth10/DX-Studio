@@ -125,8 +125,6 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
             borderColor: "var(--theme-border-card)",
           }}
         >
-          {" "}
-          Into Autost Into Autostat next level standard til guard cross section
           {/* Top Status & Controls Bar */}
           <div
             className="flex flex-wrap items-center justify-between gap-4 pb-8 border-b"

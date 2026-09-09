@@ -58,6 +58,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Himaly",
     client: "Himaly Living & Goods",
     category: "Digital Experience / Web Development",
+    portfolioCategory: "Ecommerce",
     year: "2025",
     tagline:
       "Sustainable alpine craftsmanship meets modern direct-to-consumer e-commerce.",
@@ -86,6 +87,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Zentrix",
     client: "Zentrix Financial Technologies",
     category: "Fintech Product / UI/UX Design System",
+    portfolioCategory: "Other",
     year: "2025",
     tagline:
       "Simplifying institutional cross-border liquidity with intuitive real-time dashboards.",
@@ -114,6 +116,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Aawaj",
     client: "Aawaj Audio & Media",
     category: "Product Design / Custom Web App",
+    portfolioCategory: "Creative Websites",
     year: "2026",
     tagline:
       "An immersive storytelling platform for independent South Asian storytellers and sound designers.",
@@ -142,6 +145,7 @@ export const PROJECTS: ProjectItem[] = [
     title: "Lumina Arch",
     client: "Lumina Architecture Studio",
     category: "Interactive Portfolio / Creative Engineering",
+    portfolioCategory: "Travel & Trek",
     year: "2026",
     tagline:
       "A living digital monograph celebrating modern Scandinavian and Himalayan timber architecture.",
