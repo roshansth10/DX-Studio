@@ -1,0 +1,6 @@
+{
+  "name": "DX Studio",
+  "description": "Premium modern digital creative studio homepage featuring editorial design, interactive particle field, case studies, and multiple theme palettes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
