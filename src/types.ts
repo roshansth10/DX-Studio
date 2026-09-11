@@ -69,7 +69,12 @@ export interface TeamMember {
   number: string;
   name: string;
   role: string;
-  department: "leadership" | "design" | "engineering" | "strategy";
+  department:
+    | "leadership"
+    | "design"
+    | "engineering"
+    | "strategy"
+    | "management";
   location: string;
   bio: string;
   quote: string;

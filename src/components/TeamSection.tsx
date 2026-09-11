@@ -36,6 +36,11 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
       label: "Strategy & Growth",
       count: TEAM_MEMBERS.filter((m) => m.department === "strategy").length,
     },
+    {
+      id: "management",
+      label: "Management",
+      count: TEAM_MEMBERS.filter((m) => m.department === "management").length,
+    },
   ];
 
   const filteredMembers =
@@ -134,7 +139,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
 
           <div className="hidden lg:flex items-center gap-2 font-mono text-xs font-medium theme-text-subtle">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Studio Collective • 6 Senior Practitioners</span>
+            <span>Studio Collective • 9 Senior Practitioners</span>
           </div>
         </div>
 
