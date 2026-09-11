@@ -581,26 +581,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     },
   },
   {
-    id: "binisha-chhetri",
-    number: "08",
-    name: "Binisha Chhetri",
-    role: "UI/UX Designer",
-    department: "design",
-    location: "Kathmandu, Nepal",
-    bio: "Designing clear, intuitive interfaces and user experiences that balance usability with visual polish across web and product design.",
-    quote: "The strongest experiences make usability feel effortless.",
-    portrait:
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1000&auto=format&fit=crop",
-    experience: "UI/UX Design",
-    specialties: ["UI Design", "UX Research", "Prototyping"],
-    ledProjects: [],
-    socials: {
-      linkedin: "https://linkedin.com",
-    },
-  },
-  {
     id: "anisha-bhandari",
-    number: "09",
+    number: "08",
     name: "Anisha Bhandari",
     role: "SEO Specialist",
     department: "strategy",
