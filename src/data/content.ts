@@ -538,14 +538,14 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: "aadarsha-paudel",
     number: "06",
     name: "Aadarsha Paudel",
-    role: "CMO (Chief Marketing Officer)",
+    role: "Social Media Manager",
     department: "management",
     location: "Kathmandu, Nepal",
     bio: "Building the studio voice across social channels through thoughtful content, consistent storytelling, and community engagement.",
     quote: "Every post is an invitation to start a meaningful conversation.",
     portrait:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop",
-    experience: "Chief Marketing Officer",
+    experience: "Social Media Manager",
     specialties: [
       "Content Planning",
       "Social Strategy",
