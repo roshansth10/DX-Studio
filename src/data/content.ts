@@ -426,8 +426,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: "Leading the studio while shaping frontend experiences, technical direction, and the systems that bring thoughtful digital products to life.",
     quote:
       "Good digital work makes complexity feel considered, clear, and human.",
-    portrait:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop",
+    portrait: "/Team Picture/Roshan.jpeg",
+    portraitPosition: "center 18%",
     experience: "Studio Founder",
     specialties: [
       "Technical Direction",
@@ -453,6 +453,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
       "Strong products are built on infrastructure users never have to think about.",
     portrait:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop",
+    portraitPosition: "center 20%",
     experience: "Backend Engineering",
     specialties: [
       "API Development",
@@ -477,6 +478,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     quote: "The best interfaces quietly guide people toward what matters.",
     portrait:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop",
+    portraitPosition: "center 20%",
     experience: "UI/UX Design",
     specialties: [
       "User Research",
@@ -499,8 +501,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: "Developing the backend logic and integrations that turn product requirements into stable, scalable digital services.",
     quote:
       "A dependable backend gives every other part of the product room to shine.",
-    portrait:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1000&auto=format&fit=crop",
+    portrait: "/Team Picture/injal.png",
+    portraitPosition: "center 20%",
     experience: "Backend Engineering",
     specialties: [
       "Node.js",
@@ -515,17 +517,17 @@ export const TEAM_MEMBERS: TeamMember[] = [
     },
   },
   {
-    id: "vikash-kattel",
+    id: "bikash-kattel",
     number: "05",
-    name: "Vikash Kattel",
+    name: "Bikash Kattel",
     role: "Frontend Developer",
     department: "engineering",
     location: "Kathmandu, Nepal",
     bio: "Turning design systems into responsive, accessible interfaces with a focus on performance, polish, and maintainable code.",
     quote:
       "The interface is where technical precision becomes a human experience.",
-    portrait:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1000&auto=format&fit=crop",
+    portrait: "/Team Picture/Bikash.jpg",
+    portraitPosition: "center 20%",
     experience: "Frontend Engineering",
     specialties: ["React", "TypeScript", "Responsive UI", "Accessibility"],
     ledProjects: ["Himaly", "Aawaj"],
@@ -545,6 +547,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     quote: "Every post is an invitation to start a meaningful conversation.",
     portrait:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop",
+    portraitPosition: "center 20%",
     experience: "Social Media Manager",
     specialties: [
       "Content Planning",
@@ -567,8 +570,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     location: "Kathmandu, Nepal",
     bio: "Coordinating timelines, resources, and communication across teams to keep every project on track from kickoff to delivery.",
     quote: "Clear coordination gives great work the space to arrive on time.",
-    portrait:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop",
+    portrait: "/Team Picture/Bijay.png",
+    portraitPosition: "center 15%",
     experience: "Operations Management",
     specialties: [
       "Project Planning",
@@ -589,8 +592,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     location: "Kathmandu, Nepal",
     bio: "Driving organic growth through keyword research, on-page optimization, and content strategy that gets the studio's work found and ranked.",
     quote: "The best content earns attention by being genuinely useful.",
-    portrait:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop",
+    portrait: "/Team Picture/Anisha.jpeg",
+    portraitPosition: "center 25%",
     experience: "SEO",
     specialties: ["Keyword Research", "On-Page SEO", "Content Strategy"],
     ledProjects: [],

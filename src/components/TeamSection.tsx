@@ -152,29 +152,69 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
                 onMouseEnter={() => setHoveredMember(member.id)}
                 onMouseLeave={() => setHoveredMember(null)}
                 onClick={() => setSelectedMember(member)}
-                className="group relative flex flex-col rounded-3xl border overflow-hidden cursor-pointer transition-all duration-300 gsap-stagger-item hover:shadow-xl"
+                className="group relative flex flex-col rounded-3xl border overflow-hidden cursor-pointer transition-all duration-300 gsap-stagger-item hover:shadow-xl hover:-translate-y-1"
                 style={{
                   backgroundColor: "var(--theme-bg-card)",
                   borderColor: "var(--theme-border-card)",
                 }}
               >
-                {/* Card Body - Dynamic CSS Variable Typography */}
-                <div className="flex flex-col flex-1 p-6 pt-7">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs font-bold text-blue-600">
-                        {member.number}
-                      </span>
-                      <span className="font-mono text-xs uppercase tracking-widest text-blue-600 font-bold">
-                        {member.role}
-                      </span>
-                    </div>
-                    <span className="font-mono text-[11px] theme-text-subtle">
-                      {member.location}
+                {/* Portrait Container with Architectural Frame */}
+                <div
+                  className="relative aspect-[4/3] w-full overflow-hidden border-b transition-colors duration-300"
+                  style={{
+                    borderColor: "var(--theme-border)",
+                    backgroundColor: "var(--theme-bg-card-subtle)",
+                  }}
+                >
+                  <img
+                    src={member.portrait}
+                    alt={member.name}
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter contrast-[1.02]"
+                    style={{
+                      objectPosition: member.portraitPosition || "center 20%",
+                    }}
+                    loading="lazy"
+                  />
+
+                  {/* High Legibility Ambient Vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25 pointer-events-none" />
+
+                  {/* Top Corner Badges: Number & Location */}
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
+                    <span className="rounded-full bg-neutral-950/70 backdrop-blur-md px-2.5 py-1 font-mono text-[11px] font-bold text-white border border-white/20 shadow-sm">
+                      {member.number}
+                    </span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-neutral-950/70 backdrop-blur-md px-2.5 py-1 font-mono text-[11px] font-medium text-neutral-100 border border-white/20 shadow-sm">
+                      <MapPin className="h-3 w-3 text-blue-400" />
+                      {member.location.split(",")[0]}
                     </span>
                   </div>
 
-                  <h3 className="font-heading text-2xl font-bold tracking-tight mt-1 transition-colors theme-text-primary">
+                  {/* Quick Expand Button on image corner */}
+                  <div className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/95 text-neutral-950 shadow-md backdrop-blur-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </div>
+                </div>
+
+                {/* Card Body - Dynamic CSS Variable Typography */}
+                <div className="flex flex-col flex-1 p-6 pt-5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-mono text-xs uppercase tracking-widest text-blue-600 font-bold">
+                      {member.role}
+                    </span>
+                    <span
+                      className="font-mono text-[10px] uppercase px-2 py-0.5 rounded-full border font-medium"
+                      style={{
+                        backgroundColor: "var(--theme-bg-card-subtle)",
+                        borderColor: "var(--theme-border)",
+                        color: "var(--theme-text-subtle)",
+                      }}
+                    >
+                      {member.department}
+                    </span>
+                  </div>
+
+                  <h3 className="font-heading text-2xl font-bold tracking-tight mt-2 transition-colors theme-text-primary">
                     {member.name}
                   </h3>
 

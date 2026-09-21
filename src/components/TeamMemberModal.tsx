@@ -44,7 +44,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-neutral-950/85 backdrop-blur-md overflow-y-auto">
       <div
-        className={`relative my-auto flex w-full max-w-3xl flex-col overflow-hidden rounded-3xl border shadow-2xl transition-all duration-300 ${
+        className={`relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl border shadow-2xl transition-all duration-300 ${
           isDark
             ? theme === "electric-cobalt"
               ? "border-blue-950 bg-[#0F1D40] text-white"
@@ -99,9 +99,37 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
         </div>
 
         {/* Content Body */}
-        <div className="grid grid-cols-1 gap-0 overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-0 overflow-hidden">
+          {/* Portrait Column */}
+          <div
+            className={`md:col-span-5 relative overflow-hidden min-h-[280px] sm:min-h-[340px] md:min-h-full border-b md:border-b-0 md:border-r ${
+              isDark
+                ? "border-neutral-800/80 bg-neutral-900"
+                : isSand
+                  ? "border-[#E0DCD4] bg-[#ECE9E2]"
+                  : "border-neutral-200 bg-neutral-100"
+            }`}
+          >
+            <img
+              src={member.portrait}
+              alt={member.name}
+              className="h-full w-full object-cover filter contrast-[1.02]"
+              style={{
+                objectPosition: member.portraitPosition || "center 20%",
+              }}
+            />
+            {/* Ambient Vignette for mobile typography legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent md:hidden" />
+            <div className="absolute bottom-4 left-4 right-4 md:hidden text-white">
+              <span className="font-mono text-xs text-blue-400 font-bold block mb-1">
+                {member.role}
+              </span>
+              <h3 className="font-heading text-2xl font-bold">{member.name}</h3>
+            </div>
+          </div>
+
           {/* Details Column */}
-          <div className="p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6">
             <div>
               {/* Header Info */}
               <div className="hidden md:block">

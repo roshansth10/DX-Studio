@@ -79,6 +79,7 @@ export interface TeamMember {
   bio: string;
   quote: string;
   portrait: string;
+  portraitPosition?: string;
   experience: string;
   specialties: string[];
   ledProjects: string[];
