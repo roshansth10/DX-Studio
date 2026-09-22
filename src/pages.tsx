@@ -161,11 +161,11 @@ const ProjectCard: React.FC<{
     }}
     className="group text-left overflow-hidden rounded-2xl border theme-border-card theme-bg-card shadow-sm transition-shadow hover:shadow-xl"
   >
-    <div className="aspect-[4/3] overflow-hidden bg-neutral-950">
+    <div className="overflow-hidden bg-neutral-950">
       <img
         src={project.image}
         alt={project.title}
-        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="block w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
         referrerPolicy="no-referrer"
       />
     </div>
@@ -209,7 +209,7 @@ export const ProjectPage: React.FC<PageProps & { project: ProjectItem }> = ({
         <img
           src={project.image}
           alt={project.title}
-          className="aspect-[16/9] h-auto w-full object-cover"
+          className="block w-full h-auto object-contain"
           referrerPolicy="no-referrer"
         />
       </div>

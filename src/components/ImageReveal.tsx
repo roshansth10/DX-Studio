@@ -18,7 +18,7 @@ interface ImageRevealProps {
 export const ImageReveal: React.FC<ImageRevealProps> = ({
   src,
   alt,
-  aspectRatioClass = 'aspect-[16/9]',
+  aspectRatioClass = '',
   overlayColor = '#121215',
   accentColor = '#2563EB',
   className = '',
@@ -95,7 +95,7 @@ export const ImageReveal: React.FC<ImageRevealProps> = ({
     };
   }, []);
 
-  return (
+return (
     <div
       ref={containerRef}
       className={`relative w-full overflow-hidden ${aspectRatioClass} ${className}`}
@@ -115,20 +115,18 @@ export const ImageReveal: React.FC<ImageRevealProps> = ({
         />
       </div>
 
-      {/* Underlying Image Container */}
-      <div className="absolute inset-0 z-0 h-full w-full overflow-hidden">
-        <img
-          ref={imgRef}
-          src={src}
-          alt={alt}
-          referrerPolicy="no-referrer"
-          className={`h-full w-full object-cover will-change-transform transition-transform duration-700 ease-out group-hover:scale-105 ${imgClassName}`}
-        />
-      </div>
+      {/* Underlying Image (natural aspect) */}
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        referrerPolicy="no-referrer"
+        className={`relative z-0 block w-full h-auto object-contain will-change-transform transition-transform duration-700 ease-out group-hover:scale-105 ${imgClassName}`}
+      />
 
       {/* Overlay Children Content (Badges, Tags, Stats, Headlines) */}
       {children && (
-        <div ref={contentRef} className="relative z-10 h-full w-full pointer-events-auto">
+        <div ref={contentRef} className="absolute inset-0 z-10 h-full w-full pointer-events-auto">
           {children}
         </div>
       )}

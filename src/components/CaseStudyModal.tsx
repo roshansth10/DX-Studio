@@ -73,11 +73,11 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
           </div>
 
           {/* Hero Case Study Imagery */}
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-neutral-800 bg-black">
+          <div className="relative w-full overflow-hidden rounded-2xl border border-neutral-800 bg-black">
             <img
               src={project.image}
               alt={project.title}
-              className="h-full w-full object-cover"
+              className="block w-full h-auto object-contain"
               referrerPolicy="no-referrer"
             />
           </div>

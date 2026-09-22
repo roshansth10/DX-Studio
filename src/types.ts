@@ -25,7 +25,7 @@ export interface ProjectItem {
   image: string;
   aspect: "wide" | "tall" | "square";
   colorAccent?: string;
-  stats?: { label: string; value: string };
+stats?: { label: string; value: string };
   link?: string;
 }
 

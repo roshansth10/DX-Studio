@@ -74,7 +74,6 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                   <ImageReveal
                     src={PROJECTS[0].image}
                     alt={PROJECTS[0].title}
-                    aspectRatioClass="aspect-[16/9]"
                     overlayColor="#0F172A"
                     accentColor="#2563EB"
                   >
@@ -138,7 +137,6 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     <ImageReveal
                       src={PROJECTS[1].image}
                       alt={PROJECTS[1].title}
-                      aspectRatioClass="aspect-[4/3]"
                       overlayColor="#131722"
                       accentColor="#0D9488"
                     >
@@ -200,7 +198,6 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     <ImageReveal
                       src={PROJECTS[2].image}
                       alt={PROJECTS[2].title}
-                      aspectRatioClass="aspect-square"
                       overlayColor="#18181B"
                       accentColor="#6366F1"
                     >
@@ -256,7 +253,6 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                   <ImageReveal
                     src={PROJECTS[3].image}
                     alt={PROJECTS[3].title}
-                    aspectRatioClass="aspect-[21/9] sm:aspect-[16/7]"
                     overlayColor="#0B132B"
                     accentColor="#3B82F6"
                   >
