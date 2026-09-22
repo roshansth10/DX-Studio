@@ -207,7 +207,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-neutral-950">
                   <img
                     src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?q=80&w=1200&auto=format&fit=crop"
-                    alt="DX Studio Himalayan Lifestyle Web Monograph"
+                    alt="Himaly Travel Discovery Platform"
                     className="h-full w-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
@@ -221,11 +221,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         {t.hero.featuredCase}
                       </div>
                       <div className="font-heading text-lg font-bold">
-                        Himaly Living & Goods
+                        Himaly — Discover the Himalayas
                       </div>
                     </div>
                     <div className="rounded-full bg-white/20 px-2.5 py-1 text-[11px] font-mono backdrop-blur-md">
-                      +142% Conv.
+                      Destinations
                     </div>
                   </div>
                 </div>
@@ -245,17 +245,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="overflow-hidden rounded-lg">
                   <img
                     src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop"
-                    alt="Mobile Fintech Dashboard UI"
+                    alt="Sports E-Commerce Mobile UI"
                     className="aspect-[9/16] w-full object-cover"
                     referrerPolicy="no-referrer"
                   />
                 </div>
                 <div className="p-1.5 text-left">
                   <div className="font-mono text-[9px] text-neutral-400 uppercase">
-                    Zentrix Console
+                    Zentrix Sports
                   </div>
                   <div className="text-[11px] font-bold leading-tight">
-                    Instant Liquidity
+                    Power Your Game
                   </div>
                 </div>
               </div>

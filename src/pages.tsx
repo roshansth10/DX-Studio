@@ -213,6 +213,17 @@ export const ProjectPage: React.FC<PageProps & { project: ProjectItem }> = ({
           referrerPolicy="no-referrer"
         />
       </div>
+      {project.link && (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-blue-500"
+        >
+          Visit Live Site
+          <ArrowUpRight className="h-3.5 w-3.5" />
+        </a>
+      )}
       <div className="mt-12 grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <span className="font-mono text-xs uppercase tracking-widest text-blue-600">

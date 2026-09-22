@@ -26,6 +26,7 @@ export interface ProjectItem {
   aspect: "wide" | "tall" | "square";
   colorAccent?: string;
   stats?: { label: string; value: string };
+  link?: string;
 }
 
 export interface ServiceItem {

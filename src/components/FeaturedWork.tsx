@@ -123,7 +123,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
             </div>
           )}
 
-          {/* Projects 02 & 03: Asymmetric 2-Column Grid (Zentrix & Aawaj) */}
+          {/* Projects 02 & 03: Asymmetric 2-Column Grid (Zentrix & Choice International Export) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Project 02 (Tall/Editorial 7 cols) */}
             {PROJECTS[1] && (
@@ -243,7 +243,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
             )}
           </div>
 
-          {/* Project 04: Lumina Arch (Wide Architecture Monograph) */}
+          {/* Project 04: LuxeCart (E-Commerce Showcase) */}
           {!preview && PROJECTS[3] && (
             <div
               key={PROJECTS[3].id}
