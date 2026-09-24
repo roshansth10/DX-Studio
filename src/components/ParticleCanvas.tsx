@@ -70,9 +70,6 @@ export const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ theme }) => {
     window.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
 
-    const isDark = theme === 'obsidian';
-    const isSand = theme === 'sand-stone';
-
     const particleRgb = isDark 
       ? '200, 215, 255' 
       : isSand 
