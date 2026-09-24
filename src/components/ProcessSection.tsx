@@ -11,7 +11,7 @@ interface ProcessSectionProps {
 export const ProcessSection: React.FC<ProcessSectionProps> = ({ theme }) => {
   const [activeStep, setActiveStep] = useState(0);
 
-  const isDark = theme === "obsidian";
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
   const isSand = theme === "sand-stone";
 
   return (
@@ -19,7 +19,9 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ theme }) => {
       id="process"
       className={`relative overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
-          ? "bg-[#151518] text-white border-neutral-800"
+          ? theme === "electric-cobalt"
+            ? "bg-[#0E1738] text-white border-blue-950/80"
+            : "bg-[#151518] text-white border-neutral-800"
           : isSand
             ? "bg-[#E5E2DA] text-neutral-950 border-[#D2CDC3]"
             : "bg-[#F2F2EF] text-neutral-950 border-[#E5E5E2]"

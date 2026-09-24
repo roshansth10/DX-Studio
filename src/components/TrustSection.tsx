@@ -16,7 +16,7 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
   const quoteRef = useRef<HTMLDivElement>(null);
   const authorRef = useRef<HTMLDivElement>(null);
 
-  const isDark = theme === "obsidian";
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
 
   // GSAP animated transition when currentIndex changes
   useEffect(() => {

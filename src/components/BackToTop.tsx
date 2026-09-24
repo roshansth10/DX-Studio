@@ -12,7 +12,7 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const isDark = theme === "obsidian";
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
   const isSand = theme === "sand-stone";
 
   // Track scroll position to reveal after scrolling past hero section (~450px)

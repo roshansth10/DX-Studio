@@ -75,6 +75,21 @@ html {
     --theme-border-card: #27272a;
     --theme-accent: #3b82f6;
   }
+
+  [data-theme="electric-cobalt"] {
+    /* Theme Tokens - Electric Cobalt High-Tech Dark */
+    --theme-bg-page: #0b132b;
+    --theme-bg-card: #111d44;
+    --theme-bg-card-subtle: #17275c;
+    --theme-bg-tag: #1e316f;
+    --theme-text-primary: #ffffff;
+    --theme-text-secondary: #e2e8f0;
+    --theme-text-muted: #94a3b8;
+    --theme-text-subtle: #64748b;
+    --theme-border: #1e293b;
+    --theme-border-card: #1e3a8a;
+    --theme-accent: #60a5fa;
+  }
 }
 
 /* Typography & Variable Utility Classes */

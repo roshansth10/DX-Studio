@@ -18,7 +18,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ theme, onOpenContact }) => {
     setSubmitted(true);
   };
 
-  const isDark = theme === "obsidian";
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
   const isSand = theme === "sand-stone";
 
   return (
@@ -26,7 +26,9 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ theme, onOpenContact }) => {
       id="contact"
       className={`relative overflow-hidden py-28 sm:py-36 lg:py-48 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
-          ? "bg-[#0E0E10] text-white border-neutral-800"
+          ? theme === "electric-cobalt"
+            ? "bg-[#080E20] text-white border-blue-950/80"
+            : "bg-[#0E0E10] text-white border-neutral-800"
           : isSand
             ? "bg-[#E0DDD5] text-neutral-950 border-[#CDC8BE]"
             : "bg-[#EDEDEA] text-neutral-950 border-[#E0E0DC]"

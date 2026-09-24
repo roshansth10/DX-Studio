@@ -38,7 +38,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
 
   if (!member) return null;
 
-  const isDark = theme === "obsidian";
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
   const isSand = theme === "sand-stone";
 
   return (
@@ -46,7 +46,9 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
       <div
         className={`relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl border shadow-2xl transition-all duration-300 ${
           isDark
-            ? "border-neutral-800 bg-[#161618] text-white"
+            ? theme === "electric-cobalt"
+              ? "border-blue-950 bg-[#0F1D40] text-white"
+              : "border-neutral-800 bg-[#161618] text-white"
             : isSand
               ? "border-[#D8D4CC] bg-[#F4F1EA] text-neutral-950"
               : "border-neutral-200 bg-white text-neutral-950"

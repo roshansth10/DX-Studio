@@ -17,14 +17,16 @@ export const PageShell: React.FC<PageShellProps> = ({
   description,
   children,
 }) => {
-  const isDark = theme === "obsidian";
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
   const isSand = theme === "sand-stone";
 
   return (
     <main
       className={`min-h-screen border-b pt-28 sm:pt-36 ${
         isDark
-          ? "bg-[#121214] text-white border-neutral-800"
+          ? theme === "electric-cobalt"
+            ? "bg-[#0B132B] text-white border-blue-950/80"
+            : "bg-[#121214] text-white border-neutral-800"
           : isSand
             ? "bg-[#ECE9E2] text-neutral-950 border-[#D8D4CC]"
             : "bg-[#F7F7F5] text-neutral-950 border-[#E5E5E2]"
