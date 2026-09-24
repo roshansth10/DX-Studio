@@ -107,7 +107,7 @@ export default function App() {
       <Navigation
         theme={theme}
         onSelectTheme={setTheme}
-        onOpenContact={() => setContactOpen(true)}
+        onOpenContact={() => navigateTo("/contact")}
         onOpenConcepts={() => setConceptsOpen(true)}
       />
       {page}

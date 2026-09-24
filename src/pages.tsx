@@ -18,7 +18,6 @@ import { TeamSection } from "./components/TeamSection";
 import { TrustSection } from "./components/TrustSection";
 import { FinalCTA } from "./components/FinalCTA";
 import { HeroSection } from "./components/HeroSection";
-import { WhyDXSection } from "./components/WhyDXSection";
 import { navigateTo } from "./routing";
 
 interface PageProps {
@@ -49,21 +48,27 @@ export const HomePage: React.FC<PageProps> = ({
   <main>
     <HeroSection
       theme={theme}
-      onExploreWork={() => {
-        const el = document.getElementById("work");
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-        else navigateTo("/work");
-      }}
+      onExploreWork={() => navigateTo("/work")}
       onStartProject={onOpenContact}
       onOpenConcepts={() => undefined}
     />
-    <IntroStatement theme={theme} />
-    <ServicesSection theme={theme} />
-    <FeaturedWork theme={theme} onSelectProject={onSelectProject} />
-    <WhyDXSection theme={theme} />
-    <ProcessSection theme={theme} />
-    <TeamSection theme={theme} />
-    <TrustSection theme={theme} />
+    <FeaturedWork theme={theme} onSelectProject={onSelectProject} preview />
+    <PreviewBand
+      theme={theme}
+      eyebrow="02 // Philosophy"
+      title="Strategy before pixels."
+      description="We start with the problem, then build digital experiences with intent, clarity, and commercial purpose."
+      href="/philosophy"
+      label="Explore Our Philosophy"
+    />
+    <PreviewBand
+      theme={theme}
+      eyebrow="05 // Process"
+      title="From idea to impact."
+      description="A transparent, sprint-based workflow keeps strategy, design, and engineering moving together."
+      href="/process"
+      label="Explore Our Process"
+    />
     <FinalCTA theme={theme} onOpenContact={onOpenContact} />
   </main>
 );
