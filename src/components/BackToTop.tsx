@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ArrowUp } from 'lucide-react';
-import { ThemeMode } from '../types';
+import React, { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ArrowUp } from "lucide-react";
+import { ThemeMode } from "../types";
+import { scrollToTarget } from "../hooks/useLenisScroll";
 
 interface BackToTopProps {
   theme: ThemeMode;
@@ -11,8 +12,8 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const isDark = theme === 'obsidian' || theme === 'electric-cobalt';
-  const isSand = theme === 'sand-stone';
+  const isDark = theme === "obsidian" || theme === "electric-cobalt";
+  const isSand = theme === "sand-stone";
 
   // Track scroll position to reveal after scrolling past hero section (~450px)
   useEffect(() => {
@@ -21,10 +22,10 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
       setIsVisible(pastHero);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // GSAP Entrance & Exit Animations
@@ -40,9 +41,9 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
           y: 0,
           scale: 1,
           duration: 0.45,
-          ease: 'power3.out',
-          overwrite: 'auto',
-        }
+          ease: "power3.out",
+          overwrite: "auto",
+        },
       );
     } else {
       gsap.to(containerRef.current, {
@@ -50,8 +51,8 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
         y: 18,
         scale: 0.8,
         duration: 0.3,
-        ease: 'power2.in',
-        overwrite: 'auto',
+        ease: "power2.in",
+        overwrite: "auto",
       });
     }
   }, [isVisible]);
@@ -70,8 +71,8 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
       x: deltaX,
       y: deltaY,
       duration: 0.2,
-      ease: 'power2.out',
-      overwrite: 'auto',
+      ease: "power2.out",
+      overwrite: "auto",
     });
   };
 
@@ -81,8 +82,8 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
       x: 0,
       y: 0,
       duration: 0.7,
-      ease: 'elastic.out(1.2, 0.4)',
-      overwrite: 'auto',
+      ease: "elastic.out(1.2, 0.4)",
+      overwrite: "auto",
     });
   };
 
@@ -94,21 +95,18 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
         duration: 0.12,
         yoyo: true,
         repeat: 1,
-        ease: 'power2.inOut',
+        ease: "power2.inOut",
       });
     }
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    scrollToTarget(0);
   };
 
   return (
     <div
       ref={containerRef}
       className={`fixed bottom-6 left-6 z-40 ${
-        isVisible ? 'pointer-events-auto' : 'pointer-events-none'
+        isVisible ? "pointer-events-auto" : "pointer-events-none"
       }`}
       style={{ opacity: 0 }}
     >
@@ -122,16 +120,18 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
         title="Back to Top"
         className={`group flex items-center gap-2 rounded-full border px-3.5 py-2 text-xs font-mono font-medium shadow-xl backdrop-blur-md transition-colors duration-300 select-none ${
           isDark
-            ? 'border-neutral-700 bg-neutral-900/90 text-neutral-300 hover:border-neutral-500 hover:text-white'
+            ? "border-neutral-700 bg-neutral-900/90 text-neutral-300 hover:border-neutral-500 hover:text-white"
             : isSand
-            ? 'border-[#D0CBC0] bg-[#ECE9E2]/95 text-neutral-800 hover:border-neutral-950 hover:text-neutral-950'
-            : 'border-neutral-300/90 bg-white/95 text-neutral-800 hover:border-blue-600 hover:text-blue-600'
+              ? "border-[#D0CBC0] bg-[#ECE9E2]/95 text-neutral-800 hover:border-neutral-950 hover:text-neutral-950"
+              : "border-neutral-300/90 bg-white/95 text-neutral-800 hover:border-blue-600 hover:text-blue-600"
         }`}
       >
         <div className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white transition-transform duration-300 group-hover:-translate-y-0.5">
           <ArrowUp className="h-3 w-3 stroke-[2.5]" />
         </div>
-        <span className="tracking-wider uppercase text-[11px] font-bold">Top</span>
+        <span className="tracking-wider uppercase text-[11px] font-bold">
+          Top
+        </span>
       </button>
     </div>
   );

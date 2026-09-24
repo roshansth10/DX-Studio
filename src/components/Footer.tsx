@@ -3,6 +3,7 @@ import { BrandLogo } from "./BrandLogo";
 import { ThemeMode } from "../types";
 import { ArrowUp, ArrowUpRight, Globe, Clock } from "lucide-react";
 import { navigateTo } from "../routing";
+import { scrollToTarget } from "../hooks/useLenisScroll";
 
 interface FooterProps {
   theme: ThemeMode;
@@ -32,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTarget(0);
   };
 
   const isDark = theme === "obsidian" || theme === "electric-cobalt";

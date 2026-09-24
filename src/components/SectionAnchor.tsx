@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Hash, Check, Link2 } from "lucide-react";
+import { scrollToTarget } from "../hooks/useLenisScroll";
 
 interface SectionAnchorProps {
   id: string;
@@ -19,11 +20,8 @@ export const SectionAnchor: React.FC<SectionAnchorProps> = ({
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    // 1. Smooth scroll to target section with offset
-    const target = document.getElementById(id);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    // 1. Smooth Lenis scroll to target section with offset
+    scrollToTarget(`#${id}`, { offset: -80 });
 
     // 2. Update address bar hash without page reload
     if (window.history.pushState) {

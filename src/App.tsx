@@ -10,6 +10,7 @@ import { ContactModal } from "./components/ContactModal";
 import { CurtainWipe } from "./components/CurtainWipe";
 import { BackToTop } from "./components/BackToTop";
 import { useGsapScrollTrigger } from "./hooks/useGsapScrollTrigger";
+import { useLenisScroll } from "./hooks/useLenisScroll";
 import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
 import { usePathname, navigateTo } from "./routing";
 import { PROJECTS } from "./data/content";
@@ -40,6 +41,9 @@ export default function App() {
   const [theme, setTheme] = useState<ThemeMode>("warm-light");
   const [conceptsOpen, setConceptsOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
+
+  useLenisScroll(pathname);
+
   const { audioToast } = useKeyboardShortcuts({
     onEscape: () => {
       setConceptsOpen(false);
