@@ -32,9 +32,7 @@ const themeBackground = (theme: ThemeMode) =>
     ? "bg-[#121214] text-white"
     : theme === "sand-stone"
       ? "bg-[#ECE9E2] text-neutral-950"
-      : theme === "electric-cobalt"
-        ? "bg-[#0B132B] text-white"
-        : "bg-[#F7F7F5] text-neutral-950";
+      : "bg-[#F7F7F5] text-neutral-950";
 
 export default function App() {
   const pathname = usePathname();
@@ -57,7 +55,7 @@ export default function App() {
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.classList.toggle(
       "dark",
-      theme === "obsidian" || theme === "electric-cobalt",
+      theme === "obsidian",
     );
     document.body.className = `antialiased selection:bg-blue-600 selection:text-white ${themeBackground(theme)}`;
     const pageTitle =
@@ -140,42 +138,27 @@ export default function App() {
       )}
       <aside
         aria-label="Theme selector"
-        className="fixed bottom-6 right-6 z-30 flex items-center gap-2 rounded-full border border-neutral-300/80 bg-white/90 p-1.5 shadow-xl backdrop-blur-md dark:border-neutral-700 dark:bg-neutral-900/90"
+        className="fixed bottom-6 right-6 z-30 flex items-center gap-1.5 rounded-full border border-neutral-300/80 bg-white/90 p-1.5 shadow-xl backdrop-blur-md dark:border-neutral-700 dark:bg-neutral-900/90"
       >
-        <button
-          onClick={() => setConceptsOpen(true)}
-          className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-mono font-bold text-neutral-800 hover:text-blue-600 dark:text-neutral-200"
-        >
-          <Layers className="h-3.5 w-3.5 text-blue-600" />
-          <span className="hidden sm:inline">Art Direction</span>
-        </button>
-        <div className="h-4 w-px bg-neutral-300 dark:bg-neutral-700" />
         <div className="flex items-center gap-1">
-          {(
-            [
-              "warm-light",
-              "obsidian",
-              "sand-stone",
-              "electric-cobalt",
-            ] as ThemeMode[]
-          ).map((item) => (
-            <button
-              key={item}
-              onClick={() => setTheme(item)}
-              className={`h-6 w-6 rounded-full border-2 transition-all ${theme === item ? "border-blue-600 scale-110" : "border-neutral-400"}`}
-              style={{
-                backgroundColor:
-                  item === "warm-light"
-                    ? "#F7F7F5"
-                    : item === "obsidian"
-                      ? "#121214"
-                      : item === "sand-stone"
-                        ? "#ECE9E2"
-                        : "#0B132B",
-              }}
-              title={item}
-            />
-          ))}
+          {(["warm-light", "obsidian", "sand-stone"] as ThemeMode[]).map(
+            (item) => (
+              <button
+                key={item}
+                onClick={() => setTheme(item)}
+                className={`h-6 w-6 rounded-full border-2 transition-all ${theme === item ? "border-blue-600 scale-110" : "border-neutral-400"}`}
+                style={{
+                  backgroundColor:
+                    item === "warm-light"
+                      ? "#F7F7F5"
+                      : item === "obsidian"
+                        ? "#121214"
+                        : "#ECE9E2",
+                }}
+                title={item}
+              />
+            ),
+          )}
         </div>
       </aside>
     </div>

@@ -19,7 +19,7 @@ interface NavigationProps {
   theme: ThemeMode;
   onSelectTheme: (theme: ThemeMode) => void;
   onOpenContact: () => void;
-  onOpenConcepts: () => void;
+  onOpenConcepts?: () => void;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
@@ -52,7 +52,7 @@ export const Navigation: React.FC<NavigationProps> = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isDark = theme === "obsidian" || theme === "electric-cobalt";
+  const isDark = theme === "obsidian";
   const isSand = theme === "sand-stone";
 
   const themeOptions: {
@@ -78,12 +78,6 @@ export const Navigation: React.FC<NavigationProps> = ({
       label: "Sand & Stone",
       bg: "#ECE9E2",
       border: "#D8D4CC",
-    },
-    {
-      id: "electric-cobalt",
-      label: "Electric Cobalt Studio",
-      bg: "#0F172A",
-      border: "#1E293B",
     },
   ];
 
@@ -208,20 +202,6 @@ export const Navigation: React.FC<NavigationProps> = ({
                   </kbd>
                 </>
               )}
-            </button>
-
-            {/* Design Concept Explorations Button */}
-            <button
-              onClick={onOpenConcepts}
-              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide transition-all duration-200 border ${
-                isDark
-                  ? "border-neutral-700 bg-neutral-800/60 text-blue-400 hover:border-blue-500 hover:bg-neutral-800"
-                  : "border-neutral-300 bg-white/80 text-neutral-800 hover:border-blue-600 hover:text-blue-600 shadow-xs"
-              }`}
-              title="Explore Studio Art Direction Studies"
-            >
-              <Layers className="h-3.5 w-3.5 text-blue-600" />
-              <span>{t.nav.designConcepts}</span>
             </button>
 
             {/* Theme Selector Dropdown */}
@@ -379,16 +359,6 @@ export const Navigation: React.FC<NavigationProps> = ({
                 {link.label}
               </a>
             ))}
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenConcepts();
-              }}
-              className="text-left text-blue-600 font-bold flex items-center gap-2"
-            >
-              <Layers className="h-5 w-5" />
-              <span>{t.nav.designConcepts}</span>
-            </button>
           </div>
 
           <div className="space-y-4 border-t pt-4 border-inherit">

@@ -5,7 +5,7 @@ import { ThemeMode } from '../types';
  * ensuring high-contrast typography and preventing dark text on dark surfaces.
  */
 export const isDarkTheme = (theme: ThemeMode): boolean => {
-  return theme === 'obsidian' || theme === 'electric-cobalt';
+  return theme === 'obsidian';
 };
 
 /**

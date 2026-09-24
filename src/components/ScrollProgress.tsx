@@ -27,7 +27,6 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({ theme }) => {
 
   const isDark = theme === 'obsidian';
   const isSand = theme === 'sand-stone';
-  const isCobalt = theme === 'electric-cobalt';
 
   return (
     <div
@@ -40,8 +39,6 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({ theme }) => {
             ? 'bg-neutral-100'
             : isSand
             ? 'bg-neutral-900'
-            : isCobalt
-            ? 'bg-blue-400'
             : 'bg-neutral-950'
         }`}
         style={{

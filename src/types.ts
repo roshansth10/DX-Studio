@@ -1,8 +1,7 @@
 export type ThemeMode =
   | "warm-light"
   | "obsidian"
-  | "sand-stone"
-  | "electric-cobalt";
+  | "sand-stone";
 export type Language = "en";
 
 export interface ProjectItem {

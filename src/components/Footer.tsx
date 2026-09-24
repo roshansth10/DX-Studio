@@ -7,10 +7,10 @@ import { scrollToTarget } from "../hooks/useLenisScroll";
 
 interface FooterProps {
   theme: ThemeMode;
-  onOpenConcepts: () => void;
+  onOpenConcepts?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
+export const Footer: React.FC<FooterProps> = ({ theme }) => {
   const [ktmTime, setKtmTime] = useState("");
 
   useEffect(() => {
@@ -36,16 +36,14 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
     scrollToTarget(0);
   };
 
-  const isDark = theme === "obsidian" || theme === "electric-cobalt";
+  const isDark = theme === "obsidian";
   const isSand = theme === "sand-stone";
 
   return (
     <footer
       className={`relative pt-20 pb-12 transition-colors duration-500 ${
         isDark
-          ? theme === "electric-cobalt"
-            ? "bg-[#060B18] text-white border-t border-blue-950/80"
-            : "bg-[#0B0B0D] text-white border-t border-neutral-800"
+          ? "bg-[#0B0B0D] text-white border-t border-neutral-800"
           : isSand
             ? "bg-[#DCD8D0] text-neutral-950 border-t border-[#CBC5B9]"
             : "bg-[#EAEAE6] text-neutral-950 border-t border-[#DEDEDA]"
@@ -76,18 +74,6 @@ export const Footer: React.FC<FooterProps> = ({ theme, onOpenConcepts }) => {
           </div>
 
           <div className="flex items-center gap-4">
-            <button
-              onClick={onOpenConcepts}
-              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-mono tracking-wider transition-colors ${
-                isDark
-                  ? "border-neutral-700 bg-neutral-800 text-neutral-300 hover:border-neutral-500"
-                  : "border-neutral-300 bg-white text-neutral-700 hover:border-neutral-400"
-              }`}
-            >
-              <span>Design Concepts Gallery</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-            </button>
-
             <button
               onClick={scrollToTop}
               className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${

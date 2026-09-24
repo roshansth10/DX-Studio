@@ -20,7 +20,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
   preview = false,
 }) => {
   const t = TRANSLATIONS.en;
-  const isDark = theme === "obsidian" || theme === "electric-cobalt";
+  const isDark = theme === "obsidian";
   const isSand = theme === "sand-stone";
 
   return (
@@ -28,9 +28,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
       id="work"
       className={`relative overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
-          ? theme === "electric-cobalt"
-            ? "bg-[#0E1738] text-white border-blue-950/80"
-            : "bg-[#151518] text-white border-neutral-800"
+          ? "bg-[#151518] text-white border-neutral-800"
           : isSand
             ? "bg-[#E5E2DA] text-neutral-950 border-[#D2CDC3]"
             : "bg-[#F2F2EF] text-neutral-950 border-[#E5E5E2]"
@@ -77,44 +75,44 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     overlayColor="#0F172A"
                     accentColor="#2563EB"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/95 via-neutral-950/30 to-transparent pointer-events-none" />
 
-                    {/* Floating Tag */}
-                    <div className="absolute top-6 left-6 flex items-center gap-2">
-                      <span className="rounded-full bg-white/20 backdrop-blur-md px-3.5 py-1 text-xs font-mono text-white font-medium border border-white/30">
-                        {PROJECTS[0].number} // {PROJECTS[0].category}
-                      </span>
-                    </div>
-
-                    {/* Hover Overlay Arrow */}
-                    <div className="absolute top-6 right-6 flex h-12 w-12 items-center justify-center rounded-full bg-white text-neutral-950 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
-                      <ArrowUpRight className="h-5 w-5" />
-                    </div>
-
-                    {/* Overlay Bottom Content */}
-                    <div className="absolute bottom-6 left-6 right-6 flex flex-col md:flex-row md:items-end justify-between gap-4 text-white">
-                      <div>
-                        <span className="font-mono text-xs text-blue-400 uppercase tracking-widest">
-                          {PROJECTS[0].client} • {PROJECTS[0].year}
+                    <div className="relative flex flex-col justify-between h-full p-4 sm:p-6 lg:p-8 z-10 pointer-events-auto">
+                      {/* Top Bar */}
+                      <div className="flex items-start justify-between gap-2 sm:gap-4">
+                        <span className="rounded-full bg-neutral-900/80 backdrop-blur-md px-3 py-1 text-[10px] sm:text-xs font-mono text-white font-medium border border-white/20 truncate max-w-[calc(100%-3rem)] sm:max-w-none">
+                          {PROJECTS[0].number} // {PROJECTS[0].category}
                         </span>
-                        <h3 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-1">
-                          {PROJECTS[0].title}
-                        </h3>
-                        <p className="text-sm sm:text-base text-neutral-300 max-w-xl mt-2 line-clamp-2">
-                          {PROJECTS[0].tagline}
-                        </p>
+                        <div className="flex h-9 w-9 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full bg-white text-neutral-950 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                          <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                        </div>
                       </div>
 
-                      {PROJECTS[0].stats && (
-                        <div className="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-5 py-3 text-left">
-                          <div className="font-mono text-[10px] uppercase text-neutral-300">
-                            {PROJECTS[0].stats.label}
-                          </div>
-                          <div className="font-heading text-2xl font-bold text-white">
-                            {PROJECTS[0].stats.value}
-                          </div>
+                      {/* Bottom Bar */}
+                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 text-white mt-auto pt-6">
+                        <div className="max-w-xl">
+                          <span className="font-mono text-[10px] sm:text-xs text-blue-400 uppercase tracking-widest block">
+                            {PROJECTS[0].client} • {PROJECTS[0].year}
+                          </span>
+                          <h3 className="font-heading text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-0.5 sm:mt-1">
+                            {PROJECTS[0].title}
+                          </h3>
+                          <p className="text-xs sm:text-base text-neutral-300 mt-1 sm:mt-2 line-clamp-1 sm:line-clamp-2">
+                            {PROJECTS[0].tagline}
+                          </p>
                         </div>
-                      )}
+
+                        {PROJECTS[0].stats && (
+                          <div className="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-3.5 py-2 sm:px-5 sm:py-3 text-left self-start md:self-auto shrink-0">
+                            <div className="font-mono text-[9px] sm:text-[10px] uppercase text-neutral-300">
+                              {PROJECTS[0].stats.label}
+                            </div>
+                            <div className="font-heading text-lg sm:text-2xl font-bold text-white">
+                              {PROJECTS[0].stats.value}
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </ImageReveal>
                 </div>
@@ -140,28 +138,31 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                       overlayColor="#131722"
                       accentColor="#0D9488"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent pointer-events-none" />
 
-                      <div className="absolute top-6 left-6">
-                        <span className="rounded-full bg-neutral-900/60 backdrop-blur-md px-3 py-1 text-xs font-mono text-white border border-white/20">
-                          {PROJECTS[1].number} // {PROJECTS[1].category}
-                        </span>
-                      </div>
+                      <div className="relative flex flex-col justify-between h-full p-4 sm:p-6 z-10 pointer-events-auto min-h-[240px]">
+                        {/* Top Bar */}
+                        <div className="flex items-start justify-between gap-2 sm:gap-4">
+                          <span className="rounded-full bg-neutral-900/80 backdrop-blur-md px-3 py-1 text-[10px] sm:text-xs font-mono text-white border border-white/20 truncate max-w-[calc(100%-3rem)] sm:max-w-none">
+                            {PROJECTS[1].number} // {PROJECTS[1].category}
+                          </span>
+                          <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                            <ArrowUpRight className="h-4 w-4" />
+                          </div>
+                        </div>
 
-                      <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
-                        <ArrowUpRight className="h-4 w-4" />
-                      </div>
-
-                      <div className="absolute bottom-6 left-6 right-6 text-white">
-                        <span className="font-mono text-xs text-teal-400 uppercase tracking-widest">
-                          {PROJECTS[1].client}
-                        </span>
-                        <h3 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight mt-1">
-                          {PROJECTS[1].title}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-neutral-300 max-w-md mt-1 line-clamp-2">
-                          {PROJECTS[1].tagline}
-                        </p>
+                        {/* Bottom Bar */}
+                        <div className="text-white mt-auto pt-6">
+                          <span className="font-mono text-[10px] sm:text-xs text-teal-400 uppercase tracking-widest block">
+                            {PROJECTS[1].client}
+                          </span>
+                          <h3 className="font-heading text-xl sm:text-3xl font-bold tracking-tight mt-0.5 sm:mt-1">
+                            {PROJECTS[1].title}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-neutral-300 max-w-md mt-1 line-clamp-1 sm:line-clamp-2">
+                            {PROJECTS[1].tagline}
+                          </p>
+                        </div>
                       </div>
                     </ImageReveal>
                   </div>
@@ -201,28 +202,31 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                       overlayColor="#18181B"
                       accentColor="#6366F1"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent pointer-events-none" />
 
-                      <div className="absolute top-6 left-6">
-                        <span className="rounded-full bg-neutral-900/60 backdrop-blur-md px-3 py-1 text-xs font-mono text-white border border-white/20">
-                          {PROJECTS[2].number} // Audio App
-                        </span>
-                      </div>
+                      <div className="relative flex flex-col justify-between h-full p-4 sm:p-6 z-10 pointer-events-auto min-h-[240px]">
+                        {/* Top Bar */}
+                        <div className="flex items-start justify-between gap-2 sm:gap-4">
+                          <span className="rounded-full bg-neutral-900/80 backdrop-blur-md px-3 py-1 text-[10px] sm:text-xs font-mono text-white border border-white/20 truncate max-w-[calc(100%-3rem)] sm:max-w-none">
+                            {PROJECTS[2].number} // {PROJECTS[2].category}
+                          </span>
+                          <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                            <ArrowUpRight className="h-4 w-4" />
+                          </div>
+                        </div>
 
-                      <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
-                        <ArrowUpRight className="h-4 w-4" />
-                      </div>
-
-                      <div className="absolute bottom-6 left-6 right-6 text-white">
-                        <span className="font-mono text-xs text-indigo-400 uppercase tracking-widest">
-                          {PROJECTS[2].client}
-                        </span>
-                        <h3 className="font-heading text-2xl font-bold tracking-tight mt-1">
-                          {PROJECTS[2].title}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-neutral-300 mt-1 line-clamp-2">
-                          {PROJECTS[2].tagline}
-                        </p>
+                        {/* Bottom Bar */}
+                        <div className="text-white mt-auto pt-6">
+                          <span className="font-mono text-[10px] sm:text-xs text-indigo-400 uppercase tracking-widest block">
+                            {PROJECTS[2].client}
+                          </span>
+                          <h3 className="font-heading text-xl sm:text-2xl font-bold tracking-tight mt-0.5 sm:mt-1">
+                            {PROJECTS[2].title}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-neutral-300 mt-1 line-clamp-1 sm:line-clamp-2">
+                            {PROJECTS[2].tagline}
+                          </p>
+                        </div>
                       </div>
                     </ImageReveal>
                   </div>
@@ -230,7 +234,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
 
                 <div className="mt-4 flex items-center justify-between px-2">
                   <div className="font-mono text-[11px] text-neutral-500">
-                    2.1M Minutes Streamed
+                    {PROJECTS[2].stats?.value} {PROJECTS[2].stats?.label}
                   </div>
                   <span className="font-mono text-xs font-bold text-blue-600">
                     Case Details →
@@ -256,38 +260,43 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     overlayColor="#0B132B"
                     accentColor="#3B82F6"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/95 via-neutral-950/30 to-transparent pointer-events-none" />
 
-                    <div className="absolute top-6 left-6">
-                      <span className="rounded-full bg-white/20 backdrop-blur-md px-3.5 py-1 text-xs font-mono text-white border border-white/30">
-                        {PROJECTS[3].number} // {PROJECTS[3].category}
-                      </span>
-                    </div>
-
-                    <div className="absolute top-6 right-6 flex h-12 w-12 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
-                      <ArrowUpRight className="h-5 w-5" />
-                    </div>
-
-                    <div className="absolute bottom-6 left-6 right-6 flex flex-col md:flex-row md:items-end justify-between gap-4 text-white">
-                      <div>
-                        <span className="font-mono text-xs text-blue-400 uppercase tracking-widest">
-                          {PROJECTS[3].client} • {PROJECTS[3].year}
+                    <div className="relative flex flex-col justify-between h-full p-4 sm:p-6 lg:p-8 z-10 pointer-events-auto">
+                      {/* Top Bar */}
+                      <div className="flex items-start justify-between gap-2 sm:gap-4">
+                        <span className="rounded-full bg-neutral-900/80 backdrop-blur-md px-3 py-1 text-[10px] sm:text-xs font-mono text-white border border-white/20 truncate max-w-[calc(100%-3rem)] sm:max-w-none">
+                          {PROJECTS[3].number} // {PROJECTS[3].category}
                         </span>
-                        <h3 className="font-heading text-3xl sm:text-4xl font-bold tracking-tight mt-1">
-                          {PROJECTS[3].title}
-                        </h3>
-                        <p className="text-sm text-neutral-300 max-w-lg mt-1 line-clamp-2">
-                          {PROJECTS[3].tagline}
-                        </p>
+                        <div className="flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                          <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                        </div>
                       </div>
 
-                      <div className="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-5 py-3 text-left">
-                        <div className="font-mono text-[10px] uppercase text-neutral-300">
-                          {PROJECTS[3].stats?.label}
+                      {/* Bottom Bar */}
+                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 text-white mt-auto pt-6">
+                        <div className="max-w-xl">
+                          <span className="font-mono text-[10px] sm:text-xs text-blue-400 uppercase tracking-widest block">
+                            {PROJECTS[3].client} • {PROJECTS[3].year}
+                          </span>
+                          <h3 className="font-heading text-2xl sm:text-4xl font-bold tracking-tight mt-0.5 sm:mt-1">
+                            {PROJECTS[3].title}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-neutral-300 max-w-lg mt-1 line-clamp-1 sm:line-clamp-2">
+                            {PROJECTS[3].tagline}
+                          </p>
                         </div>
-                        <div className="font-heading text-2xl font-bold text-white">
-                          {PROJECTS[3].stats?.value}
-                        </div>
+
+                        {PROJECTS[3].stats && (
+                          <div className="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-3.5 py-2 sm:px-5 sm:py-3 text-left self-start md:self-auto shrink-0">
+                            <div className="font-mono text-[9px] sm:text-[10px] uppercase text-neutral-300">
+                              {PROJECTS[3].stats.label}
+                            </div>
+                            <div className="font-heading text-lg sm:text-2xl font-bold text-white">
+                              {PROJECTS[3].stats.value}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </ImageReveal>

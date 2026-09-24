@@ -113,7 +113,7 @@ stats: { label: "Catalog Items", value: "1000+" },
     number: "03",
     title: "Choice International Export",
     client: "Choice International Export",
-    category: "Corporate Website / Web Development",
+    category: "Cargo & CourierService Website",
     portfolioCategory: "Branding",
     year: "2026",
     tagline:
@@ -473,7 +473,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     location: "Kathmandu, Nepal",
     bio: "Designing clear, intuitive interfaces and user journeys that make every interaction feel purposeful and easy to navigate.",
     quote: "The best interfaces quietly guide people toward what matters.",
-    portrait: "/Team Picture/Shrishma.png",
+    portrait: "/Team Picture/Shrishma 1.png",
     portraitPosition: "center 20%",
     experience: "UI/UX Design",
     specialties: [
