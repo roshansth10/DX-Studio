@@ -473,8 +473,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     location: "Kathmandu, Nepal",
     bio: "Designing clear, intuitive interfaces and user journeys that make every interaction feel purposeful and easy to navigate.",
     quote: "The best interfaces quietly guide people toward what matters.",
-    portrait:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop",
+    portrait: "/Team Picture/Shrishma.png",
     portraitPosition: "center 20%",
     experience: "UI/UX Design",
     specialties: [
@@ -589,7 +588,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     location: "Kathmandu, Nepal",
     bio: "Driving organic growth through keyword research, on-page optimization, and content strategy that gets the studio's work found and ranked.",
     quote: "The best content earns attention by being genuinely useful.",
-    portrait: "/Team Picture/Anisha.jpeg",
+    portrait: "/Team Picture/Anisha.png",
     portraitPosition: "center 25%",
     experience: "SEO",
     specialties: ["Keyword Research", "On-Page SEO", "Content Strategy"],
