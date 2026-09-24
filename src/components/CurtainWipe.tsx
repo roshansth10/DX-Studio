@@ -17,10 +17,6 @@ export const CurtainWipe: React.FC = () => {
       return;
     }
 
-    const safetyTimer = setTimeout(() => {
-      setIsDone(true);
-    }, 2200);
-
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         onComplete: () => {
@@ -58,10 +54,7 @@ export const CurtainWipe: React.FC = () => {
         });
     }, containerRef);
 
-    return () => {
-      clearTimeout(safetyTimer);
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   if (isDone) return null;

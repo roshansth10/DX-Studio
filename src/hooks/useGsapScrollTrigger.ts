@@ -13,35 +13,49 @@ export function initSectionEntranceAnimations() {
   // 1. Reveal Section Headings (Eyebrow, Title, Subtitle)
   const headingElements = document.querySelectorAll<HTMLElement>('.gsap-heading-reveal');
   headingElements.forEach((heading) => {
-    gsap.from(heading, {
-      opacity: 0,
-      y: 20,
-      duration: 0.75,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: heading,
-        start: 'top 95%',
-        toggleActions: 'play none none none',
-        once: true,
+    gsap.fromTo(
+      heading,
+      {
+        opacity: 0,
+        y: 24,
       },
-    });
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.85,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: heading,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+          once: true,
+        },
+      }
+    );
   });
 
   // 2. Reveal Whole Sections
   const sections = document.querySelectorAll<HTMLElement>('.gsap-section-reveal');
   sections.forEach((section) => {
-    gsap.from(section, {
-      opacity: 0,
-      y: 24,
-      duration: 0.75,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 95%',
-        toggleActions: 'play none none none',
-        once: true,
+    gsap.fromTo(
+      section,
+      {
+        opacity: 0,
+        y: 32,
       },
-    });
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+          once: true,
+        },
+      }
+    );
   });
 
   // 3. Staggered child lists/cards inside containers
@@ -49,19 +63,26 @@ export function initSectionEntranceAnimations() {
   containers.forEach((container) => {
     const items = container.querySelectorAll<HTMLElement>('.gsap-stagger-item');
     if (items.length > 0) {
-      gsap.from(items, {
-        opacity: 0,
-        y: 20,
-        duration: 0.65,
-        stagger: 0.08,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: container,
-          start: 'top 92%',
-          toggleActions: 'play none none none',
-          once: true,
+      gsap.fromTo(
+        items,
+        {
+          opacity: 0,
+          y: 24,
         },
-      });
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.09,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: container,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            once: true,
+          },
+        }
+      );
     }
   });
 
@@ -75,7 +96,7 @@ export function useGsapScrollTrigger(dependencies: any[] = []) {
   useEffect(() => {
     const timer = setTimeout(() => {
       initSectionEntranceAnimations();
-    }, 50);
+    }, 60);
 
     return () => {
       clearTimeout(timer);
