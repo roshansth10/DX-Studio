@@ -3,7 +3,7 @@ export type ThemeMode =
   | "obsidian"
   | "sand-stone"
   | "electric-cobalt";
-export type Language = "en" | "fr";
+export type Language = "en";
 
 export interface ProjectItem {
   id: string;

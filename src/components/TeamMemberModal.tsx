@@ -111,7 +111,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
             }`}
           >
             <img
-              src={member.portrait}
+              src={encodeURI(member.portrait)}
               alt={member.name}
               className="h-full w-full object-cover filter contrast-[1.02]"
               style={{

@@ -167,7 +167,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
                   }}
                 >
                   <img
-                    src={member.portrait}
+                    src={encodeURI(member.portrait)}
                     alt={member.name}
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter contrast-[1.02]"
                     style={{

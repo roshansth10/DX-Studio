@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext } from 'react';
 import { Language } from '../types';
 import { TRANSLATIONS, TranslationDictionary } from '../data/translations';
 
@@ -11,33 +11,23 @@ interface LanguageContextType {
 
 const STORAGE_KEY = 'dx_studio_lang';
 
+// Ensure any stale saved language preference is cleared
+if (typeof window !== 'undefined') {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // ignore storage errors
+  }
+}
+
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === 'en' || saved === 'fr') {
-        return saved;
-      }
-    }
-    return 'en';
-  });
+  const language: Language = 'en';
+  const t = TRANSLATIONS.en;
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    try {
-      localStorage.setItem(STORAGE_KEY, lang);
-    } catch {
-      // ignore storage errors
-    }
-  };
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'fr' : 'en');
-  };
-
-  const t = TRANSLATIONS[language] || TRANSLATIONS.en;
+  const setLanguage = () => {};
+  const toggleLanguage = () => {};
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t }}>
