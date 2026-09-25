@@ -20,7 +20,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
   preview = false,
 }) => {
   const t = TRANSLATIONS.en;
-  const isDark = theme === "obsidian" || theme === "electric-cobalt";
+  const isDark = theme === "obsidian";
   const isSand = theme === "sand-stone";
 
   return (
@@ -28,9 +28,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
       id="work"
       className={`relative overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
-          ? theme === "electric-cobalt"
-            ? "bg-[#0E1738] text-white border-blue-950/80"
-            : "bg-[#151518] text-white border-neutral-800"
+          ? "bg-[#151518] text-white border-neutral-800"
           : isSand
             ? "bg-[#E5E2DA] text-neutral-950 border-[#D2CDC3]"
             : "bg-[#F2F2EF] text-neutral-950 border-[#E5E5E2]"

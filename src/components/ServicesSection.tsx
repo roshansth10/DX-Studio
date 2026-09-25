@@ -20,7 +20,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ theme, onSelec
     setMousePos({ x: e.clientX, y: e.clientY });
   };
 
-  const isDark = theme === 'obsidian' || theme === 'electric-cobalt';
+  const isDark = theme === 'obsidian';
   const isSand = theme === 'sand-stone';
 
   return (
@@ -29,9 +29,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ theme, onSelec
       onMouseMove={handleMouseMove}
       className={`relative overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 ${
         isDark
-          ? theme === 'electric-cobalt'
-            ? 'bg-[#0B132B] text-white border-blue-950/80'
-            : 'bg-[#121214] text-white border-neutral-800'
+          ? 'bg-[#121214] text-white border-neutral-800'
           : isSand
           ? 'bg-[#ECE9E2] text-neutral-950 border-[#D8D4CC]'
           : 'bg-[#F7F7F5] text-neutral-950 border-[#E5E5E2]'

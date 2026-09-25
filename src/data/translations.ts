@@ -9,7 +9,6 @@ export interface TranslationDictionary {
     team: string;
     sectors: string;
     letsTalk: string;
-    designConcepts: string;
     themesCount: string;
     palette: string;
   };
@@ -113,8 +112,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       team: "Team",
       sectors: "Sectors",
       letsTalk: "Let's Talk",
-      designConcepts: "Art Direction",
-      themesCount: "4 Themes",
+      themesCount: "3 Themes",
       palette: "Studio Palettes",
     },
     hero: {

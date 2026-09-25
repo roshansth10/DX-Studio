@@ -6,7 +6,6 @@ import {
   Menu,
   X,
   Palette,
-  Layers,
   Volume2,
   VolumeX,
 } from "lucide-react";
@@ -19,14 +18,13 @@ interface NavigationProps {
   theme: ThemeMode;
   onSelectTheme: (theme: ThemeMode) => void;
   onOpenContact: () => void;
-  onOpenConcepts: () => void;
+  onOpenConcepts?: () => void;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
   theme,
   onSelectTheme,
   onOpenContact,
-  onOpenConcepts,
 }) => {
   const t = TRANSLATIONS.en;
   const pathname = usePathname();
@@ -52,7 +50,7 @@ export const Navigation: React.FC<NavigationProps> = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isDark = theme === "obsidian" || theme === "electric-cobalt";
+  const isDark = theme === "obsidian";
   const isSand = theme === "sand-stone";
 
   const themeOptions: {
@@ -78,12 +76,6 @@ export const Navigation: React.FC<NavigationProps> = ({
       label: "Sand & Stone",
       bg: "#ECE9E2",
       border: "#D8D4CC",
-    },
-    {
-      id: "electric-cobalt",
-      label: "Electric Cobalt Studio",
-      bg: "#0F172A",
-      border: "#1E293B",
     },
   ];
 
@@ -158,32 +150,31 @@ export const Navigation: React.FC<NavigationProps> = ({
             ))}
           </nav>
 
-          {/* Actions: Ambient Audio Loop + Theme Selector + Art Direction + Contact CTA */}
+          {/* Actions: Ambient Audio Loop + Theme Selector + Contact CTA */}
           <div className="hidden items-center gap-3 lg:flex">
             {/* Subtle Mute/Unmute Studio Ambient Soundscape Toggle */}
             <button
               type="button"
               onClick={handleToggleSound}
-              className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-mono transition-all duration-300 ${
-                isMuted
-                  ? isDark
-                    ? "border-neutral-700/80 bg-neutral-800/60 text-neutral-400 hover:text-white hover:border-neutral-500"
-                    : "border-neutral-300 bg-white/90 text-neutral-600 hover:text-neutral-950 hover:border-neutral-400 shadow-2xs"
-                  : isDark
-                    ? "border-blue-500/80 bg-blue-950/40 text-blue-400 shadow-sm"
-                    : "border-blue-300 bg-blue-50 text-blue-700 shadow-sm"
-              }`}
               aria-label={
                 isMuted
-                  ? "Unmute studio ambient loop (Space)"
-                  : "Mute studio ambient loop (Space)"
+                  ? "Unmute ambient studio drone soundscape"
+                  : "Mute ambient studio drone soundscape"
               }
-              aria-keyshortcuts="Space"
               title={
                 isMuted
-                  ? "Listen to Studio Ambient Loop (Space)"
-                  : "Mute Studio Ambient Loop (Space)"
+                  ? "Listen to ambient audio layer (Press Space)"
+                  : "Mute sound (Press Space)"
               }
+              className={`group flex items-center gap-2 rounded-full border px-3 py-1.5 transition-all duration-300 ${
+                !isMuted
+                  ? isDark
+                    ? "border-blue-500/70 bg-blue-950/40 text-blue-300 shadow-[0_0_12px_rgba(59,130,246,0.25)]"
+                    : "border-blue-500 bg-blue-50 text-blue-600 shadow-[0_0_12px_rgba(37,99,235,0.2)]"
+                  : isDark
+                    ? "border-neutral-700 bg-neutral-800/80 text-neutral-400 hover:border-neutral-500 hover:text-neutral-200"
+                    : "border-neutral-300 bg-white text-neutral-600 hover:border-neutral-400 hover:text-neutral-950 shadow-xs"
+              }`}
             >
               {isMuted ? (
                 <>
@@ -197,7 +188,6 @@ export const Navigation: React.FC<NavigationProps> = ({
                 <>
                   <Volume2 className="h-3.5 w-3.5 text-blue-500 animate-pulse" />
                   <span className="text-[11px] font-semibold">Sound: Live</span>
-                  {/* Subtle animated sound wave equalizer bars */}
                   <span className="flex items-center gap-0.5 h-3 ml-0.5">
                     <span className="w-0.5 bg-blue-500 rounded-full animate-pulse h-2" />
                     <span className="w-0.5 bg-blue-500 rounded-full animate-pulse [animation-delay:-0.15s] h-3" />
@@ -208,20 +198,6 @@ export const Navigation: React.FC<NavigationProps> = ({
                   </kbd>
                 </>
               )}
-            </button>
-
-            {/* Design Concept Explorations Button */}
-            <button
-              onClick={onOpenConcepts}
-              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold tracking-wide transition-all duration-200 border ${
-                isDark
-                  ? "border-neutral-700 bg-neutral-800/60 text-blue-400 hover:border-blue-500 hover:bg-neutral-800"
-                  : "border-neutral-300 bg-white/80 text-neutral-800 hover:border-blue-600 hover:text-blue-600 shadow-xs"
-              }`}
-              title="Explore Studio Art Direction Studies"
-            >
-              <Layers className="h-3.5 w-3.5 text-blue-600" />
-              <span>{t.nav.designConcepts}</span>
             </button>
 
             {/* Theme Selector Dropdown */}
@@ -258,18 +234,15 @@ export const Navigation: React.FC<NavigationProps> = ({
                       }}
                       className={`flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-xs font-medium transition-colors ${
                         theme === opt.id
-                          ? "bg-blue-600 text-white font-semibold"
+                          ? "bg-blue-600 text-white font-bold"
                           : isDark
-                            ? "hover:bg-neutral-800 text-neutral-300"
-                            : "hover:bg-neutral-100 text-neutral-700"
+                            ? "text-neutral-300 hover:bg-neutral-800"
+                            : "text-neutral-700 hover:bg-neutral-100"
                       }`}
                     >
                       <span
-                        className="h-3.5 w-3.5 rounded-full border"
-                        style={{
-                          backgroundColor: opt.bg,
-                          borderColor: opt.border,
-                        }}
+                        className="h-3 w-3 rounded-full border border-neutral-400 shrink-0"
+                        style={{ backgroundColor: opt.bg }}
                       />
                       <span>{opt.label}</span>
                     </button>
@@ -347,48 +320,32 @@ export const Navigation: React.FC<NavigationProps> = ({
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div
-          className={`fixed inset-0 z-50 flex flex-col justify-between p-6 lg:hidden backdrop-blur-xl ${
+          className={`fixed inset-0 top-16 z-30 flex flex-col justify-between p-6 backdrop-blur-xl lg:hidden transition-all duration-300 ${
             isDark
-              ? "bg-neutral-950/98 text-white"
-              : "bg-[#F7F7F5]/98 text-neutral-950"
+              ? "bg-[#121214]/95 text-white border-b border-neutral-800"
+              : isSand
+                ? "bg-[#ECE9E2]/95 text-neutral-900 border-b border-[#D8D4CC]"
+                : "bg-[#F7F7F5]/95 text-neutral-900 border-b border-[#E5E5E2]"
           }`}
         >
-          <div className="flex items-center justify-between border-b pb-4 border-inherit">
-            <BrandLogo theme={theme} size="sm" />
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              className={`flex h-9 w-9 items-center justify-center rounded-full border ${
-                isDark
-                  ? "border-neutral-700 text-white"
-                  : "border-neutral-300 text-neutral-900"
-              }`}
-              aria-label="Close navigation menu"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          </div>
-
-          <div className="my-auto flex flex-col gap-6 text-2xl font-heading font-semibold">
+          <div className="flex flex-col space-y-4 pt-4">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="hover:text-blue-600 transition-colors"
+                className={`font-heading text-2xl font-bold transition-colors ${
+                  pathname === link.href ||
+                  (link.href === "/work" && pathname.startsWith("/work/"))
+                    ? "text-blue-600"
+                    : isDark
+                      ? "text-neutral-200 hover:text-white"
+                      : "text-neutral-800 hover:text-neutral-950"
+                }`}
               >
                 {link.label}
               </a>
             ))}
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenConcepts();
-              }}
-              className="text-left text-blue-600 font-bold flex items-center gap-2"
-            >
-              <Layers className="h-5 w-5" />
-              <span>{t.nav.designConcepts}</span>
-            </button>
           </div>
 
           <div className="space-y-4 border-t pt-4 border-inherit">

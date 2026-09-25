@@ -1,11 +1,11 @@
 import { ThemeMode } from '../types';
 
 /**
- * Accurately determines if the current studio theme is dark (Obsidian or Electric Cobalt),
+ * Accurately determines if the current studio theme is dark (Obsidian),
  * ensuring high-contrast typography and preventing dark text on dark surfaces.
  */
 export const isDarkTheme = (theme: ThemeMode): boolean => {
-  return theme === 'obsidian' || theme === 'electric-cobalt';
+  return theme === 'obsidian';
 };
 
 /**

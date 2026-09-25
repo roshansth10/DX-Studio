@@ -10,7 +10,7 @@ interface HeroSectionProps {
   theme: ThemeMode;
   onExploreWork: () => void;
   onStartProject: () => void;
-  onOpenConcepts: () => void;
+  onOpenConcepts?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -29,7 +29,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     setMouseOffset({ x: x * 18, y: y * 18 });
   };
 
-  const isDark = theme === "obsidian" || theme === "electric-cobalt";
+  const isDark = theme === "obsidian";
   const isSand = theme === "sand-stone";
 
   return (
@@ -38,9 +38,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       onMouseMove={handleMouseMove}
       className={`relative min-h-[92vh] overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32 flex flex-col justify-between border-b transition-colors duration-500 ${
         isDark
-          ? theme === "electric-cobalt"
-            ? "bg-[#0B132B] text-white border-blue-950/80"
-            : "bg-[#121214] text-white border-neutral-800"
+          ? "bg-[#121214] text-white border-neutral-800"
           : isSand
             ? "bg-[#ECE9E2] text-neutral-900 border-[#D8D4CC]"
             : "bg-[#F7F7F5] text-neutral-950 border-[#E5E5E2]"

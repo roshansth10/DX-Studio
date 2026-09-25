@@ -72,22 +72,17 @@ export const ParticleCanvas: React.FC<ParticleCanvasProps> = ({ theme }) => {
 
     const isDark = theme === 'obsidian';
     const isSand = theme === 'sand-stone';
-    const isCobalt = theme === 'electric-cobalt';
 
     const particleRgb = isDark 
       ? '200, 215, 255' 
       : isSand 
       ? '100, 110, 140' 
-      : isCobalt 
-      ? '59, 130, 246' 
       : '37, 99, 235';
 
     const lineRgb = isDark 
       ? '120, 150, 220' 
       : isSand 
       ? '140, 130, 120' 
-      : isCobalt 
-      ? '96, 165, 250' 
       : '59, 130, 246';
 
     const render = () => {
