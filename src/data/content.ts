@@ -504,8 +504,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: "Building reliable server-side systems, APIs, and data foundations that keep digital products fast, secure, and dependable.",
     quote:
       "Strong products are built on infrastructure users never have to think about.",
-    portrait:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop",
+    portrait: "/Team Picture/Aachal.jpg",
     portraitPosition: "center 20%",
     experience: "Backend Engineering",
     specialties: [
@@ -529,7 +528,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     location: "Kathmandu, Nepal",
     bio: "Designing clear, intuitive interfaces and user journeys that make every interaction feel purposeful and easy to navigate.",
     quote: "The best interfaces quietly guide people toward what matters.",
-    portrait: "/Team Picture/Shrishma.png",
+    portrait: "/Team Picture/Shrishma.jpeg",
     portraitPosition: "center 20%",
     experience: "UI/UX Design",
     specialties: [
@@ -597,8 +596,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     location: "Kathmandu, Nepal",
     bio: "Building the studio voice across social channels through thoughtful content, consistent storytelling, and community engagement.",
     quote: "Every post is an invitation to start a meaningful conversation.",
-    portrait:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop",
+    portrait: "/Team Picture/Aadarsha.jpg",
     portraitPosition: "center 20%",
     experience: "Social Media Manager",
     specialties: [
