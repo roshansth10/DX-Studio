@@ -29,6 +29,8 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     xl: 360,
   }[size];
 
+  const logoSrc = theme === "obsidian" ? "/logo white.png" : "/logo1.png";
+
   if (variant === "mark-only") {
     return (
       <div
@@ -36,7 +38,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
         style={{ width: markDimensions.w, height: markDimensions.h }}
       >
         <img
-          src="/logo1.png"
+          src={logoSrc}
           alt="DX Studio"
           className="h-full max-w-none object-contain object-left"
           style={{ width: logoWidth }}
@@ -48,7 +50,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   return (
     <div className={`inline-flex items-center gap-3 select-none ${className}`}>
       <img
-        src="/logo1.png"
+        src={logoSrc}
         alt="DX Studio"
         width={logoWidth}
         className="h-auto object-contain"
