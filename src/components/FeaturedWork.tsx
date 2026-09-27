@@ -78,37 +78,37 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
 
                     {/* Floating Tag */}
-                    <div className="absolute top-6 left-6 flex items-center gap-2">
-                      <span className="rounded-full bg-white/20 backdrop-blur-md px-3.5 py-1 text-xs font-mono text-white font-medium border border-white/30">
+                    <div className="absolute top-4 left-4 sm:top-6 sm:left-6 right-16 flex items-center gap-2 z-20">
+                      <span className="rounded-full bg-neutral-900/70 backdrop-blur-md px-2.5 py-1 sm:px-3.5 text-[10px] sm:text-xs font-mono text-white font-medium border border-white/30 truncate max-w-full">
                         {PROJECTS[0].number} // {PROJECTS[0].category}
                       </span>
                     </div>
 
                     {/* Hover Overlay Arrow */}
-                    <div className="absolute top-6 right-6 flex h-12 w-12 items-center justify-center rounded-full bg-white text-neutral-950 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
-                      <ArrowUpRight className="h-5 w-5" />
+                    <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white text-neutral-950 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white z-20">
+                      <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
                     </div>
 
                     {/* Overlay Bottom Content */}
-                    <div className="absolute bottom-6 left-6 right-6 flex flex-col md:flex-row md:items-end justify-between gap-4 text-white">
+                    <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 text-white z-20">
                       <div>
-                        <span className="font-mono text-xs text-blue-400 uppercase tracking-widest">
+                        <span className="font-mono text-[10px] sm:text-xs text-blue-400 uppercase tracking-widest">
                           {PROJECTS[0].client} • {PROJECTS[0].year}
                         </span>
-                        <h3 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-1">
+                        <h3 className="font-heading text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-0.5 sm:mt-1">
                           {PROJECTS[0].title}
                         </h3>
-                        <p className="text-sm sm:text-base text-neutral-300 max-w-xl mt-2 line-clamp-2">
+                        <p className="text-xs sm:text-base text-neutral-300 max-w-xl mt-1 sm:mt-2 line-clamp-2">
                           {PROJECTS[0].tagline}
                         </p>
                       </div>
 
                       {PROJECTS[0].stats && (
-                        <div className="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-5 py-3 text-left">
-                          <div className="font-mono text-[10px] uppercase text-neutral-300">
+                        <div className="self-start md:self-auto rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 sm:px-5 sm:py-3 text-left">
+                          <div className="font-mono text-[9px] sm:text-[10px] uppercase text-neutral-300">
                             {PROJECTS[0].stats.label}
                           </div>
-                          <div className="font-heading text-2xl font-bold text-white">
+                          <div className="font-heading text-lg sm:text-2xl font-bold text-white">
                             {PROJECTS[0].stats.value}
                           </div>
                         </div>
@@ -140,21 +140,21 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
 
-                      <div className="absolute top-6 left-6">
-                        <span className="rounded-full bg-neutral-900/60 backdrop-blur-md px-3 py-1 text-xs font-mono text-white border border-white/20">
+                      <div className="absolute top-4 left-4 sm:top-6 sm:left-6 right-14">
+                        <span className="inline-block rounded-full bg-neutral-900/70 backdrop-blur-md px-2.5 py-1 sm:px-3 text-[10px] sm:text-xs font-mono text-white border border-white/20 truncate max-w-full">
                           {PROJECTS[1].number} // {PROJECTS[1].category}
                         </span>
                       </div>
 
-                      <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
                         <ArrowUpRight className="h-4 w-4" />
                       </div>
 
-                      <div className="absolute bottom-6 left-6 right-6 text-white">
-                        <span className="font-mono text-xs text-teal-400 uppercase tracking-widest">
+                      <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white">
+                        <span className="font-mono text-[10px] sm:text-xs text-teal-400 uppercase tracking-widest">
                           {PROJECTS[1].client}
                         </span>
-                        <h3 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight mt-1">
+                        <h3 className="font-heading text-xl sm:text-3xl font-bold tracking-tight mt-0.5 sm:mt-1">
                           {PROJECTS[1].title}
                         </h3>
                         <p className="text-xs sm:text-sm text-neutral-300 max-w-md mt-1 line-clamp-2">
@@ -166,7 +166,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                 </TiltCard>
 
                 <div className="mt-4 flex items-center justify-between px-2">
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 flex-wrap">
                     {PROJECTS[1].deliverables.slice(0, 2).map((d) => (
                       <span
                         key={d}
@@ -201,21 +201,21 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
 
-                      <div className="absolute top-6 left-6">
-                        <span className="rounded-full bg-neutral-900/60 backdrop-blur-md px-3 py-1 text-xs font-mono text-white border border-white/20">
-                          {PROJECTS[2].number} // Audio App
+                      <div className="absolute top-4 left-4 sm:top-6 sm:left-6 right-14">
+                        <span className="inline-block rounded-full bg-neutral-900/70 backdrop-blur-md px-2.5 py-1 sm:px-3 text-[10px] sm:text-xs font-mono text-white border border-white/20 truncate max-w-full">
+                          {PROJECTS[2].number} // {PROJECTS[2].category}
                         </span>
                       </div>
 
-                      <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
                         <ArrowUpRight className="h-4 w-4" />
                       </div>
 
-                      <div className="absolute bottom-6 left-6 right-6 text-white">
-                        <span className="font-mono text-xs text-indigo-400 uppercase tracking-widest">
+                      <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white">
+                        <span className="font-mono text-[10px] sm:text-xs text-indigo-400 uppercase tracking-widest">
                           {PROJECTS[2].client}
                         </span>
-                        <h3 className="font-heading text-2xl font-bold tracking-tight mt-1">
+                        <h3 className="font-heading text-xl sm:text-2xl font-bold tracking-tight mt-0.5 sm:mt-1">
                           {PROJECTS[2].title}
                         </h3>
                         <p className="text-xs sm:text-sm text-neutral-300 mt-1 line-clamp-2">
@@ -228,7 +228,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
 
                 <div className="mt-4 flex items-center justify-between px-2">
                   <div className="font-mono text-[11px] text-neutral-500">
-                    2.1M Minutes Streamed
+                    Cargo & Courier Logistics
                   </div>
                   <span className="font-mono text-xs font-bold text-blue-600">
                     Case Details →
