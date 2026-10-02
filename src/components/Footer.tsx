@@ -330,13 +330,34 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
             Scandinavian rigor.
           </div>
           <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2">
-            <a href="#" className="hover:underline">
+            <a
+              href="/privacy"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo("/privacy");
+              }}
+              className="hover:underline"
+            >
               Privacy Policy
             </a>
-            <a href="#" className="hover:underline">
+            <a
+              href="/terms"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo("/terms");
+              }}
+              className="hover:underline"
+            >
               Terms of Engagement
             </a>
-            <a href="#" className="hover:underline">
+            <a
+              href="/accessibility"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo("/accessibility");
+              }}
+              className="hover:underline"
+            >
               Accessibility
             </a>
           </div>

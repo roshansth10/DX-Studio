@@ -14,14 +14,17 @@ import { usePathname, navigateTo } from "./routing";
 import { PROJECTS } from "./data/content";
 import {
   AboutPage,
+  AccessibilityPage,
   ContactPage,
   HomePage,
   PhilosophyPage,
+  PrivacyPage,
   ProcessPage,
   ProjectPage,
   SectorsPage,
   ServicesPage,
   TeamPage,
+  TermsPage,
   WorkPage,
 } from "./pages";
 
@@ -90,6 +93,9 @@ export default function App() {
   else if (pathname === "/sectors") page = <SectorsPage {...pageProps} />;
   else if (pathname === "/about") page = <AboutPage {...pageProps} />;
   else if (pathname === "/contact") page = <ContactPage {...pageProps} />;
+  else if (pathname === "/privacy") page = <PrivacyPage theme={theme} />;
+  else if (pathname === "/terms") page = <TermsPage theme={theme} />;
+  else if (pathname === "/accessibility") page = <AccessibilityPage theme={theme} />;
   else page = <HomePage {...pageProps} />;
 
   return (

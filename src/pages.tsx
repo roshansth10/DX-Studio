@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
+import { LegalLayout } from "./components/LegalLayout";
+import { PRIVACY, TERMS, ACCESSIBILITY } from "./data/legalContent";
 import { ThemeMode, ProjectItem } from "./types";
 import {
   CLIENT_SECTORS,
@@ -396,4 +398,43 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
       </button>
     </div>
   </PageShell>
+);
+
+// ─── Legal Pages ──────────────────────────────────────────────────────────────
+
+interface LegalPageProps {
+  theme: ThemeMode;
+}
+
+export const PrivacyPage: React.FC<LegalPageProps> = ({ theme }) => (
+  <LegalLayout
+    page={PRIVACY}
+    theme={theme}
+    relatedPages={[
+      { label: "Terms of Engagement", href: "/terms" },
+      { label: "Accessibility", href: "/accessibility" },
+    ]}
+  />
+);
+
+export const TermsPage: React.FC<LegalPageProps> = ({ theme }) => (
+  <LegalLayout
+    page={TERMS}
+    theme={theme}
+    relatedPages={[
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Accessibility", href: "/accessibility" },
+    ]}
+  />
+);
+
+export const AccessibilityPage: React.FC<LegalPageProps> = ({ theme }) => (
+  <LegalLayout
+    page={ACCESSIBILITY}
+    theme={theme}
+    relatedPages={[
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Engagement", href: "/terms" },
+    ]}
+  />
 );
