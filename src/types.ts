@@ -10,11 +10,13 @@ export interface ProjectItem {
   title: string;
   client: string;
   category: string;
+  shortCategory?: string;
   portfolioCategory?:
     | "Ecommerce"
     | "Travel & Trek"
     | "Creative Websites"
     | "Branding"
+    | "Cargo & Courier"
     | "Other";
   year: string;
   tagline: string;

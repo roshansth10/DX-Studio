@@ -127,7 +127,7 @@ export default function App() {
       )}
       <aside
         aria-label="Theme selector"
-        className="fixed bottom-6 right-6 z-30 flex items-center gap-1.5 rounded-full border border-neutral-300/80 bg-white/90 p-1.5 shadow-xl backdrop-blur-md dark:border-neutral-700 dark:bg-neutral-900/90"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-30 flex items-center gap-1.5 rounded-full border border-neutral-300/80 bg-white/90 p-1.5 shadow-xl backdrop-blur-md dark:border-neutral-700 dark:bg-neutral-900/90"
       >
         <div className="flex items-center gap-1">
           {(["warm-light", "obsidian", "sand-stone"] as ThemeMode[]).map(

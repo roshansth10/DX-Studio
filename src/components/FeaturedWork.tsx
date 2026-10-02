@@ -57,8 +57,110 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
           </p>
         </div>
 
-        {/* Asymmetrical Editorial Portfolio Layout */}
-        <div className="space-y-24 md:space-y-36 gsap-stagger-container">
+        {/* Mobile Layout (< 768px): Clean Stacked Editorial Cards */}
+        <div className="block md:hidden space-y-6">
+          {PROJECTS.slice(0, preview ? 3 : 4).map((project) => (
+            <div
+              key={project.id}
+              onClick={() => onSelectProject(project)}
+              className={`group cursor-pointer rounded-2xl border overflow-hidden transition-all duration-300 ${
+                isDark
+                  ? "bg-[#18181B] border-neutral-800 text-white shadow-lg"
+                  : isSand
+                    ? "bg-[#ECE9E2] border-[#D2CDC3] text-neutral-950 shadow-md"
+                    : "bg-white border-[#E5E5E2] text-neutral-950 shadow-md"
+              }`}
+            >
+              {/* Image Area: 16/10 aspect ratio, clean image with top-right action button only */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/90">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                {/* Round Arrow Button (40px, 12px inset) */}
+                <div className="absolute top-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-950 shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                  <ArrowUpRight className="h-4 w-4" />
+                </div>
+              </div>
+
+              {/* Card Body on solid surface with 16px to 20px padding and 12px vertical rhythm */}
+              <div className="p-4 sm:p-5 flex flex-col gap-3">
+                {/* Category Row */}
+                <div className="flex items-center gap-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400">
+                  <span>
+                    {project.number} // {project.shortCategory || project.portfolioCategory || project.category}
+                  </span>
+                </div>
+
+                {/* Title (22px to 24px) */}
+                <h3 className="font-heading text-[22px] font-bold tracking-tight leading-snug">
+                  {project.title}
+                </h3>
+
+                {/* Description (max 2 lines, 15px, line-height 1.5) */}
+                <p
+                  className={`text-[15px] leading-relaxed line-clamp-2 ${
+                    isDark ? "text-neutral-300" : "text-neutral-600"
+                  }`}
+                >
+                  {project.tagline || project.description}
+                </p>
+
+                {/* Stats Row (if present) */}
+                {project.stats && (
+                  <div
+                    className={`flex items-center gap-2 rounded-lg px-2.5 py-1 font-mono text-xs w-fit ${
+                      isDark
+                        ? "bg-neutral-800/80 text-neutral-300 border border-neutral-700/60"
+                        : isSand
+                          ? "bg-[#DFDBD0] text-neutral-800 border border-[#D0CBC0]"
+                          : "bg-neutral-100 text-neutral-800 border border-neutral-200"
+                    }`}
+                  >
+                    <span className="text-neutral-400 uppercase text-[10px]">
+                      {project.stats.label}:
+                    </span>
+                    <span className="font-bold text-blue-600 dark:text-blue-400">
+                      {project.stats.value}
+                    </span>
+                  </div>
+                )}
+
+                {/* Deliverables Tags Row */}
+                {project.deliverables && project.deliverables.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 pt-0.5">
+                    {project.deliverables.slice(0, 3).map((d) => (
+                      <span
+                        key={d}
+                        className={`rounded-md px-2 py-0.5 font-mono text-[11px] font-medium border ${
+                          isDark
+                            ? "bg-neutral-800/50 border-neutral-800 text-neutral-400"
+                            : isSand
+                              ? "bg-[#E5E1D8] border-[#D8D4CC] text-neutral-700"
+                              : "bg-neutral-50 border-neutral-200 text-neutral-600"
+                        }`}
+                      >
+                        {d}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Case Details Link (own line, left aligned, min 44px tap target) */}
+                <div className="pt-0.5">
+                  <span className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-blue-600 dark:text-blue-400 min-h-[44px]">
+                    <span>Case Details</span>
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Layout (>= 768px): Asymmetrical Editorial Portfolio */}
+        <div className="hidden md:block space-y-24 md:space-y-36 gsap-stagger-container">
           {/* Project 01: Himaly (Full Wide Hero Project) */}
           {PROJECTS[0] && (
             <div
@@ -78,37 +180,37 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
 
                     {/* Floating Tag */}
-                    <div className="absolute top-4 left-4 sm:top-6 sm:left-6 right-16 flex items-center gap-2 z-20">
-                      <span className="rounded-full bg-neutral-900/70 backdrop-blur-md px-2.5 py-1 sm:px-3.5 text-[10px] sm:text-xs font-mono text-white font-medium border border-white/30 truncate max-w-full">
+                    <div className="absolute top-6 left-6 right-16 flex items-center gap-2 z-20">
+                      <span className="rounded-full bg-neutral-900/70 backdrop-blur-md px-3.5 py-1 text-xs font-mono text-white font-medium border border-white/30 truncate max-w-full">
                         {PROJECTS[0].number} // {PROJECTS[0].category}
                       </span>
                     </div>
 
                     {/* Hover Overlay Arrow */}
-                    <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white text-neutral-950 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white z-20">
-                      <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <div className="absolute top-6 right-6 flex h-12 w-12 items-center justify-center rounded-full bg-white text-neutral-950 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white z-20">
+                      <ArrowUpRight className="h-5 w-5" />
                     </div>
 
                     {/* Overlay Bottom Content */}
-                    <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 text-white z-20">
+                    <div className="absolute bottom-6 left-6 right-6 flex flex-col md:flex-row md:items-end justify-between gap-4 text-white z-20">
                       <div>
-                        <span className="font-mono text-[10px] sm:text-xs text-blue-400 uppercase tracking-widest">
+                        <span className="font-mono text-xs text-blue-400 uppercase tracking-widest">
                           {PROJECTS[0].client} • {PROJECTS[0].year}
                         </span>
-                        <h3 className="font-heading text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-0.5 sm:mt-1">
+                        <h3 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mt-1">
                           {PROJECTS[0].title}
                         </h3>
-                        <p className="text-xs sm:text-base text-neutral-300 max-w-xl mt-1 sm:mt-2 line-clamp-2">
+                        <p className="text-base text-neutral-300 max-w-xl mt-2 line-clamp-2">
                           {PROJECTS[0].tagline}
                         </p>
                       </div>
 
                       {PROJECTS[0].stats && (
-                        <div className="self-start md:self-auto rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 sm:px-5 sm:py-3 text-left">
-                          <div className="font-mono text-[9px] sm:text-[10px] uppercase text-neutral-300">
+                        <div className="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 px-5 py-3 text-left">
+                          <div className="font-mono text-[10px] uppercase text-neutral-300">
                             {PROJECTS[0].stats.label}
                           </div>
-                          <div className="font-heading text-lg sm:text-2xl font-bold text-white">
+                          <div className="font-heading text-2xl font-bold text-white">
                             {PROJECTS[0].stats.value}
                           </div>
                         </div>
@@ -140,24 +242,24 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
 
-                      <div className="absolute top-4 left-4 sm:top-6 sm:left-6 right-14">
-                        <span className="inline-block rounded-full bg-neutral-900/70 backdrop-blur-md px-2.5 py-1 sm:px-3 text-[10px] sm:text-xs font-mono text-white border border-white/20 truncate max-w-full">
+                      <div className="absolute top-6 left-6 right-14">
+                        <span className="inline-block rounded-full bg-neutral-900/70 backdrop-blur-md px-3 py-1 text-xs font-mono text-white border border-white/20 truncate max-w-full">
                           {PROJECTS[1].number} // {PROJECTS[1].category}
                         </span>
                       </div>
 
-                      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                      <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
                         <ArrowUpRight className="h-4 w-4" />
                       </div>
 
-                      <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white">
-                        <span className="font-mono text-[10px] sm:text-xs text-teal-400 uppercase tracking-widest">
+                      <div className="absolute bottom-6 left-6 right-6 text-white">
+                        <span className="font-mono text-xs text-teal-400 uppercase tracking-widest">
                           {PROJECTS[1].client}
                         </span>
-                        <h3 className="font-heading text-xl sm:text-3xl font-bold tracking-tight mt-0.5 sm:mt-1">
+                        <h3 className="font-heading text-3xl font-bold tracking-tight mt-1">
                           {PROJECTS[1].title}
                         </h3>
-                        <p className="text-xs sm:text-sm text-neutral-300 max-w-md mt-1 line-clamp-2">
+                        <p className="text-sm text-neutral-300 max-w-md mt-1 line-clamp-2">
                           {PROJECTS[1].tagline}
                         </p>
                       </div>
@@ -201,24 +303,24 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
 
-                      <div className="absolute top-4 left-4 sm:top-6 sm:left-6 right-14">
-                        <span className="inline-block rounded-full bg-neutral-900/70 backdrop-blur-md px-2.5 py-1 sm:px-3 text-[10px] sm:text-xs font-mono text-white border border-white/20 truncate max-w-full">
+                      <div className="absolute top-6 left-6 right-14">
+                        <span className="inline-block rounded-full bg-neutral-900/70 backdrop-blur-md px-3 py-1 text-xs font-mono text-white border border-white/20 truncate max-w-full">
                           {PROJECTS[2].number} // {PROJECTS[2].category}
                         </span>
                       </div>
 
-                      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
+                      <div className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-950 transition-transform duration-300 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white">
                         <ArrowUpRight className="h-4 w-4" />
                       </div>
 
-                      <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white">
-                        <span className="font-mono text-[10px] sm:text-xs text-indigo-400 uppercase tracking-widest">
+                      <div className="absolute bottom-6 left-6 right-6 text-white">
+                        <span className="font-mono text-xs text-indigo-400 uppercase tracking-widest">
                           {PROJECTS[2].client}
                         </span>
-                        <h3 className="font-heading text-xl sm:text-2xl font-bold tracking-tight mt-0.5 sm:mt-1">
+                        <h3 className="font-heading text-2xl font-bold tracking-tight mt-1">
                           {PROJECTS[2].title}
                         </h3>
-                        <p className="text-xs sm:text-sm text-neutral-300 mt-1 line-clamp-2">
+                        <p className="text-sm text-neutral-300 mt-1 line-clamp-2">
                           {PROJECTS[2].tagline}
                         </p>
                       </div>

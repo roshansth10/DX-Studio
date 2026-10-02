@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { TeamMember, ThemeMode } from "../types";
+import { getLenis } from "../hooks/useLenisScroll";
 import {
   X,
   MapPin,
-  Briefcase,
   Award,
   ExternalLink,
   Linkedin,
@@ -23,38 +24,168 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
   member,
   onClose,
   theme,
-  onSelectProject,
 }) => {
+  const [isEntered, setIsEntered] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const prevFocusRef = useRef<HTMLElement | null>(null);
+
+  // Entrance animation trigger
+  useEffect(() => {
+    if (member) {
+      // Save previously focused element to restore upon close
+      prevFocusRef.current = document.activeElement as HTMLElement | null;
+
+      // Small delay to trigger CSS transition smoothly
+      const raf = requestAnimationFrame(() => {
+        setIsEntered(true);
+      });
+
+      // Focus close button for keyboard accessibility
+      const focusTimer = setTimeout(() => {
+        closeBtnRef.current?.focus();
+      }, 50);
+
+      return () => {
+        cancelAnimationFrame(raf);
+        clearTimeout(focusTimer);
+        setIsEntered(false);
+      };
+    } else {
+      setIsEntered(false);
+    }
+  }, [member]);
+
+  // Scroll lock & Lenis synchronization
   useEffect(() => {
     if (!member) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose();
+
+    // Pause Lenis smooth scrolling if active
+    const lenis = getLenis();
+    if (lenis) {
+      lenis.stop();
+    }
+
+    const scrollY = window.scrollY;
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+
+    // Save previous body styles
+    const prevPaddingRight = document.body.style.paddingRight;
+    const prevPosition = document.body.style.position;
+    const prevTop = document.body.style.top;
+    const prevLeft = document.body.style.left;
+    const prevRight = document.body.style.right;
+    const prevOverflow = document.body.style.overflow;
+
+    // Apply strict scroll lock
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      // Restore body styles
+      document.body.style.paddingRight = prevPaddingRight;
+      document.body.style.position = prevPosition;
+      document.body.style.top = prevTop;
+      document.body.style.left = prevLeft;
+      document.body.style.right = prevRight;
+      document.body.style.overflow = prevOverflow;
+
+      // Restore scroll position immediately without jumping
+      window.scrollTo({ top: scrollY, behavior: "instant" });
+
+      // Resume Lenis smooth scroll
+      if (lenis) {
+        lenis.start();
+      }
+
+      // Restore focus to triggering card
+      if (prevFocusRef.current && typeof prevFocusRef.current.focus === "function") {
+        prevFocusRef.current.focus();
       }
     };
+  }, [member]);
+
+  // Keyboard navigation: Escape key to close & Focus trap
+  useEffect(() => {
+    if (!member) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (e.key === "Tab" && panelRef.current) {
+        const focusables = panelRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusables.length === 0) return;
+
+        const firstElement = focusables[0];
+        const lastElement = focusables[focusables.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      }
+    };
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [member, onClose]);
 
-  if (!member) return null;
+  if (!member || typeof document === "undefined") return null;
 
   const isDark = theme === "obsidian";
   const isSand = theme === "sand-stone";
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-neutral-950/85 backdrop-blur-md overflow-y-auto">
+  return createPortal(
+    <div
+      className={`modal-overlay fixed inset-0 z-[9999] grid place-items-center p-4 sm:p-6 bg-black/75 backdrop-blur-[4px] transition-opacity duration-200 ease-out ${
+        isEntered ? "opacity-100" : "opacity-0"
+      }`}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="member-modal-name"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+    >
       <div
-        className={`relative my-auto flex w-full max-w-4xl flex-col overflow-hidden rounded-3xl border shadow-2xl transition-all duration-300 ${
+        ref={panelRef}
+        className={`modal-panel relative flex w-full max-w-4xl max-h-[calc(100dvh-48px)] flex-col overflow-y-auto overflow-x-hidden rounded-3xl border shadow-2xl transition-all duration-200 ease-out transform-gpu ${
+          isEntered
+            ? "opacity-100 translate-y-0 scale-100"
+            : "opacity-0 translate-y-4 scale-[0.98]"
+        } ${
           isDark
             ? "border-neutral-800 bg-[#161618] text-white"
             : isSand
               ? "border-[#D8D4CC] bg-[#F4F1EA] text-neutral-950"
               : "border-neutral-200 bg-white text-neutral-950"
         }`}
+        style={{ overscrollBehavior: "contain" }}
+        data-theme={theme}
       >
         {/* Modal Top Bar */}
         <div
-          className={`flex items-center justify-between border-b px-6 py-4 ${
+          className={`flex items-center justify-between border-b px-6 py-4 shrink-0 ${
             isDark
               ? "border-neutral-800/80"
               : isSand
@@ -83,6 +214,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
               ESC
             </kbd>
             <button
+              ref={closeBtnRef}
               onClick={onClose}
               className={`flex h-8 w-8 items-center justify-center rounded-full border transition-colors ${
                 isDark
@@ -136,6 +268,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
                   {member.location}
                 </span>
                 <h2
+                  id="member-modal-name"
                   className={`font-heading text-3xl font-bold tracking-tight ${
                     isDark ? "text-white" : "text-neutral-950"
                   }`}
@@ -316,6 +449,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

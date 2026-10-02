@@ -149,10 +149,20 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
             return (
               <div
                 key={member.id}
+                role="button"
+                tabIndex={0}
+                aria-haspopup="dialog"
+                aria-label={`View profile for ${member.name}`}
                 onMouseEnter={() => setHoveredMember(member.id)}
                 onMouseLeave={() => setHoveredMember(null)}
                 onClick={() => setSelectedMember(member)}
-                className="group relative flex flex-col rounded-3xl border overflow-hidden cursor-pointer transition-all duration-300 gsap-stagger-item hover:shadow-xl hover:-translate-y-1"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedMember(member);
+                  }
+                }}
+                className="group relative flex flex-col rounded-3xl border overflow-hidden cursor-pointer transition-all duration-300 gsap-stagger-item hover:shadow-xl hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                 style={{
                   backgroundColor: "var(--theme-bg-card)",
                   borderColor: "var(--theme-border-card)",

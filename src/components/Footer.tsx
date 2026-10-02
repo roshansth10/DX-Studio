@@ -41,7 +41,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
 
   return (
     <footer
-      className={`relative pt-16 md:pt-20 pb-28 sm:pb-16 transition-colors duration-500 ${
+      className={`relative pt-16 md:pt-20 pb-32 md:pb-16 transition-colors duration-500 ${
         isDark
           ? "bg-[#0B0B0D] text-white border-t border-neutral-800"
           : isSand
@@ -89,9 +89,9 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
         </div>
 
         {/* Middle Tier: Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 py-12 md:py-16 border-b border-inherit text-sm">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 md:py-16 border-b border-inherit text-sm">
           {/* Column 1: Studio */}
-          <div>
+          <div className="min-w-0">
             <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
               Studio
             </div>
@@ -184,7 +184,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
           </div>
 
           {/* Column 2: Services */}
-          <div>
+          <div className="min-w-0">
             <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
               Services
             </div>
@@ -252,22 +252,22 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
             </ul>
           </div>
 
-          {/* Column 3: Connect */}
-          <div>
+          {/* Column 3: Connect (Full-width on mobile, 1 col on desktop) */}
+          <div className="col-span-2 md:col-span-1 min-w-0">
             <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
               Connect
             </div>
-            <ul className="space-y-2.5">
-              <li>
+            <div className="space-y-3">
+              <div>
                 <a
                   href="mailto:roshan.devworks@gmail.com"
-                  className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors break-all max-w-full"
+                  className="inline-flex items-center gap-1.5 hover:text-blue-600 transition-colors text-[14px] sm:text-sm font-mono min-w-0 [overflow-wrap:anywhere]"
                 >
                   <span>roshan.devworks@gmail.com</span>
-                  <ArrowUpRight className="h-3 w-3 shrink-0" />
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
                 </a>
-              </li>
-              <li>
+              </div>
+              <div className="flex flex-wrap md:flex-col gap-4 md:gap-2.5 pt-1 md:pt-0">
                 <a
                   href="https://instagram.com"
                   target="_blank"
@@ -277,8 +277,6 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   <span>Instagram</span>
                   <ArrowUpRight className="h-3 w-3 shrink-0" />
                 </a>
-              </li>
-              <li>
                 <a
                   href="https://linkedin.com"
                   target="_blank"
@@ -288,8 +286,6 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   <span>LinkedIn</span>
                   <ArrowUpRight className="h-3 w-3 shrink-0" />
                 </a>
-              </li>
-              <li>
                 <a
                   href="https://behance.net"
                   target="_blank"
@@ -299,22 +295,24 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   <span>Behance</span>
                   <ArrowUpRight className="h-3 w-3 shrink-0" />
                 </a>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
 
-          {/* Column 4: Location & Live Status */}
-          <div>
+          {/* Column 4: Location & Live Status (Full-width on mobile, 1 col on desktop) */}
+          <div className="col-span-2 md:col-span-1 min-w-0">
             <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
               Studio Location
             </div>
             <div className="space-y-2">
-              <div className="font-medium">Kathmandu, Nepal</div>
-              <div className="text-xs text-neutral-400">
-                Goldhunga,Tarkeshwor-5
+              <div className="font-medium text-sm sm:text-base">
+                Kathmandu, Nepal
               </div>
-              <div className="mt-4 inline-flex items-center gap-2 rounded-lg border border-inherit px-3 py-1.5 font-mono text-xs">
-                <Clock className="h-3 w-3 text-blue-600" />
+              <div className="text-xs text-neutral-400 dark:text-neutral-400">
+                Goldhunga, Tarkeshwor-5
+              </div>
+              <div className="mt-3 inline-flex items-center gap-2 rounded-lg border border-inherit px-3.5 py-2 font-mono text-[13px] whitespace-nowrap w-fit">
+                <Clock className="h-3.5 w-3.5 text-blue-600 shrink-0" />
                 <span>KTM: {ktmTime || "18:48:00"}</span>
               </div>
             </div>
@@ -322,12 +320,12 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
         </div>
 
         {/* Bottom Bar: Legal & Copyright */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 text-xs font-mono text-neutral-500">
-          <div>
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8 text-xs font-mono text-neutral-500">
+          <div className="leading-relaxed">
             © 2026 DX Studio. All rights reserved. Crafted with European
             Scandinavian rigor.
           </div>
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
+          <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2">
             <a href="#" className="hover:underline">
               Privacy Policy
             </a>

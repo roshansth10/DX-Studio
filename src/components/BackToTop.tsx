@@ -15,11 +15,11 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
   const isDark = theme === "obsidian";
   const isSand = theme === "sand-stone";
 
-  // Track scroll position to reveal after scrolling past hero section (~450px)
+  // Track scroll position to reveal after scrolling at least one screen (~window.innerHeight * 0.75)
   useEffect(() => {
     const handleScroll = () => {
-      const pastHero = window.scrollY > 450;
-      setIsVisible(pastHero);
+      const pastOneScreen = window.scrollY > Math.min(window.innerHeight * 0.75, 500);
+      setIsVisible(pastOneScreen);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -105,7 +105,7 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
   return (
     <div
       ref={containerRef}
-      className={`fixed bottom-6 left-6 z-40 ${
+      className={`fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 ${
         isVisible ? "pointer-events-auto" : "pointer-events-none"
       }`}
       style={{ opacity: 0 }}
@@ -118,7 +118,7 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
         onMouseLeave={handleMouseLeave}
         aria-label="Back to top"
         title="Back to Top"
-        className={`group flex items-center gap-2 rounded-full border px-3.5 py-2 text-xs font-mono font-medium shadow-xl backdrop-blur-md transition-colors duration-300 select-none ${
+        className={`group flex h-10 w-10 sm:h-auto sm:w-auto items-center justify-center sm:justify-start gap-2 rounded-full border p-0 sm:px-3.5 sm:py-2 text-xs font-mono font-medium shadow-xl backdrop-blur-md transition-colors duration-300 select-none ${
           isDark
             ? "border-neutral-700 bg-neutral-900/90 text-neutral-300 hover:border-neutral-500 hover:text-white"
             : isSand
@@ -127,9 +127,9 @@ export const BackToTop: React.FC<BackToTopProps> = ({ theme }) => {
         }`}
       >
         <div className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white transition-transform duration-300 group-hover:-translate-y-0.5">
-          <ArrowUp className="h-3 w-3 stroke-[2.5]" />
+          <ArrowUp className="h-3.5 w-3.5 sm:h-3 sm:w-3 stroke-[2.5]" />
         </div>
-        <span className="tracking-wider uppercase text-[11px] font-bold">
+        <span className="hidden sm:inline tracking-wider uppercase text-[11px] font-bold">
           Top
         </span>
       </button>
