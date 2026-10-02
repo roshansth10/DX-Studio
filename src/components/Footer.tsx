@@ -1,188 +1,365 @@
-import React from "react";
-import { STORE_INFO } from "../data/luxecartData";
+import React, { useState, useEffect } from "react";
+import { BrandLogo } from "./BrandLogo";
+import { ThemeMode } from "../types";
+import { ArrowUp, ArrowUpRight, Clock } from "lucide-react";
 import { navigateTo } from "../routing";
+import { scrollToTarget } from "../hooks/useLenisScroll";
 
-export const Footer: React.FC = () => {
-  const handleNav = (path: string) => {
-    navigateTo(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+interface FooterProps {
+  theme: ThemeMode;
+  onOpenConcepts?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ theme }) => {
+  const [ktmTime, setKtmTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      // Kathmandu is UTC+5:45
+      const now = new Date();
+      const options: Intl.DateTimeFormatOptions = {
+        timeZone: "Asia/Kathmandu",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      };
+      setKtmTime(new Intl.DateTimeFormat("en-US", options).format(now));
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollToTop = () => {
+    scrollToTarget(0);
   };
 
+  const isDark = theme === "obsidian";
+  const isSand = theme === "sand-stone";
+
   return (
-    <footer className="bg-neutral-950 text-white border-t border-neutral-900 pt-16 pb-12 font-body">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 pb-12 border-b border-neutral-900">
-          {/* Brand & Store Location */}
-          <div className="lg:col-span-2 space-y-4">
-            {/* Clickable LUXECART logo: redirects to landing page & scrolls to hero */}
-            <button
-              onClick={() => handleNav("/")}
-              className="text-left focus:outline-none cursor-pointer group flex items-center min-h-[44px]"
-            >
-              <span className="font-heading text-2xl sm:text-3xl font-bold tracking-[0.2em] uppercase text-white group-hover:text-red-500 transition-colors">
-                LUXECART
-              </span>
-            </button>
-
-            <p className="text-xs sm:text-sm text-neutral-400 max-w-sm leading-relaxed font-light">
-              Curating deliberate fashion, fine jewelry, timepieces, and lifestyle pieces from master artisans worldwide. Effortless luxury, thoughtfully selected.
-            </p>
-            <div className="pt-2 text-xs font-mono text-neutral-400 space-y-1">
-              <p className="text-white font-medium">Flagship Boutique:</p>
-              <p>{STORE_INFO.address}</p>
-              <p>Phone: {STORE_INFO.phone}</p>
-              <p>Email: {STORE_INFO.email}</p>
-            </div>
-          </div>
-
-          {/* Shop Column */}
-          <div className="space-y-3">
-            <h4 className="font-mono text-xs uppercase tracking-widest text-red-500 font-bold">
-              Shop Collections
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-neutral-400 font-light">
-              <li>
-                <button
-                  onClick={() => handleNav("/collections")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  All Collections
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("/categories/womens-fashion")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  Women's Fashion
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("/categories/leather-goods")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  Leather Goods
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("/categories/timepieces")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  Timepieces
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("/categories/beauty-fragrance")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  Beauty & Fragrance
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company Column */}
-          <div className="space-y-3">
-            <h4 className="font-mono text-xs uppercase tracking-widest text-red-500 font-bold">
-              Company & Privileges
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-neutral-400 font-light">
-              <li>
-                <button
-                  onClick={() => handleNav("/about")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  Our Story
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("/membership")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  Luxe Membership
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("/reviews")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  Client Reviews
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("/journal")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  The Luxe Journal
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("/contact")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  Contact Concierge
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("/faq")}
-                  className="hover:text-white transition-colors py-1 min-h-[44px] sm:min-h-0 flex items-center cursor-pointer"
-                >
-                  FAQ & Support
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter Column */}
-          <div className="space-y-4">
-            <h4 className="font-mono text-xs uppercase tracking-widest text-red-500 font-bold">
-              Private Dispatch
-            </h4>
-            <p className="text-xs text-neutral-400 font-light leading-relaxed">
-              Subscribe to receive private collection previews, exclusive invitations, and dispatches.
-            </p>
-            <form
-              onSubmit={(e) => {
+    <footer
+      className={`relative pt-16 md:pt-20 pb-32 md:pb-16 transition-colors duration-500 ${
+        isDark
+          ? "bg-[#0B0B0D] text-white border-t border-neutral-800"
+          : isSand
+            ? "bg-[#DCD8D0] text-neutral-950 border-t border-[#CBC5B9]"
+            : "bg-[#EAEAE6] text-neutral-950 border-t border-[#DEDEDA]"
+      }`}
+    >
+      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        {/* Top Tier: Logo & Statement & Back to Top */}
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pb-12 md:pb-16 border-b border-inherit">
+          <div className="max-w-md">
+            <a
+              href="/"
+              onClick={(e) => {
                 e.preventDefault();
-                alert("Thank you for joining our private newsletter list.");
+                navigateTo("/");
               }}
-              className="space-y-2"
+              className="inline-flex"
             >
-              <input
-                type="email"
-                placeholder="Enter your email"
-                required
-                className="w-full bg-neutral-900 border border-neutral-800 px-3.5 py-2.5 text-xs text-white placeholder-neutral-500 focus:border-red-600 focus:outline-none min-h-[44px]"
-              />
-              <button
-                type="submit"
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold font-mono text-xs uppercase tracking-[0.15em] py-3 transition-all duration-300 min-h-[44px] cursor-pointer shadow-md active:scale-95"
-              >
-                Subscribe
-              </button>
-            </form>
+              <BrandLogo theme={theme} size="lg" variant="full" />
+            </a>
+            <p
+              className={`mt-4 text-base leading-relaxed ${
+                isDark ? "text-neutral-400" : "text-neutral-600"
+              }`}
+            >
+              Digital experiences for businesses moving forward. Combining
+              strategy, design, and engineering into enduring digital capital.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={scrollToTop}
+              className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
+                isDark
+                  ? "border-neutral-700 bg-neutral-800 text-neutral-200 hover:bg-neutral-700"
+                  : "border-neutral-300 bg-white text-neutral-800 hover:bg-neutral-100"
+              }`}
+              title="Back to Top"
+            >
+              <ArrowUp className="h-4 w-4" />
+            </button>
           </div>
         </div>
 
-        {/* Bottom copyright row */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono">
-          <p>© 2026 LuxeCart. All rights reserved.</p>
-          <div className="flex items-center space-x-6">
-            <button onClick={() => handleNav("/contact")} className="hover:text-neutral-300 cursor-pointer">
-              Durbar Marg, Kathmandu
-            </button>
-            <span>•</span>
-            <button onClick={() => handleNav("/contact")} className="hover:text-neutral-300 cursor-pointer">
-              Concierge Support
-            </button>
+        {/* Middle Tier: Columns */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 md:py-16 border-b border-inherit text-sm">
+          {/* Column 1: Studio */}
+          <div className="min-w-0">
+            <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
+              Studio
+            </div>
+            <ul className="space-y-2.5">
+              <li>
+                <a
+                  href="/work"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/work");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Selected Work
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Capabilities
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/philosophy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/philosophy");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Philosophy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/process"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/process");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Process
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/team"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/team");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Meet the Team
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/sectors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/sectors");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Sectors
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/contact");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 2: Services */}
+          <div className="min-w-0">
+            <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
+              Services
+            </div>
+            <ul className="space-y-2.5">
+              <li>
+                <a
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Brand & Identity
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  UI/UX & Products
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Web Development
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  SEO & Growth
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/services");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Creative Technology
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Connect (Full-width on mobile, 1 col on desktop) */}
+          <div className="col-span-2 md:col-span-1 min-w-0">
+            <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
+              Connect
+            </div>
+            <ul className="space-y-2.5">
+              <li>
+                <a
+                  href="mailto:roshan.devworks@gmail.com"
+                  className="inline-flex items-center gap-1.5 hover:text-blue-600 transition-colors text-[14px] sm:text-sm font-mono min-w-0 [overflow-wrap:anywhere]"
+                >
+                  <span>roshan.devworks@gmail.com</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
+                  <span>Instagram</span>
+                  <ArrowUpRight className="h-3 w-3 shrink-0" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
+                  <span>LinkedIn</span>
+                  <ArrowUpRight className="h-3 w-3 shrink-0" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://behance.net"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
+                  <span>Behance</span>
+                  <ArrowUpRight className="h-3 w-3 shrink-0" />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Location & Live Status (Full-width on mobile, 1 col on desktop) */}
+          <div className="col-span-2 md:col-span-1 min-w-0">
+            <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
+              Studio Location
+            </div>
+            <div className="space-y-2">
+              <div className="font-medium text-sm sm:text-base">
+                Kathmandu, Nepal
+              </div>
+              <div className="text-xs text-neutral-400 dark:text-neutral-400">
+                Goldhunga, Tarkeshwor-5
+              </div>
+              <div className="mt-3 inline-flex items-center gap-2 rounded-lg border border-inherit px-3.5 py-2 font-mono text-[13px] whitespace-nowrap w-fit">
+                <Clock className="h-3.5 w-3.5 text-blue-600 shrink-0" />
+                <span>KTM: {ktmTime || "18:48:00"}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar: Legal & Copyright */}
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8 text-xs font-mono text-neutral-500">
+          <div className="leading-relaxed">
+            © 2026 DX Studio. All rights reserved. Crafted with European
+            Scandinavian rigor.
+          </div>
+          <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2">
+            <a
+              href="/privacy"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo("/privacy");
+              }}
+              className="hover:underline"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo("/terms");
+              }}
+              className="hover:underline"
+            >
+              Terms of Engagement
+            </a>
+            <a
+              href="/accessibility"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo("/accessibility");
+              }}
+              className="hover:underline"
+            >
+              Accessibility
+            </a>
           </div>
         </div>
       </div>

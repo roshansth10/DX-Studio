@@ -45,7 +45,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       }`}
     >
       {/* Background Interactive Particle Canvas */}
-      <ParticleCanvas />
+      <ParticleCanvas theme={theme} />
 
       {/* Subtle Editorial Topographic / Grid lines */}
       <div
