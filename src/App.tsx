@@ -1,161 +1,181 @@
-import React, { useEffect, useState } from "react";
-import { ThemeMode, ProjectItem } from "./types";
-import { Navigation } from "./components/Navigation";
-import { ScrollProgress } from "./components/ScrollProgress";
-import { CustomCursor } from "./components/CustomCursor";
+import React, { useState, useEffect } from "react";
+import { usePathname } from "./routing";
+import Lenis from "lenis";
+import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { ContactModal } from "./components/ContactModal";
-import { CurtainWipe } from "./components/CurtainWipe";
-import { BackToTop } from "./components/BackToTop";
-import { useGsapScrollTrigger } from "./hooks/useGsapScrollTrigger";
-import { useLenisScroll } from "./hooks/useLenisScroll";
-import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
-import { usePathname, navigateTo } from "./routing";
-import { PROJECTS } from "./data/content";
-import {
-  AboutPage,
-  AccessibilityPage,
-  ContactPage,
-  HomePage,
-  PhilosophyPage,
-  PrivacyPage,
-  ProcessPage,
-  ProjectPage,
-  SectorsPage,
-  ServicesPage,
-  TeamPage,
-  TermsPage,
-  WorkPage,
-} from "./pages";
+import { CartDrawer, CartItem } from "./components/CartDrawer";
+import { SearchModal } from "./components/SearchModal";
+import { PRODUCTS, Product } from "./data/luxecartData";
 
-const themeBackground = (theme: ThemeMode) =>
-  theme === "obsidian"
-    ? "bg-[#121214] text-white"
-    : theme === "sand-stone"
-      ? "bg-[#ECE9E2] text-neutral-950"
-      : "bg-[#F7F7F5] text-neutral-950";
+import { HomePage } from "./pages/HomePage";
+import { CollectionsPage } from "./pages/CollectionsPage";
+import { ProductDetailPage } from "./pages/ProductDetailPage";
+import { CategoriesPage } from "./pages/CategoriesPage";
+import { CategoryDetailPage } from "./pages/CategoryDetailPage";
+import { AboutPage } from "./pages/AboutPage";
+import { ReviewsPage } from "./pages/ReviewsPage";
+import { MembershipPage } from "./pages/MembershipPage";
+import { JournalIndexPage } from "./pages/JournalIndexPage";
+import { JournalDetailPage } from "./pages/JournalDetailPage";
+import { ContactPage } from "./pages/ContactPage";
+import { FaqPage } from "./pages/FaqPage";
 
 export default function App() {
   const pathname = usePathname();
-  const [theme, setTheme] = useState<ThemeMode>("warm-light");
-  const [contactOpen, setContactOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
-  useLenisScroll(pathname);
+  // Initial cart state
+  const [cartItems, setCartItems] = useState<CartItem[]>([
+    { product: PRODUCTS[0], quantity: 1, color: "Noir Black" },
+    { product: PRODUCTS[1], quantity: 1, color: "18k Gold" },
+  ]);
 
-  const { audioToast } = useKeyboardShortcuts({
-    onEscape: () => {
-      setContactOpen(false);
-    },
-  });
-
-  useGsapScrollTrigger([theme, pathname]);
-
+  // Lenis Smooth Scroll Initialization
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    document.documentElement.classList.toggle(
-      "dark",
-      theme === "obsidian",
-    );
-    document.body.className = `antialiased selection:bg-blue-600 selection:text-white ${themeBackground(theme)}`;
-    const pageTitle =
-      pathname === "/"
-        ? "DX Studio — Digital Creative & Technology Studio"
-        : pathname.startsWith("/work/")
-          ? "Project Case Study — DX Studio"
-          : `${pathname
-              .slice(1)
-              .replace(/-/g, " ")
-              .replace(/\b\w/g, (letter) => letter.toUpperCase())} — DX Studio`;
-    document.title = pageTitle;
+    // Respect prefers-reduced-motion
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) return;
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  // Scroll to top and set title on route change
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
-  }, [pathname, theme]);
 
-  const openProject = (project: ProjectItem) =>
-    navigateTo(`/work/${project.id}`);
-  const pageProps = {
-    theme,
-    onOpenContact: () => setContactOpen(true),
-    onSelectProject: openProject,
+    const baseTitle = "LuxeCart — Durbar Marg, Kathmandu";
+    if (pathname === "/") document.title = baseTitle;
+    else if (pathname.startsWith("/collections/")) {
+      const slug = pathname.replace("/collections/", "");
+      document.title = `${slug.replace(/-/g, " ").toUpperCase()} — LuxeCart`;
+    } else if (pathname.startsWith("/categories/")) {
+      const slug = pathname.replace("/categories/", "");
+      document.title = `${slug.replace(/-/g, " ").toUpperCase()} — LuxeCart`;
+    } else if (pathname.startsWith("/journal/")) {
+      const slug = pathname.replace("/journal/", "");
+      document.title = `${slug.replace(/-/g, " ").toUpperCase()} — Luxe Journal`;
+    } else {
+      const pageName = pathname.slice(1).replace(/-/g, " ");
+      document.title = `${pageName.charAt(0).toUpperCase() + pageName.slice(1)} — LuxeCart`;
+    }
+  }, [pathname]);
+
+  // Cart operations
+  const handleAddToCart = (product: Product, quantity: number, color: string) => {
+    setCartItems((prev) => {
+      const existingIdx = prev.findIndex(
+        (item) => item.product.id === product.id && item.color === color
+      );
+      if (existingIdx > -1) {
+        const updated = [...prev];
+        updated[existingIdx].quantity += quantity;
+        return updated;
+      }
+      return [...prev, { product, quantity, color }];
+    });
+    setCartOpen(true);
   };
-  const projectSlug = pathname.startsWith("/work/")
-    ? pathname.split("/")[2]
-    : "";
-  const project = PROJECTS.find((item) => item.id === projectSlug);
 
-  let page: React.ReactNode;
-  if (pathname === "/") page = <HomePage {...pageProps} />;
-  else if (pathname === "/work") page = <WorkPage {...pageProps} />;
-  else if (project) page = <ProjectPage {...pageProps} project={project} />;
-  else if (pathname === "/services") page = <ServicesPage {...pageProps} />;
-  else if (pathname === "/philosophy") page = <PhilosophyPage {...pageProps} />;
-  else if (pathname === "/process") page = <ProcessPage {...pageProps} />;
-  else if (pathname === "/team") page = <TeamPage {...pageProps} />;
-  else if (pathname === "/sectors") page = <SectorsPage {...pageProps} />;
-  else if (pathname === "/about") page = <AboutPage {...pageProps} />;
-  else if (pathname === "/contact") page = <ContactPage {...pageProps} />;
-  else if (pathname === "/privacy") page = <PrivacyPage theme={theme} />;
-  else if (pathname === "/terms") page = <TermsPage theme={theme} />;
-  else if (pathname === "/accessibility") page = <AccessibilityPage theme={theme} />;
-  else page = <HomePage {...pageProps} />;
+  const handleUpdateQuantity = (productId: string, delta: number) => {
+    setCartItems((prev) =>
+      prev
+        .map((item) => {
+          if (item.product.id === productId) {
+            const newQty = item.quantity + delta;
+            return newQty > 0 ? { ...item, quantity: newQty } : null;
+          }
+          return item;
+        })
+        .filter(Boolean) as CartItem[]
+    );
+  };
+
+  const handleRemoveItem = (productId: string) => {
+    setCartItems((prev) => prev.filter((item) => item.product.id !== productId));
+  };
+
+  const totalCartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Route Matching Logic
+  let pageContent: React.ReactNode;
+
+  if (pathname === "/") {
+    pageContent = <HomePage />;
+  } else if (pathname === "/collections") {
+    pageContent = <CollectionsPage />;
+  } else if (pathname.startsWith("/collections/")) {
+    const slug = pathname.replace("/collections/", "");
+    pageContent = (
+      <ProductDetailPage
+        slug={slug}
+        onAddToCart={handleAddToCart}
+      />
+    );
+  } else if (pathname === "/categories") {
+    pageContent = <CategoriesPage />;
+  } else if (pathname.startsWith("/categories/")) {
+    const slug = pathname.replace("/categories/", "");
+    pageContent = <CategoryDetailPage slug={slug} />;
+  } else if (pathname === "/about") {
+    pageContent = <AboutPage />;
+  } else if (pathname === "/reviews") {
+    pageContent = <ReviewsPage />;
+  } else if (pathname === "/membership") {
+    pageContent = <MembershipPage />;
+  } else if (pathname === "/journal") {
+    pageContent = <JournalIndexPage />;
+  } else if (pathname.startsWith("/journal/")) {
+    const slug = pathname.replace("/journal/", "");
+    pageContent = <JournalDetailPage slug={slug} />;
+  } else if (pathname === "/contact") {
+    pageContent = <ContactPage />;
+  } else if (pathname === "/faq") {
+    pageContent = <FaqPage />;
+  } else {
+    pageContent = <HomePage />;
+  }
 
   return (
-    <div
-      data-theme={theme}
-      className={`min-h-screen font-body transition-colors duration-500 ${themeBackground(theme)}`}
-    >
-      <CurtainWipe />
-      <ScrollProgress theme={theme} />
-      <CustomCursor theme={theme} />
-      <Navigation
-        theme={theme}
-        onSelectTheme={setTheme}
-        onOpenContact={() => setContactOpen(true)}
+    <div className="min-h-screen flex flex-col bg-neutral-950 text-white font-body selection:bg-red-600 selection:text-white">
+      {/* Shared Header */}
+      <Header
+        cartCount={totalCartCount}
+        onOpenCart={() => setCartOpen(true)}
+        onOpenSearch={() => setSearchOpen(true)}
       />
-      {page}
-      <Footer theme={theme} />
-      <ContactModal
-        isOpen={contactOpen}
-        onClose={() => setContactOpen(false)}
-        theme={theme}
+
+      {/* Main Page Content */}
+      <div className="flex-1">{pageContent}</div>
+
+      {/* Shared Footer */}
+      <Footer />
+
+      {/* Slide-over Cart & Search Modals */}
+      <CartDrawer
+        isOpen={cartOpen}
+        onClose={() => setCartOpen(false)}
+        cartItems={cartItems}
+        onUpdateQuantity={handleUpdateQuantity}
+        onRemoveItem={handleRemoveItem}
       />
-      <BackToTop theme={theme} />
-      {audioToast.visible && (
-        <div
-          role="status"
-          aria-live="polite"
-          className="fixed bottom-20 left-1/2 z-50 -translate-x-1/2 pointer-events-none"
-        >
-          <div className="flex items-center gap-2.5 rounded-full border border-neutral-700/80 bg-neutral-900/95 px-4 py-2 text-xs font-mono text-white shadow-2xl">
-            <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
-            {audioToast.message}
-          </div>
-        </div>
-      )}
-      <aside
-        aria-label="Theme selector"
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-30 flex items-center gap-1.5 rounded-full border border-neutral-300/80 bg-white/90 p-1.5 shadow-xl backdrop-blur-md dark:border-neutral-700 dark:bg-neutral-900/90"
-      >
-        <div className="flex items-center gap-1">
-          {(["warm-light", "obsidian", "sand-stone"] as ThemeMode[]).map(
-            (item) => (
-              <button
-                key={item}
-                onClick={() => setTheme(item)}
-                className={`h-6 w-6 rounded-full border-2 transition-all ${theme === item ? "border-blue-600 scale-110" : "border-neutral-400"}`}
-                style={{
-                  backgroundColor:
-                    item === "warm-light"
-                      ? "#F7F7F5"
-                      : item === "obsidian"
-                        ? "#121214"
-                        : "#ECE9E2",
-                }}
-                title={item}
-              />
-            ),
-          )}
-        </div>
-      </aside>
+
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
   );
 }
