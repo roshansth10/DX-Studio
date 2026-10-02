@@ -204,10 +204,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 {/* Layered Project Imagery */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-neutral-950">
                   <img
-                    src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?q=80&w=1200&auto=format&fit=crop"
+                    src="/image/himalycover.png"
                     alt="Himaly Travel Discovery Platform"
                     className="h-full w-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
-                    referrerPolicy="no-referrer"
                   />
                   {/* Subtle gradient vignette overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
@@ -240,12 +239,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   transform: `translate3d(${-mouseOffset.x * 1.5}px, ${-mouseOffset.y * 1.5}px, 20px)`,
                 }}
               >
-                <div className="overflow-hidden rounded-lg">
+                <div className="overflow-hidden rounded-lg bg-neutral-950 aspect-[9/16]">
                   <img
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop"
-                    alt="Sports E-Commerce Mobile UI"
-                    className="aspect-[9/16] w-full object-cover"
-                    referrerPolicy="no-referrer"
+                    src="/image/zentrix.png"
+                    alt="Zentrix Sports Mobile UI"
+                    className="h-full w-full object-cover object-top"
                   />
                 </div>
                 <div className="p-1.5 text-left">

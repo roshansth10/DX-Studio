@@ -257,8 +257,8 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
             <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
               Connect
             </div>
-            <div className="space-y-3">
-              <div>
+            <ul className="space-y-2.5">
+              <li>
                 <a
                   href="mailto:roshan.devworks@gmail.com"
                   className="inline-flex items-center gap-1.5 hover:text-blue-600 transition-colors text-[14px] sm:text-sm font-mono min-w-0 [overflow-wrap:anywhere]"
@@ -266,8 +266,8 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   <span>roshan.devworks@gmail.com</span>
                   <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
                 </a>
-              </div>
-              <div className="flex flex-wrap md:flex-col gap-4 md:gap-2.5 pt-1 md:pt-0">
+              </li>
+              <li>
                 <a
                   href="https://instagram.com"
                   target="_blank"
@@ -277,6 +277,8 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   <span>Instagram</span>
                   <ArrowUpRight className="h-3 w-3 shrink-0" />
                 </a>
+              </li>
+              <li>
                 <a
                   href="https://linkedin.com"
                   target="_blank"
@@ -286,6 +288,8 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   <span>LinkedIn</span>
                   <ArrowUpRight className="h-3 w-3 shrink-0" />
                 </a>
+              </li>
+              <li>
                 <a
                   href="https://behance.net"
                   target="_blank"
@@ -295,8 +299,8 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   <span>Behance</span>
                   <ArrowUpRight className="h-3 w-3 shrink-0" />
                 </a>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
 
           {/* Column 4: Location & Live Status (Full-width on mobile, 1 col on desktop) */}
