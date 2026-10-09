@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowUpRight, CheckCircle2, Mail } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Mail, MessageCircle } from "lucide-react";
 import { LegalLayout } from "./components/LegalLayout";
 import { PRIVACY, TERMS, ACCESSIBILITY } from "./data/legalContent";
 import { ThemeMode, ProjectItem } from "./types";
@@ -57,7 +57,7 @@ export const HomePage: React.FC<PageProps> = ({
     <FeaturedWork theme={theme} onSelectProject={onSelectProject} preview />
     <PreviewBand
       theme={theme}
-      eyebrow="02 // Philosophy"
+      eyebrow="04 // Philosophy"
       title="Strategy before pixels."
       description="We start with the problem, then build digital experiences with intent, clarity, and commercial purpose."
       href="/philosophy"
@@ -112,9 +112,7 @@ export const WorkPage: React.FC<PageProps> = ({ theme, onSelectProject }) => {
     "All",
     "Ecommerce",
     "Travel & Trek",
-    "Creative Websites",
     "Branding",
-    "Other",
   ];
   const [category, setCategory] = useState("All");
   const projects =
@@ -124,7 +122,7 @@ export const WorkPage: React.FC<PageProps> = ({ theme, onSelectProject }) => {
   return (
     <PageShell
       theme={theme}
-      eyebrow="03 // Portfolio"
+      eyebrow="02 // Portfolio"
       title="Selected Work"
       description="A considered collection of digital products, identities, and experiences built for ambitious teams."
     >
@@ -298,12 +296,7 @@ export const ProjectPage: React.FC<PageProps & { project: ProjectItem }> = ({
 };
 
 export const ServicesPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
-  <PageShell
-    theme={theme}
-    eyebrow="02 // Capabilities"
-    title="Services"
-    description="Strategy, identity, experience, engineering, and growth working as one focused studio."
-  >
+  <PageShell theme={theme}>
     <ServicesSection theme={theme} />
     <div className="mt-12 text-center">
       <RouteButton label="Start a Project" href="/contact" />
@@ -321,12 +314,7 @@ export const PhilosophyPage: React.FC<PageProps> = ({ theme }) => (
   </PageShell>
 );
 export const ProcessPage: React.FC<PageProps> = ({ theme }) => (
-  <PageShell
-    theme={theme}
-    eyebrow="05 // Engagement Model"
-    title="From idea to impact."
-    description="A transparent, sprint-based workflow designed to eliminate guesswork, accelerate execution, and protect creative integrity."
-  >
+  <PageShell theme={theme}>
     <ProcessSection theme={theme} />
   </PageShell>
 );
@@ -389,6 +377,15 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
       >
         <Mail className="h-5 w-5" />
         roshan.devworks@gmail.com
+      </a>
+      <a
+        href="https://wa.me/9779764775438"
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center gap-2 text-lg font-semibold text-blue-600 hover:underline"
+      >
+        <MessageCircle className="h-5 w-5" />
+        WhatsApp
       </a>
       <button
         onClick={onOpenContact}

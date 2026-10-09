@@ -1,7 +1,6 @@
 import React from 'react';
 import { ThemeMode } from '../types';
 import { TRANSLATIONS } from '../data/translations';
-import { SectionAnchor } from './SectionAnchor';
 
 interface IntroStatementProps {
   theme: ThemeMode;
@@ -40,7 +39,6 @@ export const IntroStatement: React.FC<IntroStatementProps> = ({ theme }) => {
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
                   {t.intro.eyebrow}
                 </span>
-                <SectionAnchor id="philosophy" label="Philosophy" />
               </div>
               <span
                 className={`text-sm font-medium ${

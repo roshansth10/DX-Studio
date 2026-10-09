@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ThemeMode } from "../types";
 import { ArrowUpRight, Check } from "lucide-react";
-import { SectionAnchor } from "./SectionAnchor";
 
 interface FinalCTAProps {
   theme: ThemeMode;
@@ -74,7 +73,6 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ theme, onOpenContact }) => {
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
             08 // Initiation
           </span>
-          <SectionAnchor id="contact" label="Contact" />
         </div>
 
         <h2 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 text-balance">

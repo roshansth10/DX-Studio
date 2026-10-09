@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { ThemeMode } from "../types";
 import { CLIENT_SECTORS, TESTIMONIALS } from "../data/content";
 import { ArrowLeft, ArrowRight, Quote, Globe2, TrendingUp } from "lucide-react";
-import { SectionAnchor } from "./SectionAnchor";
 
 interface TrustSectionProps {
   theme: ThemeMode;
@@ -102,7 +101,6 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
             <span className="font-mono text-xs uppercase tracking-widest theme-text-subtle">
               Partnerships & Perspectives
             </span>
-            <SectionAnchor id="sectors" label="Trust & Reach" />
           </div>
 
           <h2 className="mt-4 font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight theme-text-primary">

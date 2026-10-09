@@ -16,7 +16,6 @@ const AVAILABLE_SERVICES = [
   "Web Development",
   "E-Commerce",
   "SEO & Growth",
-  "Creative Technology",
 ];
 
 const BUDGET_TIERS = [

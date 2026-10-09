@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ThemeMode } from "../types";
 import { PROCESS_STEPS } from "../data/content";
 import { ArrowRight, Clock, CheckCircle } from "lucide-react";
-import { SectionAnchor } from "./SectionAnchor";
 
 interface ProcessSectionProps {
   theme: ThemeMode;
@@ -33,7 +32,6 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ theme }) => {
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
                 05 // Engagement Model
               </span>
-              <SectionAnchor id="process" label="Process" />
             </div>
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
               From idea to impact.

@@ -2,7 +2,6 @@ import React from "react";
 import { ThemeMode } from "../types";
 import { PRINCIPLES } from "../data/content";
 import { Target, Compass, Cpu, Check } from "lucide-react";
-import { SectionAnchor } from "./SectionAnchor";
 
 interface WhyDXSectionProps {
   theme: ThemeMode;
@@ -32,7 +31,6 @@ export const WhyDXSection: React.FC<WhyDXSectionProps> = ({ theme }) => {
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold inline-block">
               04 // Core Principles
             </span>
-            <SectionAnchor id="why-dx" label="Core Principles" />
           </div>
           <h2 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.08] max-w-4xl text-balance">
             Strategy before pixels.{" "}

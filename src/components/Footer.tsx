@@ -201,6 +201,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   Brand & Identity
                 </a>
               </li>
+              {/* UI/UX & Products hidden for now
               <li>
                 <a
                   href="/services"
@@ -213,6 +214,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   UI/UX & Products
                 </a>
               </li>
+              */}
               <li>
                 <a
                   href="/services"
@@ -237,6 +239,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   SEO & Growth
                 </a>
               </li>
+              {/* Creative Technology hidden for now
               <li>
                 <a
                   href="/services"
@@ -249,6 +252,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   Creative Technology
                 </a>
               </li>
+              */}
             </ul>
           </div>
 
@@ -269,7 +273,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
               </li>
               <li>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/dxcreativestudio/"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
@@ -278,6 +282,18 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   <ArrowUpRight className="h-3 w-3 shrink-0" />
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://wa.me/9779764775438"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
+                >
+                  <span>WhatsApp</span>
+                  <ArrowUpRight className="h-3 w-3 shrink-0" />
+                </a>
+              </li>
+              {/* LinkedIn link disabled temporarily
               <li>
                 <a
                   href="https://linkedin.com"
@@ -289,17 +305,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   <ArrowUpRight className="h-3 w-3 shrink-0" />
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://behance.net"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 hover:text-blue-600 transition-colors"
-                >
-                  <span>Behance</span>
-                  <ArrowUpRight className="h-3 w-3 shrink-0" />
-                </a>
-              </li>
+              */}
             </ul>
           </div>
 
@@ -326,8 +332,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
         {/* Bottom Bar: Legal & Copyright */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8 text-xs font-mono text-neutral-500">
           <div className="leading-relaxed">
-            © 2026 DX Studio. All rights reserved. Crafted with European
-            Scandinavian rigor.
+            © 2026 DX Studio. All rights reserved.
           </div>
           <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2">
             <a

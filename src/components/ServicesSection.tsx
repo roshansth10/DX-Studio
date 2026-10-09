@@ -3,7 +3,6 @@ import { ThemeMode, ServiceItem } from '../types';
 import { SERVICES } from '../data/content';
 import { ArrowUpRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { TRANSLATIONS } from '../data/translations';
-import { SectionAnchor } from './SectionAnchor';
 
 interface ServicesSectionProps {
   theme: ThemeMode;
@@ -43,7 +42,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ theme, onSelec
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
                 {t.services.eyebrow}
               </span>
-              <SectionAnchor id="services" label="Services" />
             </div>
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
               {t.services.title}

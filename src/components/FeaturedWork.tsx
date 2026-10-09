@@ -5,7 +5,6 @@ import { ArrowUpRight } from "lucide-react";
 import { TRANSLATIONS } from "../data/translations";
 import { TiltCard } from "./TiltCard";
 import { ImageReveal } from "./ImageReveal";
-import { SectionAnchor } from "./SectionAnchor";
 import { navigateTo } from "../routing";
 
 interface FeaturedWorkProps {
@@ -42,7 +41,6 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
                 {t.work.eyebrow}
               </span>
-              <SectionAnchor id="work" label="Featured Work" />
             </div>
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
               {t.work.title}

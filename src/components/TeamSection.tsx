@@ -3,7 +3,6 @@ import { ThemeMode, TeamMember } from "../types";
 import { TEAM_MEMBERS } from "../data/content";
 import { ArrowUpRight, ShieldCheck, MapPin } from "lucide-react";
 import { TeamMemberModal } from "./TeamMemberModal";
-import { SectionAnchor } from "./SectionAnchor";
 
 interface TeamSectionProps {
   theme: ThemeMode;
@@ -73,7 +72,6 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
               <span className="font-mono text-xs uppercase tracking-widest theme-text-subtle">
                 People Behind The Craft
               </span>
-              <SectionAnchor id="team" label="Collective" />
             </div>
 
             <h2 className="mt-4 font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight max-w-3xl theme-text-primary">
