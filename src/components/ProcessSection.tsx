@@ -18,10 +18,10 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ theme }) => {
       id="process"
       className={`relative overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
-          ? "bg-[#151518] text-white border-neutral-800"
+          ? "bg-[#121214] text-white border-neutral-800"
           : isSand
-            ? "bg-[#E5E2DA] text-neutral-950 border-[#D2CDC3]"
-            : "bg-[#F2F2EF] text-neutral-950 border-[#E5E5E2]"
+            ? "bg-[#ECE9E2] text-neutral-950 border-[#D8D4CC]"
+            : "bg-[#F7F7F5] text-neutral-950 border-[#E5E5E2]"
       }`}
     >
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
