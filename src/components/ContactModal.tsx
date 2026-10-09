@@ -26,6 +26,14 @@ const BUDGET_TIERS = [
   "NPR 5L+",
 ];
 
+/**
+ * Google Apps Script Web App endpoint that emails the project brief.
+ * Deploy the script (see setup notes) and paste the resulting URL below.
+ * It looks like: https://script.google.com/macros/s/AKfycb.../exec
+ */
+const APPS_SCRIPT_ENDPOINT =
+  "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
 interface FormErrors {
   services?: string;
   budget?: string;
@@ -47,6 +55,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isEntered, setIsEntered] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState<string | null>(null);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -65,6 +75,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       setSubmitted(false);
       setErrors({});
       setTouched({});
+      setSending(false);
+      setSendError(null);
 
       const raf = requestAnimationFrame(() => {
         setIsEntered(true);
@@ -245,29 +257,39 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
-      // Open the visitor's default email client with the project brief pre-filled.
-      // Uses mailto so no Gmail/Google login is required.
-      const subject = `New Project Brief — ${name}`;
-      const body = [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        "",
-        `Services Needed: ${selectedServices.join(", ")}`,
-        `Project Budget: ${selectedBudget}`,
-        "",
-        "Project Overview / Goals:",
-        projectOverview,
-      ].join("\n");
+    if (!validate() || sending) return;
 
-      const mailtoUrl = `mailto:roshan.devworks@gmail.com?subject=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(body)}`;
+    setSending(true);
+    setSendError(null);
 
-      window.location.href = mailtoUrl;
+    try {
+      // Posts the brief to a Google Apps Script Web App bound to your own
+      // Google account (roshan.devworks@gmail.com). No third-party processor.
+      // `no-cors` is required because Apps Script Web Apps don't return CORS
+      // headers; the request still delivers, the response is just opaque.
+      await fetch(APPS_SCRIPT_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          subject: `New Project Brief — ${name}`,
+          name,
+          email,
+          services: selectedServices.join(", "),
+          budget: selectedBudget,
+          overview: projectOverview,
+        }),
+      });
+
       setSubmitted(true);
+    } catch {
+      setSendError(
+        "We couldn't send your brief automatically. Please email roshan.devworks@gmail.com directly."
+      );
+    } finally {
+      setSending(false);
     }
   };
 
@@ -336,7 +358,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   Project brief received.
                 </h3>
                 <p className="mx-auto max-w-sm text-sm text-neutral-400 leading-relaxed">
-                  Thanks for reaching out, {name.split(" ")[0] || "there"}. Your email client should have opened with the brief pre-filled — just hit send and we'll get back to you soon.
+                  Thanks for reaching out, {name.split(" ")[0] || "there"}. Your brief is on its way — we'll review it and get back to you soon.
                 </p>
                 <button
                   onClick={onClose}
@@ -520,11 +542,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 </div>
 
                 {/* ── Submit ── */}
+                {sendError && (
+                  <p className="text-center text-[11px] font-mono text-red-400 leading-relaxed">
+                    {sendError}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white hover:bg-blue-500 active:scale-[0.98] transition-all duration-150 shadow-lg shadow-blue-900/20"
+                  disabled={sending}
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 py-3.5 text-[11px] font-bold uppercase tracking-widest text-white hover:bg-blue-500 active:scale-[0.98] transition-all duration-150 shadow-lg shadow-blue-900/20 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-blue-600"
                 >
-                  <span>Send Project Brief</span>
+                  <span>{sending ? "Sending..." : "Send Project Brief"}</span>
                   <Send className="h-3.5 w-3.5" />
                 </button>
               </form>
