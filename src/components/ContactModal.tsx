@@ -248,7 +248,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      // Open Gmail's web composer with the project brief pre-filled.
+      // Open the visitor's default email client with the project brief pre-filled.
+      // Uses mailto so no Gmail/Google login is required.
       const subject = `New Project Brief — ${name}`;
       const body = [
         `Name: ${name}`,
@@ -261,11 +262,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
         projectOverview,
       ].join("\n");
 
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-        "roshan.devworks@gmail.com"
-      )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoUrl = `mailto:roshan.devworks@gmail.com?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
 
-      window.open(gmailUrl, "_blank", "noopener,noreferrer");
+      window.location.href = mailtoUrl;
       setSubmitted(true);
     }
   };
@@ -335,7 +336,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   Project brief received.
                 </h3>
                 <p className="mx-auto max-w-sm text-sm text-neutral-400 leading-relaxed">
-                  Thanks for reaching out, {name.split(" ")[0] || "there"}. A Gmail draft with your brief is ready in the new tab — just hit send and we'll get back to you soon.
+                  Thanks for reaching out, {name.split(" ")[0] || "there"}. Your email client should have opened with the brief pre-filled — just hit send and we'll get back to you soon.
                 </p>
                 <button
                   onClick={onClose}
