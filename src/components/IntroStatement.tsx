@@ -14,7 +14,7 @@ export const IntroStatement: React.FC<IntroStatementProps> = ({ theme }) => {
   return (
     <section
       id="philosophy"
-      className={`relative overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
+      className={`relative w-screen ml-[calc(50%-50vw)] overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
           ? 'bg-[#151518] text-white border-neutral-800'
           : isSand
@@ -31,37 +31,19 @@ export const IntroStatement: React.FC<IntroStatementProps> = ({ theme }) => {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-start">
-          {/* Section Marker */}
-          <div className="lg:col-span-3">
-            <div className="sticky top-28 flex flex-col gap-2">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
-                  {t.intro.eyebrow}
-                </span>
-              </div>
-              <span
-                className={`text-sm font-medium ${
-                  isDark ? 'text-neutral-400' : 'text-neutral-500'
-                }`}
-              >
-                {t.intro.standard}
-              </span>
-            </div>
-          </div>
-
+        <div>
           {/* Statement & Elaboration */}
-          <div className="lg:col-span-9">
+          <div>
             {/* Primary Editorial Quote */}
-            <blockquote className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-balance mb-12 gsap-heading-reveal">
+            <blockquote className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-balance mb-6 gsap-heading-reveal">
               {t.intro.quotePre}
               <span className="text-blue-600">{t.intro.quoteHighlight}</span>
             </blockquote>
 
             {/* Two-Column Supporting Narrative */}
             <div
-              className={`grid grid-cols-1 md:grid-cols-2 gap-8 text-base sm:text-lg leading-relaxed pt-8 border-t ${
-                isDark ? 'border-neutral-800 text-neutral-300' : 'border-neutral-300 text-neutral-700'
+              className={`grid grid-cols-1 md:grid-cols-2 gap-8 text-base sm:text-lg leading-relaxed pt-4 ${
+                isDark ? 'text-neutral-300' : 'text-neutral-700'
               }`}
             >
               <div>

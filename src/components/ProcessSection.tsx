@@ -24,7 +24,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ theme }) => {
             : "bg-[#F7F7F5] text-neutral-950 border-[#E5E5E2]"
       }`}
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <div className="relative z-10">
         {/* Header */}
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 gsap-heading-reveal">
           <div>

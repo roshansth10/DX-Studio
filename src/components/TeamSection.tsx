@@ -51,13 +51,13 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
     <section
       id="team"
       data-theme={theme}
-      className="relative border-t py-24 sm:py-32 scroll-mt-20 transition-colors duration-300 gsap-section-reveal theme-bg-page theme-border"
+      className="relative py-24 sm:py-32 lg:py-40 scroll-mt-20 transition-colors duration-300 gsap-section-reveal theme-bg-page theme-border"
       style={{
         backgroundColor: "var(--theme-bg-page)",
         borderColor: "var(--theme-border)",
       }}
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+      <div className="relative z-10">
         {/* Section Header */}
         <div
           className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b gsap-heading-reveal theme-border"

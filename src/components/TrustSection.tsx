@@ -90,7 +90,7 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
         color: "var(--theme-text-primary)",
       }}
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <div className="relative z-10">
         {/* Section Header */}
         <div className="mb-16 max-w-3xl gsap-heading-reveal">
           <div className="flex items-center flex-wrap gap-3">

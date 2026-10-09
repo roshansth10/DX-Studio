@@ -319,22 +319,12 @@ export const ProcessPage: React.FC<PageProps> = ({ theme }) => (
   </PageShell>
 );
 export const TeamPage: React.FC<PageProps> = ({ theme }) => (
-  <PageShell
-    theme={theme}
-    eyebrow="06 // Collective"
-    title="People behind the craft."
-    description="A focused Kathmandu team combining design, engineering, strategy, and direct collaboration."
-  >
+  <PageShell theme={theme}>
     <TeamSection theme={theme} />
   </PageShell>
 );
 export const SectorsPage: React.FC<PageProps> = ({ theme }) => (
-  <PageShell
-    theme={theme}
-    eyebrow="07 // Trust & Reach"
-    title="Built for ambitious businesses."
-    description="We partner with teams across sectors where thoughtful digital work creates meaningful momentum."
-  >
+  <PageShell theme={theme}>
     <TrustSection theme={theme} />
   </PageShell>
 );
