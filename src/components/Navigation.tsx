@@ -111,7 +111,7 @@ export const Navigation: React.FC<NavigationProps> = ({
             : "bg-transparent py-5"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-12">
+        <div className="mx-auto flex max-w-7xl items-center justify-between lg:justify-center lg:gap-6 xl:gap-8 px-6 lg:px-12">
           {/* Logo */}
           <MagneticElement strength={0.2}>
             <a
@@ -120,7 +120,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                 e.preventDefault();
                 navigateTo("/");
               }}
-              className="group flex items-center"
+              className="group flex items-center shrink-0"
               id="nav-logo"
             >
               <BrandLogo theme={theme} size="md" variant="full" />
@@ -128,13 +128,13 @@ export const Navigation: React.FC<NavigationProps> = ({
           </MagneticElement>
 
           {/* Desktop Nav Links with GSAP Magnetic Hover Effect */}
-          <nav className="hidden items-center gap-6 lg:gap-8 lg:flex">
+          <nav className="hidden items-center gap-4 xl:gap-6 lg:flex shrink-0">
             {navLinks.map((link) => (
               <MagneticElement key={link.label} strength={0.35}>
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`group relative inline-block px-2 py-1 text-sm font-medium transition-colors duration-200 ${
+                  className={`group relative inline-block px-2 py-1 text-sm font-medium transition-colors duration-200 shrink-0 ${
                     pathname === link.href ||
                     (link.href === "/work" && pathname.startsWith("/work/"))
                       ? "text-blue-600"
@@ -151,7 +151,7 @@ export const Navigation: React.FC<NavigationProps> = ({
           </nav>
 
           {/* Actions: Ambient Audio Loop + Theme Selector + Contact CTA */}
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-3 lg:flex shrink-0">
             {/* Subtle Mute/Unmute Studio Ambient Soundscape Toggle */}
             <button
               type="button"

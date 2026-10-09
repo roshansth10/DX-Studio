@@ -51,7 +51,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
     <section
       id="team"
       data-theme={theme}
-      className="relative pt-16 sm:pt-24 lg:pt-28 pb-8 sm:pb-12 lg:pb-12 scroll-mt-20 transition-colors duration-300 gsap-section-reveal theme-bg-page theme-border"
+      className="relative pt-0 pb-8 sm:pb-12 lg:pb-12 scroll-mt-20 transition-colors duration-300 gsap-section-reveal theme-bg-page theme-border"
       style={{
         backgroundColor: "var(--theme-bg-page)",
         borderColor: "var(--theme-border)",

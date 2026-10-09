@@ -26,7 +26,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ theme, onSelec
     <section
       id="services"
       onMouseMove={handleMouseMove}
-      className={`relative overflow-hidden pt-16 sm:pt-24 lg:pt-28 pb-8 sm:pb-12 lg:pb-12 scroll-mt-20 transition-colors duration-500 ${
+      className={`relative overflow-hidden pt-0 pb-8 sm:pb-12 lg:pb-12 scroll-mt-20 transition-colors duration-500 ${
         isDark
           ? 'bg-[#121214] text-white'
           : isSand

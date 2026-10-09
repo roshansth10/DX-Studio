@@ -14,13 +14,7 @@ export const IntroStatement: React.FC<IntroStatementProps> = ({ theme }) => {
   return (
     <section
       id="philosophy"
-      className={`relative w-screen ml-[calc(50%-50vw)] overflow-hidden pt-16 sm:pt-24 lg:pt-28 pb-8 sm:pb-12 lg:pb-12 scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
-        isDark
-          ? 'bg-[#151518] text-white'
-          : isSand
-          ? 'bg-[#E5E2DA] text-neutral-950'
-          : 'bg-[#F2F2EF] text-neutral-950'
-      }`}
+      className="relative overflow-hidden pt-2 sm:pt-4 pb-6 sm:pb-8 scroll-mt-20 transition-colors duration-500 gsap-section-reveal"
     >
       {/* Huge cropped architectural DX watermark typography */}
       <div
@@ -30,7 +24,7 @@ export const IntroStatement: React.FC<IntroStatementProps> = ({ theme }) => {
         DX
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <div className="relative z-10">
         <div>
           {/* Statement & Elaboration */}
           <div>

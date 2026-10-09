@@ -233,7 +233,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({
 
       <main
         id="legal-content"
-        className={`flex-1 pt-28 sm:pt-36 pb-6 sm:pb-8 ${bgClass}`}
+        className={`flex-1 pt-28 sm:pt-36 pb-8 sm:pb-12 lg:pb-14 ${bgClass}`}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           {/* Back link */}

@@ -36,7 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section
       id="hero"
       onMouseMove={handleMouseMove}
-      className={`relative min-h-[92vh] overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32 flex flex-col justify-between border-b transition-colors duration-500 ${
+      className={`relative min-h-[92vh] overflow-hidden pt-28 sm:pt-36 pb-20 lg:pb-32 flex flex-col justify-between border-b transition-colors duration-500 ${
         isDark
           ? "bg-[#121214] text-white border-neutral-800"
           : isSand

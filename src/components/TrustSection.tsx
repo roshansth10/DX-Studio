@@ -83,7 +83,7 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
     <section
       id="sectors"
       data-theme={theme}
-      className="relative overflow-hidden pt-16 sm:pt-24 lg:pt-28 pb-8 sm:pb-12 lg:pb-12 scroll-mt-20 transition-colors duration-500 gsap-section-reveal theme-bg-page"
+      className="relative overflow-hidden pt-0 pb-8 sm:pb-12 lg:pb-12 scroll-mt-20 transition-colors duration-500 gsap-section-reveal theme-bg-page"
       style={{
         backgroundColor: "var(--theme-bg-page)",
         color: "var(--theme-text-primary)",

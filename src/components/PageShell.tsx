@@ -22,9 +22,7 @@ export const PageShell: React.FC<PageShellProps> = ({
 
   return (
     <main
-      className={`flex-1 ${
-        hasHeader ? "pt-28 sm:pt-36" : ""
-      } ${
+      className={`flex-1 pt-28 sm:pt-36 ${
         isDark
           ? "bg-[#121214] text-white"
           : isSand
@@ -32,10 +30,10 @@ export const PageShell: React.FC<PageShellProps> = ({
             : "bg-[#F7F7F5] text-neutral-950"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 pb-4 sm:pb-6 lg:px-12">
+      <div className="mx-auto max-w-7xl px-6 pb-8 sm:pb-12 lg:pb-14 lg:px-12">
         {hasHeader && (
           <div
-            className="max-w-4xl border-b pb-12 sm:pb-16 gsap-heading-reveal"
+            className="max-w-4xl border-b pb-6 sm:pb-8 gsap-heading-reveal"
             style={{ borderColor: "var(--theme-border)" }}
           >
             <div className="flex items-center gap-3 flex-wrap">
@@ -51,7 +49,7 @@ export const PageShell: React.FC<PageShellProps> = ({
             </p>
           </div>
         )}
-        <div className={hasHeader ? "mt-12 sm:mt-16" : ""}>{children}</div>
+        <div className={hasHeader ? "mt-6 sm:mt-8" : ""}>{children}</div>
       </div>
     </main>
   );

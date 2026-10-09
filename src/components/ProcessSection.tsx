@@ -16,7 +16,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ theme }) => {
   return (
     <section
       id="process"
-      className={`relative overflow-hidden pt-16 sm:pt-24 lg:pt-28 pb-8 sm:pb-12 lg:pb-12 scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
+      className={`relative overflow-hidden pt-0 pb-8 sm:pb-12 lg:pb-12 scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
           ? "bg-[#121214] text-white"
           : isSand
