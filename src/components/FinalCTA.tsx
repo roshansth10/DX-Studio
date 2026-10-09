@@ -23,7 +23,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ theme, onOpenContact }) => {
   return (
     <section
       id="contact"
-      className={`relative overflow-hidden pt-20 sm:pt-28 lg:pt-36 pb-12 sm:pb-14 lg:pb-16 scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
+      className={`relative overflow-hidden pt-10 sm:pt-14 lg:pt-16 pb-12 sm:pb-14 lg:pb-16 scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
           ? "bg-[#0E0E10] text-white"
           : isSand

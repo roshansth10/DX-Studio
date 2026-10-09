@@ -84,7 +84,7 @@ const PreviewBand: React.FC<{
   label: string;
 }> = ({ theme, eyebrow, title, description, href, label }) => (
   <section
-    className="border-b py-20 sm:py-28"
+    className="border-b py-10 sm:py-14 lg:py-16"
     style={{
       backgroundColor: "var(--theme-bg-page)",
       borderColor: "var(--theme-border)",

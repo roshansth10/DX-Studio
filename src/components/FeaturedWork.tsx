@@ -25,7 +25,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
   return (
     <section
       id="work"
-      className={`relative overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
+      className={`relative overflow-hidden pt-8 sm:pt-12 lg:pt-14 pb-10 sm:pb-14 lg:pb-16 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
           ? "bg-[#151518] text-white border-neutral-800"
           : isSand

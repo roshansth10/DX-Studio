@@ -36,7 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section
       id="hero"
       onMouseMove={handleMouseMove}
-      className={`relative min-h-[92vh] overflow-hidden pt-28 sm:pt-36 pb-20 lg:pb-32 flex flex-col justify-between border-b transition-colors duration-500 ${
+      className={`relative min-h-[85vh] sm:min-h-[88vh] overflow-hidden pt-28 sm:pt-36 pb-6 sm:pb-8 lg:pb-10 flex flex-col justify-between border-b transition-colors duration-500 ${
         isDark
           ? "bg-[#121214] text-white border-neutral-800"
           : isSand
@@ -287,7 +287,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* Subtle Scroll Indicator */}
-      <div className="relative z-10 mx-auto mt-8 flex flex-col items-center gap-1 opacity-60 hover:opacity-100 transition-opacity">
+      <div className="relative z-10 mx-auto mt-4 sm:mt-6 flex flex-col items-center gap-1 opacity-60 hover:opacity-100 transition-opacity">
         <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400">
           {t.hero.scrollPrompt}
         </span>
