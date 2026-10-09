@@ -101,7 +101,7 @@ export default function App() {
   return (
     <div
       data-theme={theme}
-      className={`min-h-screen font-body transition-colors duration-500 ${themeBackground(theme)}`}
+      className={`min-h-screen flex flex-col font-body transition-colors duration-500 ${themeBackground(theme)}`}
     >
       <CurtainWipe />
       <ScrollProgress theme={theme} />
@@ -111,7 +111,7 @@ export default function App() {
         onSelectTheme={setTheme}
         onOpenContact={() => setContactOpen(true)}
       />
-      {page}
+      <div className="flex-1 flex flex-col">{page}</div>
       <Footer theme={theme} />
       <ContactModal
         isOpen={contactOpen}

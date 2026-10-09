@@ -298,7 +298,7 @@ export const ProjectPage: React.FC<PageProps & { project: ProjectItem }> = ({
 export const ServicesPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
   <PageShell theme={theme}>
     <ServicesSection theme={theme} />
-    <div className="mt-12 text-center">
+    <div className="mt-4 pb-2 text-center">
       <RouteButton label="Start a Project" href="/contact" />
     </div>
   </PageShell>

@@ -41,17 +41,17 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
 
   return (
     <footer
-      className={`relative pt-16 md:pt-20 pb-32 md:pb-16 transition-colors duration-500 ${
+      className={`relative pt-8 md:pt-12 pb-24 md:pb-14 transition-colors duration-500 ${
         isDark
-          ? "bg-[#0B0B0D] text-white border-t border-neutral-800"
+          ? "bg-[#0B0B0D] text-white"
           : isSand
-            ? "bg-[#DCD8D0] text-neutral-950 border-t border-[#CBC5B9]"
-            : "bg-[#EAEAE6] text-neutral-950 border-t border-[#DEDEDA]"
+            ? "bg-[#DCD8D0] text-neutral-950"
+            : "bg-[#EAEAE6] text-neutral-950"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         {/* Top Tier: Logo & Statement & Back to Top */}
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pb-12 md:pb-16 border-b border-inherit">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pb-12 md:pb-16">
           <div className="max-w-md">
             <a
               href="/"
@@ -89,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
         </div>
 
         {/* Middle Tier: Columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 md:py-16 border-b border-inherit text-sm">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 md:py-16 text-sm">
           {/* Column 1: Studio */}
           <div className="min-w-0">
             <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">

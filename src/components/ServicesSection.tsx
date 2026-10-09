@@ -26,12 +26,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ theme, onSelec
     <section
       id="services"
       onMouseMove={handleMouseMove}
-      className={`relative overflow-hidden py-24 sm:py-32 lg:py-40 border-b scroll-mt-20 transition-colors duration-500 ${
+      className={`relative overflow-hidden pt-16 sm:pt-24 lg:pt-28 pb-8 sm:pb-12 lg:pb-12 scroll-mt-20 transition-colors duration-500 ${
         isDark
-          ? 'bg-[#121214] text-white border-neutral-800'
+          ? 'bg-[#121214] text-white'
           : isSand
-          ? 'bg-[#ECE9E2] text-neutral-950 border-[#D8D4CC]'
-          : 'bg-[#F7F7F5] text-neutral-950 border-[#E5E5E2]'
+          ? 'bg-[#ECE9E2] text-neutral-950'
+          : 'bg-[#F7F7F5] text-neutral-950'
       }`}
     >
       <div className="relative z-10">

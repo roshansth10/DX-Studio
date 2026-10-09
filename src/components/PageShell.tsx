@@ -22,17 +22,17 @@ export const PageShell: React.FC<PageShellProps> = ({
 
   return (
     <main
-      className={`min-h-screen border-b ${
+      className={`flex-1 ${
         hasHeader ? "pt-28 sm:pt-36" : ""
       } ${
         isDark
-          ? "bg-[#121214] text-white border-neutral-800"
+          ? "bg-[#121214] text-white"
           : isSand
-            ? "bg-[#ECE9E2] text-neutral-950 border-[#D8D4CC]"
-            : "bg-[#F7F7F5] text-neutral-950 border-[#E5E5E2]"
+            ? "bg-[#ECE9E2] text-neutral-950"
+            : "bg-[#F7F7F5] text-neutral-950"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 pb-16 sm:pb-24 lg:px-12 lg:pb-32">
+      <div className="mx-auto max-w-7xl px-6 pb-4 sm:pb-6 lg:px-12">
         {hasHeader && (
           <div
             className="max-w-4xl border-b pb-12 sm:pb-16 gsap-heading-reveal"

@@ -23,12 +23,12 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ theme, onOpenContact }) => {
   return (
     <section
       id="contact"
-      className={`relative overflow-hidden py-28 sm:py-36 lg:py-48 border-b scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
+      className={`relative overflow-hidden pt-20 sm:pt-28 lg:pt-36 pb-12 sm:pb-14 lg:pb-16 scroll-mt-20 transition-colors duration-500 gsap-section-reveal ${
         isDark
-          ? "bg-[#0E0E10] text-white border-neutral-800"
+          ? "bg-[#0E0E10] text-white"
           : isSand
-            ? "bg-[#E0DDD5] text-neutral-950 border-[#CDC8BE]"
-            : "bg-[#EDEDEA] text-neutral-950 border-[#E0E0DC]"
+            ? "bg-[#E0DDD5] text-neutral-950"
+            : "bg-[#EDEDEA] text-neutral-950"
       }`}
     >
       {/* Abstract geometric line & DX Monogram backdrop */}
