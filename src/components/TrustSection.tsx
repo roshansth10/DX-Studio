@@ -94,11 +94,7 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
         <div className="mb-16 max-w-3xl gsap-heading-reveal">
           <div className="flex items-center flex-wrap gap-3">
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
-              07 // TRUST & REACH
-            </span>
-            <span className="h-[1px] w-6 bg-blue-600/40" />
-            <span className="font-mono text-xs uppercase tracking-widest theme-text-subtle">
-              Partnerships & Perspectives
+              07 // Trust & Reach
             </span>
           </div>
 
