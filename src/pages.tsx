@@ -113,6 +113,7 @@ export const WorkPage: React.FC<PageProps> = ({ theme, onSelectProject }) => {
     "Ecommerce",
     "Travel & Trek",
     "Branding",
+    "Other",
   ];
   const [category, setCategory] = useState("All");
   const projects =
@@ -159,7 +160,7 @@ const ProjectCard: React.FC<{
       onSelect(project);
       navigateTo(`/work/${project.id}`);
     }}
-    className="group text-left overflow-hidden rounded-2xl border theme-border-card theme-bg-card shadow-sm transition-shadow hover:shadow-xl"
+    className="group w-full text-left overflow-hidden rounded-2xl border theme-border-card theme-bg-card shadow-sm transition-shadow hover:shadow-xl"
   >
     <div className="overflow-hidden bg-neutral-950">
       <img
