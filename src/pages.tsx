@@ -160,32 +160,32 @@ const ProjectCard: React.FC<{
       onSelect(project);
       navigateTo(`/work/${project.id}`);
     }}
-    className="group w-full text-left overflow-hidden rounded-2xl border theme-border-card theme-bg-card shadow-sm transition-shadow hover:shadow-xl"
+    className="group w-full text-left overflow-hidden rounded-2xl border theme-border-card theme-bg-card shadow-sm transition-shadow hover:shadow-xl flex flex-col"
   >
-    <div className="overflow-hidden bg-neutral-950">
+    <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-950">
       <img
         src={project.image}
         alt={project.title}
-        className="block w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+        className="block w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         referrerPolicy="no-referrer"
       />
     </div>
-    <div className="p-6">
+    <div className="p-5 sm:p-6 flex flex-col flex-1">
       <div className="flex items-center justify-between gap-3">
-        <span className="font-mono text-xs uppercase tracking-widest text-blue-600">
+        <span className="font-mono text-xs uppercase tracking-widest text-blue-600 truncate">
           {project.category}
         </span>
-        <span className="font-mono text-xs theme-text-subtle">
+        <span className="font-mono text-xs theme-text-subtle shrink-0">
           {project.year}
         </span>
       </div>
-      <h2 className="mt-2 font-heading text-2xl font-bold theme-text-primary">
+      <h2 className="mt-2 font-heading text-xl sm:text-2xl font-bold theme-text-primary">
         {project.title}
       </h2>
-      <p className="mt-2 text-sm leading-relaxed theme-text-muted">
+      <p className="mt-2 text-sm leading-relaxed theme-text-muted line-clamp-3">
         {project.tagline}
       </p>
-      <span className="mt-5 inline-flex items-center gap-1 text-xs font-bold text-blue-600">
+      <span className="mt-5 inline-flex items-center gap-1 text-xs font-bold text-blue-600 mt-auto pt-2">
         View Project <ArrowUpRight className="h-3 w-3" />
       </span>
     </div>

@@ -133,7 +133,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
 
           <div className="hidden lg:flex items-center gap-2 font-mono text-xs font-medium theme-text-subtle">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Studio Collective • 8 Senior Practitioners</span>
+            <span>Studio Collective • {TEAM_MEMBERS.length} Senior Practitioners</span>
           </div>
         </div>
 
@@ -201,7 +201,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
                 </div>
 
                 {/* Card Body - Dynamic CSS Variable Typography */}
-                <div className="flex flex-col flex-1 p-6 pt-5">
+                <div className="flex flex-col flex-1 p-5 sm:p-6 pt-5">
                   <div className="flex items-center justify-between gap-2">
                     <span className="font-mono text-xs uppercase tracking-widest text-blue-600 font-bold">
                       {member.role}
@@ -218,7 +218,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
                     </span>
                   </div>
 
-                  <h3 className="font-heading text-2xl font-bold tracking-tight mt-2 transition-colors theme-text-primary">
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold tracking-tight mt-2 transition-colors theme-text-primary">
                     {member.name}
                   </h3>
 
@@ -243,13 +243,13 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
                   </div>
 
                   <div
-                    className="mt-auto pt-4 border-t flex items-center justify-between"
+                    className="mt-auto pt-4 border-t flex items-center justify-between gap-2"
                     style={{ borderColor: "var(--theme-border)" }}
                   >
-                    <span className="font-mono text-xs font-semibold theme-text-subtle">
+                    <span className="font-mono text-xs font-semibold theme-text-subtle truncate">
                       {member.experience}
                     </span>
-                    <span className="text-xs font-bold text-blue-600 group-hover:underline inline-flex items-center gap-1">
+                    <span className="shrink-0 text-xs font-bold text-blue-600 group-hover:underline inline-flex items-center gap-1">
                       <span>View Profile</span>
                       <ArrowUpRight className="h-3 w-3" />
                     </span>
@@ -262,7 +262,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
 
         {/* Studio Culture & Model Callout */}
         <div
-          className="mt-16 rounded-3xl p-8 sm:p-10 border transition-all duration-300 shadow-sm"
+          className="mt-12 sm:mt-16 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border transition-all duration-300 shadow-sm"
           style={{
             backgroundColor: "var(--theme-bg-card-subtle)",
             borderColor: "var(--theme-border)",

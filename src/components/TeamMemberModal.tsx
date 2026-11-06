@@ -169,7 +169,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
     >
       <div
         ref={panelRef}
-        className={`modal-panel relative flex w-full max-w-4xl max-h-[calc(100dvh-48px)] flex-col overflow-y-auto overflow-x-hidden rounded-3xl border shadow-2xl transition-all duration-200 ease-out transform-gpu ${
+        className={`modal-panel relative flex w-full max-w-4xl max-h-[calc(100dvh-32px)] sm:max-h-[calc(100dvh-48px)] flex-col overflow-y-auto overflow-x-hidden rounded-2xl sm:rounded-3xl border shadow-2xl transition-all duration-200 ease-out transform-gpu ${
           isEntered
             ? "opacity-100 translate-y-0 scale-100"
             : "opacity-0 translate-y-4 scale-[0.98]"
@@ -185,7 +185,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
       >
         {/* Modal Top Bar */}
         <div
-          className={`flex items-center justify-between border-b px-6 py-4 shrink-0 ${
+          className={`flex items-center justify-between border-b px-4 sm:px-6 py-3.5 sm:py-4 shrink-0 ${
             isDark
               ? "border-neutral-800/80"
               : isSand
@@ -232,7 +232,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-0 overflow-hidden">
           {/* Portrait Column */}
           <div
-            className={`md:col-span-5 relative overflow-hidden min-h-[280px] sm:min-h-[340px] md:min-h-full border-b md:border-b-0 md:border-r ${
+            className={`md:col-span-5 relative overflow-hidden min-h-[250px] sm:min-h-[320px] md:min-h-full border-b md:border-b-0 md:border-r ${
               isDark
                 ? "border-neutral-800/80 bg-neutral-900"
                 : isSand
@@ -254,12 +254,12 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
               <span className="font-mono text-xs text-blue-400 font-bold block mb-1">
                 {member.role}
               </span>
-              <h3 className="font-heading text-2xl font-bold">{member.name}</h3>
+              <h3 className="font-heading text-xl sm:text-2xl font-bold">{member.name}</h3>
             </div>
           </div>
 
           {/* Details Column */}
-          <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+          <div className="md:col-span-7 p-5 sm:p-8 flex flex-col justify-between space-y-6">
             <div>
               {/* Header Info */}
               <div className="hidden md:block">
@@ -367,7 +367,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
 
             {/* Socials & Actions */}
             <div
-              className={`pt-5 border-t flex items-center justify-between ${
+              className={`pt-5 border-t flex flex-wrap items-center justify-between gap-3 ${
                 isDark
                   ? "border-neutral-800"
                   : isSand
