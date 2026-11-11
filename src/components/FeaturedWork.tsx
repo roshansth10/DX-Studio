@@ -327,8 +327,15 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                 </TiltCard>
 
                 <div className="mt-4 flex items-center justify-between px-2">
-                  <div className="font-mono text-[11px] text-neutral-500">
-                    Cargo & Courier Logistics
+                  <div className="flex gap-2 flex-wrap">
+                    {PROJECTS[2].deliverables.slice(0, 2).map((d) => (
+                      <span
+                        key={d}
+                        className="font-mono text-[11px] text-neutral-500"
+                      >
+                        • {d}
+                      </span>
+                    ))}
                   </div>
                   <span className="font-mono text-xs font-bold text-blue-600">
                     Case Details →
