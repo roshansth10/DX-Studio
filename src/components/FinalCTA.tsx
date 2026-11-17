@@ -117,10 +117,10 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ theme, onOpenContact }) => {
             <span>Kathmandu • UTC+5:45</span>
             <span>•</span>
             <a
-              href="mailto:roshan.devworks@gmail.com"
+              href="mailto:info.dxcreativestudio@gmail.com"
               className="text-blue-600 hover:underline font-semibold"
             >
-              roshan.devworks@gmail.com
+              info.dxcreativestudio@gmail.com
             </a>
           </div>
         </div>
