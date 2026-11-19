@@ -60,10 +60,11 @@ const RouteButton: React.FC<{
   label: string;
   href: string;
   dark?: boolean;
-}> = ({ label, href, dark }) => (
+  className?: string;
+}> = ({ label, href, dark, className = "" }) => (
   <button
     onClick={() => navigateTo(href)}
-    className={`inline-flex items-center gap-2 rounded-full px-5 py-3 text-xs font-bold uppercase tracking-wider transition-colors ${dark ? "bg-neutral-950 text-white hover:bg-blue-600" : "bg-blue-600 text-white hover:bg-blue-500"}`}
+    className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-xs font-bold uppercase tracking-wider transition-colors ${dark ? "bg-neutral-950 text-white hover:bg-blue-600" : "bg-blue-600 text-white hover:bg-blue-500"} ${className}`}
   >
     {label}
     <ArrowUpRight className="h-3.5 w-3.5" />
@@ -125,7 +126,11 @@ const PreviewBand: React.FC<{
           {description}
         </p>
       </div>
-      <RouteButton label={label} href={href} />
+      <RouteButton
+        label={label}
+        href={href}
+        className="mx-auto w-full sm:mx-0 sm:w-auto"
+      />
     </div>
   </section>
 );
