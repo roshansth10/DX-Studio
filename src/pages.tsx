@@ -12,11 +12,8 @@ import {
 } from "./data/content";
 import { PageShell } from "./components/PageShell";
 import { FeaturedWork } from "./components/FeaturedWork";
-import { IntroStatement } from "./components/IntroStatement";
-import { ProcessSection } from "./components/ProcessSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { TeamSection } from "./components/TeamSection";
-import { TrustSection } from "./components/TrustSection";
 import { FinalCTA } from "./components/FinalCTA";
 import { HeroSection } from "./components/HeroSection";
 import { navigateTo } from "./routing";
@@ -87,19 +84,11 @@ export const HomePage: React.FC<PageProps> = ({
     <FeaturedWork theme={theme} onSelectProject={onSelectProject} preview />
     <PreviewBand
       theme={theme}
-      eyebrow="04 // Philosophy"
-      title="Strategy before pixels."
-      description="We start with the problem, then build digital experiences with intent, clarity, and commercial purpose."
-      href="/philosophy"
-      label="Explore Our Philosophy"
-    />
-    <PreviewBand
-      theme={theme}
-      eyebrow="05 // Process"
-      title="From idea to impact."
-      description="A transparent, sprint-based workflow keeps strategy, design, and engineering moving together."
-      href="/process"
-      label="Explore Our Process"
+      eyebrow="04 // Company"
+      title="Built with purpose."
+      description="Meet the approach, philosophy, and working method behind every DX Studio project."
+      href="/about"
+      label="About DX Studio"
     />
     <FinalCTA theme={theme} onOpenContact={onOpenContact} />
   </main>
@@ -334,29 +323,9 @@ export const ServicesPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
     </div>
   </PageShell>
 );
-export const PhilosophyPage: React.FC<PageProps> = ({ theme }) => (
-  <PageShell
-    theme={theme}
-    eyebrow="04 // Philosophy"
-    title="Purpose before technology."
-    description="We reject decorative vanity. Every decision begins with the business mechanics, user motivations, and commercial imperatives behind the work."
-  >
-    <IntroStatement theme={theme} />
-  </PageShell>
-);
-export const ProcessPage: React.FC<PageProps> = ({ theme }) => (
-  <PageShell theme={theme}>
-    <ProcessSection theme={theme} />
-  </PageShell>
-);
 export const TeamPage: React.FC<PageProps> = ({ theme }) => (
   <PageShell theme={theme}>
     <TeamSection theme={theme} />
-  </PageShell>
-);
-export const SectorsPage: React.FC<PageProps> = ({ theme }) => (
-  <PageShell theme={theme}>
-    <TrustSection theme={theme} />
   </PageShell>
 );
 export const AboutPage: React.FC<PageProps> = ({

@@ -20,11 +20,8 @@ import {
   HomePage,
   JOB_OPENINGS,
   JobDetailPage,
-  PhilosophyPage,
   PrivacyPage,
-  ProcessPage,
   ProjectPage,
-  SectorsPage,
   ServicesPage,
   TeamPage,
   TermsPage,
@@ -98,10 +95,7 @@ export default function App() {
   else if (pathname === "/work") page = <WorkPage {...pageProps} />;
   else if (project) page = <ProjectPage {...pageProps} project={project} />;
   else if (pathname === "/services") page = <ServicesPage {...pageProps} />;
-  else if (pathname === "/philosophy") page = <PhilosophyPage {...pageProps} />;
-  else if (pathname === "/process") page = <ProcessPage {...pageProps} />;
   else if (pathname === "/team") page = <TeamPage {...pageProps} />;
-  else if (pathname === "/sectors") page = <SectorsPage {...pageProps} />;
   else if (pathname === "/about") page = <AboutPage {...pageProps} />;
   else if (pathname === "/careers") page = <CareersPage {...pageProps} />;
   else if (pathname.startsWith("/careers/"))

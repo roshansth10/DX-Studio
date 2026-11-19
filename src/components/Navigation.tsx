@@ -133,15 +133,12 @@ export const Navigation: React.FC<NavigationProps> = ({
       label: "Company",
       items: [
         { label: "About", href: "/about" },
-        { label: t.nav.philosophy, href: "/philosophy" },
-        { label: t.nav.process, href: "/process" },
         { label: t.nav.team, href: "/team" },
-        { label: t.nav.sectors, href: "/sectors" },
+        { label: "Careers", href: "/careers" },
       ],
     },
     { label: t.nav.services, href: "/services" },
     { label: t.nav.work, href: "/work" },
-    { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ];
 

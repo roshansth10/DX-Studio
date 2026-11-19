@@ -134,30 +134,6 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
               </li>
               <li>
                 <a
-                  href="/philosophy"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateTo("/philosophy");
-                  }}
-                  className="hover:text-blue-600 transition-colors"
-                >
-                  Philosophy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/process"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateTo("/process");
-                  }}
-                  className="hover:text-blue-600 transition-colors"
-                >
-                  Process
-                </a>
-              </li>
-              <li>
-                <a
                   href="/team"
                   onClick={(e) => {
                     e.preventDefault();
@@ -170,14 +146,14 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
               </li>
               <li>
                 <a
-                  href="/sectors"
+                  href="/careers"
                   onClick={(e) => {
                     e.preventDefault();
-                    navigateTo("/sectors");
+                    navigateTo("/careers");
                   }}
                   className="hover:text-blue-600 transition-colors"
                 >
-                  Sectors
+                  Careers
                 </a>
               </li>
               <li>
