@@ -176,7 +176,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* Secondary mobile preview */}
               <div
-                className={`hidden sm:block absolute -bottom-4 -right-1 z-20 w-18 sm:w-24 lg:w-28 rounded-xl border p-1.5 shadow-xl transition-all duration-300 ${
+                className={`hidden sm:block absolute -bottom-8 -left-5 sm:-left-6 lg:-left-8 z-20 w-18 sm:w-24 lg:w-28 rounded-xl border p-1.5 shadow-xl transition-all duration-300 ${
                   isDark
                     ? "border-neutral-700 bg-neutral-900 shadow-black/30"
                     : "border-neutral-200 bg-white shadow-neutral-300/25"
