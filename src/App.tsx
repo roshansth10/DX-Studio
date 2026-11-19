@@ -130,7 +130,7 @@ export default function App() {
         onOpenContact={() => setContactOpen(true)}
       />
       <div className="flex-1 flex flex-col">{page}</div>
-      <Footer theme={theme} />
+      {pathname !== "/contact" && <Footer theme={theme} />}
       <ContactModal
         isOpen={contactOpen}
         onClose={() => setContactOpen(false)}
