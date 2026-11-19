@@ -195,7 +195,7 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({
         >
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs font-bold text-blue-600">
-              [{member.number} / COLLECTIVE]
+              COLLECTIVE
             </span>
             <span className="text-neutral-400">•</span>
             <span className="font-mono text-xs text-neutral-500 uppercase tracking-wider">

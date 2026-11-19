@@ -85,7 +85,7 @@ export const HomePage: React.FC<PageProps> = ({
     <FeaturedWork theme={theme} onSelectProject={onSelectProject} preview />
     <PreviewBand
       theme={theme}
-      eyebrow="04 // Company"
+      eyebrow="Company"
       title="Built with purpose."
       description="Meet the approach, philosophy, and working method behind every DX Studio project."
       href="/about"
@@ -146,7 +146,7 @@ export const WorkPage: React.FC<PageProps> = ({ theme, onSelectProject }) => {
   return (
     <PageShell
       theme={theme}
-      eyebrow="02 // Portfolio"
+      eyebrow="Portfolio"
       title="Selected Work"
       description="A considered collection of digital products, identities, and experiences built for ambitious teams."
     >
@@ -225,7 +225,7 @@ export const ProjectPage: React.FC<PageProps & { project: ProjectItem }> = ({
   return (
     <PageShell
       theme={theme}
-      eyebrow={`${project.number} // ${project.category}`}
+      eyebrow={project.category}
       title={project.title}
       description={project.tagline}
     >
@@ -440,7 +440,7 @@ export const AboutPage: React.FC<PageProps> = ({
         <div className="relative mx-auto max-w-7xl px-6 pb-20 sm:px-6 sm:pb-28 lg:px-12 lg:pb-36">
           <div className="gsap-heading-reveal">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              01 // About DX Studio
+              About DX Studio
             </span>
             <h1 className="mt-7 max-w-[1100px] font-heading text-5xl font-bold leading-[0.96] tracking-tight sm:text-7xl lg:text-[6.5rem]">
               We build what moves{" "}
@@ -473,9 +473,6 @@ export const AboutPage: React.FC<PageProps> = ({
                   key={item}
                   className="relative min-h-28 p-5 theme-bg-card gsap-stagger-item sm:min-h-36 sm:p-7"
                 >
-                  <span className="font-mono text-[10px] text-blue-600">
-                    0{index + 1}
-                  </span>
                   <span className="absolute bottom-5 left-5 font-heading text-lg font-bold sm:bottom-7 sm:left-7 sm:text-2xl">
                     {item}
                   </span>
@@ -490,7 +487,7 @@ export const AboutPage: React.FC<PageProps> = ({
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 lg:px-12">
           <div className="md:col-span-4">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              02 // Who We Are
+              Who We Are
             </span>
           </div>
           <div className="md:col-span-8">
@@ -520,7 +517,7 @@ export const AboutPage: React.FC<PageProps> = ({
           <div className="mb-12 flex items-end justify-between border-b pb-6 theme-border">
             <div>
               <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-                03 // Our Philosophy
+                Our Philosophy
               </span>
               <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight sm:text-6xl">
                 Design. Develop. Experience.
@@ -533,9 +530,7 @@ export const AboutPage: React.FC<PageProps> = ({
                 key={item.number}
                 className="grid gap-5 py-8 transition-colors duration-300 hover:text-blue-600 md:grid-cols-12 sm:py-10 gsap-stagger-item"
               >
-                <span className="font-mono text-xs text-blue-600 md:col-span-2">
-                  {item.number}
-                </span>
+                <span className="md:col-span-1" aria-hidden="true" />
                 <h3 className="font-heading text-3xl font-bold sm:text-4xl md:col-span-3">
                   {item.title}
                 </h3>
@@ -552,7 +547,7 @@ export const AboutPage: React.FC<PageProps> = ({
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="mb-12 max-w-3xl gsap-heading-reveal">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              04 // What We Do
+              What We Do
             </span>
             <h2 className="mt-4 font-heading text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
               One team across the digital system.
@@ -574,13 +569,6 @@ export const AboutPage: React.FC<PageProps> = ({
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span
-                    className={`font-mono text-xs text-blue-600 ${
-                      isDark ? "group-hover:text-white" : ""
-                    }`}
-                  >
-                    {service.number}
-                  </span>
                   <ArrowUpRight className="h-4 w-4 opacity-50 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-100" />
                 </div>
                 <h3
@@ -607,7 +595,7 @@ export const AboutPage: React.FC<PageProps> = ({
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="mb-14 max-w-3xl gsap-heading-reveal">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              05 // How We Work
+              How We Work
             </span>
             <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight sm:text-6xl">
               From an idea to something real.
@@ -649,7 +637,7 @@ export const AboutPage: React.FC<PageProps> = ({
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 lg:px-12">
           <div className="md:col-span-4">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              06 // Our Approach
+              Our Approach
             </span>
           </div>
           <div className="md:col-span-8 gsap-heading-reveal">
@@ -678,7 +666,7 @@ export const AboutPage: React.FC<PageProps> = ({
           <div className="grid items-end gap-10 md:grid-cols-12 gsap-heading-reveal">
             <div className="md:col-span-8">
               <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-                07 // Initiation
+                Initiation
               </span>
               <h2 className="mt-5 max-w-4xl font-heading text-4xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
                 Have something in mind? Let's build it.
@@ -827,7 +815,7 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
         <div className="grid items-start gap-12 md:grid-cols-12 md:gap-10 lg:gap-16">
           <div className="relative md:col-span-5 lg:col-span-5 gsap-heading-reveal">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              08 // Start a Conversation
+              Start a Conversation
             </span>
             <h1 className="mt-6 font-heading text-[3.25rem] font-bold leading-[0.92] tracking-[-0.055em] sm:text-7xl lg:text-[5.25rem]">
               Let's Build
@@ -874,7 +862,7 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-10 flex items-end justify-between border-b pb-5 theme-border gsap-heading-reveal">
           <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-            09 // Contact Information
+            Contact Information
           </span>
           <span className="hidden font-mono text-[10px] uppercase tracking-widest theme-text-subtle sm:block">
             Kathmandu · Nepal · UTC+5:45
@@ -887,7 +875,7 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
               className="group block border-b pb-6 theme-border"
             >
               <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
-                01 / Email
+                Email
               </span>
               <span className="mt-3 flex items-center justify-between gap-4 font-heading text-xl font-bold transition-colors group-hover:text-blue-600 sm:text-3xl">
                 <span className="break-all">info.dxcreativestudio@gmail.com</span>
@@ -897,7 +885,7 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
             <div className="grid sm:grid-cols-2">
               <div className="border-b py-7 pr-0 sm:border-r sm:pr-7 theme-border">
                 <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
-                  02 / Phone / WhatsApp
+                  Phone / WhatsApp
                 </span>
                 <a
                   href="https://wa.me/9779764775438"
@@ -910,7 +898,7 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
               </div>
               <div className="border-b py-7 sm:pl-7 theme-border">
                 <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
-                  03 / Instagram
+                  Instagram
                 </span>
                 <a
                   href="https://www.instagram.com/dxcreativestudio/"
@@ -925,7 +913,7 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
             </div>
             <div className="py-7">
               <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
-                04 / Office
+                Office
               </span>
               <p className="mt-3 max-w-md font-heading text-2xl font-bold leading-tight sm:text-3xl">
                 Kathmandu, Nepal
@@ -963,7 +951,7 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
             </svg>
             <div className="relative z-10 mt-auto">
               <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
-                05 / Google Maps
+                Google Maps
               </span>
               <div className="mt-3 flex items-center gap-3 font-heading text-3xl font-bold">
                 View Location

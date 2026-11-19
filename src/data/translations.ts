@@ -137,7 +137,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       rescrablePrompt: "Click to re-scramble",
     },
     intro: {
-      eyebrow: "01 // Philosophy",
+      eyebrow: "Philosophy",
       standard: "The DX Standard",
       quotePre: "“Good digital work isn’t decoration. ",
       quoteHighlight: "It’s how people experience your business.”",
@@ -148,14 +148,14 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       directImpactHeadline: "Zero Fluff. 100% Commercial Execution.",
     },
     services: {
-      eyebrow: "03 // Capabilities",
+      eyebrow: "Capabilities",
       title: "What we do.",
       subtitle:
         "We partner with ambitious founders and enterprises to craft enduring brand identities, frictionless product interfaces, and scalable web architectures.",
       viewCaseStudies: "View Case Studies",
     },
     work: {
-      eyebrow: "02 // Selected Work",
+      eyebrow: "Selected Work",
       title: "Engineered for distinction.",
       subtitle:
         "A curated selection of recent client engagements spanning luxury commerce, fintech systems, and editorial monographs.",
@@ -163,11 +163,11 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       featuredDeliverables: "Core Deliverables",
     },
     principles: {
-      eyebrow: "04 // Core Principles",
+      eyebrow: "Core Principles",
       statement: "We believe clarity beats novelty every single time.",
     },
     process: {
-      eyebrow: "05 // Engagement Model",
+      eyebrow: "Engagement Model",
       title: "From idea to impact.",
       subtitle:
         "A transparent, sprint-based workflow designed to eliminate guesswork, accelerate execution, and protect creative integrity.",
@@ -177,7 +177,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       next: "Next Stage →",
     },
     team: {
-      eyebrow: "06 // The Collective",
+      eyebrow: "The Collective",
       title: "Senior practitioners. Zero intermediaries.",
       subtitle:
         "Direct access to partners, principal designers, and senior engineers. We operate as a focused atelier where every contributor has deep domain mastery.",
@@ -188,7 +188,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       viewProfile: "View Senior Profile",
     },
     trust: {
-      eyebrow: "07 // Trust & Reach",
+      eyebrow: "Trust & Reach",
       title: "Built for founders who demand precision.",
       subtitle:
         "Our partners share how direct practitioner collaboration delivered measurable commercial results across global markets.",
@@ -196,7 +196,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       next: "Next Review",
     },
     finalCta: {
-      eyebrow: "08 // Initiation",
+      eyebrow: "Initiation",
       title: "Have something worth building?",
       subtitle:
         "Tell us what you’re working on. We’ll figure out the rest. We review every project brief within 24 hours.",

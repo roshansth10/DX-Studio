@@ -325,7 +325,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           <form onSubmit={handleSubmit} noValidate className="space-y-9">
             <div>
               <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-blue-600">
-                08.1 // Project Inquiry
+                Project Inquiry
               </span>
               <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">
                 Start the brief.
@@ -334,7 +334,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
             <div>
               <label className="mb-3 flex items-baseline justify-between font-mono text-[10px] font-semibold uppercase tracking-widest theme-text-subtle">
-                <span>01 / Services Needed</span>
+                <span>Services Needed</span>
                 <span className="normal-case tracking-normal opacity-70">Select one or more</span>
               </label>
               <div className="flex flex-wrap gap-2">
@@ -366,7 +366,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
             <div>
               <label className="mb-3 flex items-baseline justify-between font-mono text-[10px] font-semibold uppercase tracking-widest theme-text-subtle">
-                <span>02 / Project Budget</span>
+                <span>Project Budget</span>
                 <span className="normal-case tracking-normal opacity-70">NPR</span>
               </label>
               <div className={`grid grid-cols-2 border-l border-t sm:grid-cols-3 ${isDark ? "border-neutral-800" : "border-neutral-300"}`}>
@@ -402,7 +402,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label className="mb-2 block font-mono text-[10px] font-semibold uppercase tracking-widest theme-text-subtle">
-                  03 / Your Name
+                  Your Name
                 </label>
                 <input
                   type="text"
@@ -425,7 +425,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               </div>
               <div>
                 <label className="mb-2 block font-mono text-[10px] font-semibold uppercase tracking-widest theme-text-subtle">
-                  04 / Work Email
+                  Work Email
                 </label>
                 <input
                   type="email"
@@ -450,7 +450,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
             <div>
               <label className="mb-2 block font-mono text-[10px] font-semibold uppercase tracking-widest theme-text-subtle">
-                05 / Project Overview / Goals
+                Project Overview / Goals
               </label>
               <textarea
                 rows={5}

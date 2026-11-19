@@ -151,7 +151,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         <div className="flex items-start justify-between gap-4 border-b border-neutral-800 px-4 py-4 sm:px-6 shrink-0 bg-neutral-900">
           <div className="flex min-w-0 flex-wrap items-center gap-2">
             <span className="font-mono text-xs text-blue-500 font-bold">
-              {project.number} // CASE STUDY
+              CASE STUDY
             </span>
             <span className="text-neutral-500">•</span>
             <span className="text-xs text-neutral-300 font-medium">{project.client}</span>
