@@ -51,8 +51,8 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         {/* Top Tier: Logo & Statement & Back to Top */}
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pb-8 md:pb-10 border-b border-inherit">
-          <div className="max-w-md">
+        <div className="grid grid-cols-1 gap-8 pb-8 md:grid-cols-12 md:items-center md:pb-10 border-b border-inherit">
+          <div className="md:col-span-5">
             <a
               href="/"
               onClick={(e) => {
@@ -63,17 +63,26 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
             >
               <BrandLogo theme={theme} size="lg" variant="full" />
             </a>
-            <p
-              className={`mt-4 text-base leading-relaxed ${
-                isDark ? "text-neutral-400" : "text-neutral-600"
-              }`}
-            >
-              Digital experiences for businesses moving forward. Combining
-              strategy, design, and engineering into enduring digital capital.
+            <p className="mt-3 font-heading text-base font-bold sm:text-lg">
+              Design. Develop. Experience.
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="md:col-span-6 flex md:justify-center">
+            <div className="max-w-md text-center">
+              <p
+                className={`text-base leading-relaxed text-justify ${
+                  isDark ? "text-neutral-400" : "text-neutral-600"
+                }`}
+              >
+                Building better digital experiences for businesses across Nepal.
+                We combine creative thinking, thoughtful design, and solid
+                engineering to turn ideas into solutions that make a difference.
+              </p>
+            </div>
+          </div>
+
+          <div className="md:col-span-1 md:flex md:justify-end">
             <button
               onClick={scrollToTop}
               className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
@@ -89,23 +98,23 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
         </div>
 
         {/* Middle Tier: Columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 md:py-10 border-b border-inherit text-sm">
-          {/* Column 1: Studio */}
+        <div className="grid grid-cols-2 md:grid-cols-[1fr_0.75fr_1.35fr_1.15fr] gap-4 md:gap-6 py-8 md:py-10 border-b border-inherit text-sm">
+          {/* Column 1: Quick Links */}
           <div className="min-w-0">
             <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
-              Studio
+              Quick Links
             </div>
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="/about"
+                  href="/"
                   onClick={(e) => {
                     e.preventDefault();
-                    navigateTo("/about");
+                    navigateTo("/");
                   }}
                   className="hover:text-blue-600 transition-colors"
                 >
-                  About DX Studio
+                  Home
                 </a>
               </li>
               <li>
@@ -134,6 +143,39 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
               </li>
               <li>
                 <a
+                  href="/contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/contact");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 2: Company */}
+          <div className="min-w-0">
+            <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
+              Company
+            </div>
+            <ul className="space-y-2.5">
+              <li>
+                <a
+                  href="/about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/about");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
                   href="/team"
                   onClick={(e) => {
                     e.preventDefault();
@@ -141,7 +183,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   }}
                   className="hover:text-blue-600 transition-colors"
                 >
-                  Meet the Team
+                  Team
                 </a>
               </li>
               <li>
@@ -156,91 +198,6 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   Careers
                 </a>
               </li>
-              <li>
-                <a
-                  href="/contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateTo("/contact");
-                  }}
-                  className="hover:text-blue-600 transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 2: Services */}
-          <div className="min-w-0">
-            <div className="font-mono text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">
-              Services
-            </div>
-            <ul className="space-y-2.5">
-              <li>
-                <a
-                  href="/services"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateTo("/services");
-                  }}
-                  className="hover:text-blue-600 transition-colors"
-                >
-                  Brand & Identity
-                </a>
-              </li>
-              {/* UI/UX & Products hidden for now
-              <li>
-                <a
-                  href="/services"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateTo("/services");
-                  }}
-                  className="hover:text-blue-600 transition-colors"
-                >
-                  UI/UX & Products
-                </a>
-              </li>
-              */}
-              <li>
-                <a
-                  href="/services"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateTo("/services");
-                  }}
-                  className="hover:text-blue-600 transition-colors"
-                >
-                  Web Development
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/services"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateTo("/services");
-                  }}
-                  className="hover:text-blue-600 transition-colors"
-                >
-                  SEO & Growth
-                </a>
-              </li>
-              {/* Creative Technology hidden for now
-              <li>
-                <a
-                  href="/services"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigateTo("/services");
-                  }}
-                  className="hover:text-blue-600 transition-colors"
-                >
-                  Creative Technology
-                </a>
-              </li>
-              */}
             </ul>
           </div>
 

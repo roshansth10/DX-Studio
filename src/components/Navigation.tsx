@@ -129,6 +129,8 @@ export const Navigation: React.FC<NavigationProps> = ({
 
   const navGroups: NavigationGroup[] = [
     { label: "Home", href: "/" },
+    { label: t.nav.work, href: "/work" },
+    { label: t.nav.services, href: "/services" },
     {
       label: "Company",
       items: [
@@ -137,8 +139,6 @@ export const Navigation: React.FC<NavigationProps> = ({
         { label: "Careers", href: "/careers" },
       ],
     },
-    { label: t.nav.services, href: "/services" },
-    { label: t.nav.work, href: "/work" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -165,7 +165,7 @@ export const Navigation: React.FC<NavigationProps> = ({
             : "bg-transparent py-5"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between xl:justify-center xl:gap-8 px-6 lg:px-12">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-12">
           {/* Logo */}
           <MagneticElement strength={0.2}>
             <a
@@ -215,7 +215,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                   </button>
                   <div
                     role="menu"
-                    className={`absolute left-1/2 top-full z-50 mt-3 w-64 -translate-x-1/2 overflow-hidden rounded-xl border p-1.5 shadow-2xl backdrop-blur-xl transition-all duration-200 origin-top ${
+                    className={`absolute left-0 top-full z-50 mt-4 w-56 overflow-hidden border-t-2 border-blue-600 px-1 py-2 shadow-[0_16px_40px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-200 origin-top ${
                       openDesktopMenu === group.label
                         ? "visible translate-y-0 opacity-100"
                         : "invisible -translate-y-1 opacity-0"
@@ -234,16 +234,15 @@ export const Navigation: React.FC<NavigationProps> = ({
                           role="menuitem"
                           href={item.href}
                           onClick={(e) => handleNavClick(e, item.href)}
-                          className={`flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors ${
+                          className={`relative flex items-center px-3 py-3.5 text-sm font-medium transition-colors ${
                             pathname === item.href
-                              ? "bg-blue-600 text-white"
+                              ? "bg-blue-600/10 text-blue-600"
                               : isDark
                                 ? "text-neutral-300 hover:bg-neutral-800 hover:text-white"
                                 : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
                           }`}
                         >
                           {item.label}
-                          <ArrowUpRight className="h-3.5 w-3.5 opacity-60" />
                         </a>
                       ) : (
                         <div
@@ -480,7 +479,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                   >
                     {group.label}
                     <ChevronDown
-                      className={`h-5 w-5 transition-transform duration-200 ${
+                      className={`h-4 w-4 transition-transform duration-200 ${
                         openMobileMenu === group.label ? "rotate-180" : ""
                       }`}
                     />
