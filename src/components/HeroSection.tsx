@@ -59,7 +59,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Left Column: Editorial Headline & Copy */}
           <div className="contents lg:col-span-7 lg:flex lg:flex-col items-start text-left">
             {/* Eyebrow */}
-            <div className="order-2 inline-flex w-fit justify-self-start items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-mono uppercase tracking-[0.2em] font-semibold mb-6 transition-all duration-300 lg:order-none">
+            <div className="order-2 inline-flex w-fit justify-self-start items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-mono uppercase tracking-[0.2em] font-semibold mb-6 transition-all duration-300 sm:order-1 lg:order-none">
               <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
               <span className="text-blue-600 font-bold">
                 {t.hero.established}
@@ -67,7 +67,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* Main Editorial Headline with Scramble Effect */}
-            <div className="order-3 relative group w-full mb-6 lg:order-none">
+            <div className="order-3 relative group w-full mb-6 sm:order-2 lg:order-none">
               <ScrambleHeadline
                 preText={t.hero.headlinePre}
                 highlightText={t.hero.headlineHighlight}
@@ -82,7 +82,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Supporting Editorial Copy */}
             <p
-              className={`order-4 max-w-xl text-lg sm:text-xl font-body font-normal leading-relaxed mb-8 lg:order-none ${
+              className={`order-4 max-w-xl text-lg sm:text-xl font-body font-normal leading-relaxed mb-8 sm:order-3 lg:order-none ${
                 isDark ? "text-neutral-300" : "text-neutral-600"
               }`}
             >
@@ -90,7 +90,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </p>
 
             {/* CTAs with Magnetic Hover */}
-            <div className="order-5 flex w-full flex-col items-stretch gap-3 mb-10 sm:w-auto sm:flex-row sm:items-center sm:gap-4 lg:order-none">
+            <div className="order-5 flex w-full flex-col items-stretch gap-3 mb-10 sm:order-4 sm:w-auto sm:flex-row sm:items-center sm:gap-4 lg:order-none">
               <MagneticElement strength={0.25}>
                 <button
                   onClick={onExploreWork}
@@ -124,9 +124,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Right Column: Layered Editorial Visual Composition */}
-          <div className="order-1 lg:order-none lg:col-span-5 relative lg:pt-12">
+          <div className="order-1 sm:order-5 lg:order-none lg:col-span-5 relative lg:pt-12">
             <div
-              className="relative w-full lg:w-[125%] transition-transform duration-300 ease-out"
+              className="relative w-full transition-transform duration-300 ease-out"
               style={{
                 transform: `perspective(1000px) rotateY(${mouseOffset.x * 0.4}deg) rotateX(${-mouseOffset.y * 0.4}deg) translate3d(${mouseOffset.x}px, ${mouseOffset.y}px, 0)`,
               }}
@@ -176,7 +176,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* Secondary mobile preview */}
               <div
-                className={`hidden sm:block absolute -bottom-4 -right-1 z-20 w-24 sm:w-32 lg:w-36 rounded-xl border p-1.5 shadow-xl transition-all duration-300 ${
+                className={`hidden sm:block absolute -bottom-4 -right-1 z-20 w-18 sm:w-24 lg:w-28 rounded-xl border p-1.5 shadow-xl transition-all duration-300 ${
                   isDark
                     ? "border-neutral-700 bg-neutral-900 shadow-black/30"
                     : "border-neutral-200 bg-white shadow-neutral-300/25"
@@ -187,14 +187,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               >
                 <div className="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[340/747]">
                   <img
-                    src="/image/zentrix-mockup.png"
-                    alt="Zentrix Sports Mobile UI"
-                    className="h-full w-full object-contain"
+                    src="/image/himaly-mockup-mbl.png"
+                    alt="Himaly Travel Discovery Platform"
+                    className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="px-0.5 pt-1.5 pb-0.5 text-left">
                   <div className="font-mono text-[8px] text-neutral-400 uppercase tracking-wider">
-                    Zentrix Sports
+                    Himaly Travel
                   </div>
                 </div>
               </div>
