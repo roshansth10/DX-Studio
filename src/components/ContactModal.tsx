@@ -266,7 +266,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
     try {
       // Posts the brief to a Google Apps Script Web App bound to your own
-      // Google account (roshan.devworks@gmail.com). No third-party processor.
+      // Google account (info.dxcreativestudio@gmail.com). No third-party processor.
       // `no-cors` is required because Apps Script Web Apps don't return CORS
       // headers; the request still delivers, the response is just opaque.
       await fetch(APPS_SCRIPT_ENDPOINT, {
@@ -286,7 +286,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       setSubmitted(true);
     } catch {
       setSendError(
-        "We couldn't send your brief automatically. Please email roshan.devworks@gmail.com directly."
+        "We couldn't send your brief automatically. Please email info.dxcreativestudio@gmail.com directly."
       );
     } finally {
       setSending(false);

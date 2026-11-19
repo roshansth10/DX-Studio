@@ -264,7 +264,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="mailto:roshan.devworks@gmail.com"
+                  href="mailto:info.dxcreativestudio@gmail.com"
                   className="inline-flex items-center gap-1.5 hover:text-blue-600 transition-colors text-[14px] sm:text-sm font-mono min-w-0 [overflow-wrap:anywhere]"
                 >
                   <span>info.dxcreativestudio@gmail.com</span>

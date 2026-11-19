@@ -322,11 +322,11 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({
                   {page.contactIntro}
                 </p>
                 <a
-                  href="mailto:roshan.devworks@gmail.com"
+                  href="mailto:info.dxcreativestudio@gmail.com"
                   className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-blue-500 transition-colors"
                 >
                   <Mail className="h-3.5 w-3.5" />
-                  roshan.devworks@gmail.com
+                  info.dxcreativestudio@gmail.com
                 </a>
               </div>
 

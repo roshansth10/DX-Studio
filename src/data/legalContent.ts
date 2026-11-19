@@ -35,7 +35,7 @@ export const PRIVACY: LegalPage = {
       title: "Who We Are",
       paragraphs: [
         "DX Studio is a creative technology studio based in Kathmandu, Nepal. We design and build digital products, brand identities, and web experiences for ambitious businesses.",
-        "Our contact email is roshan.devworks@gmail.com.",
+        "Our contact email is info.dxcreativestudio@gmail.com.",
       ],
     },
     {
@@ -115,7 +115,7 @@ export const PRIVACY: LegalPage = {
       id: "your-rights-contact",
       title: "",
       paragraphs: [
-        "To exercise any of these rights, email us at roshan.devworks@gmail.com. We will respond within [5] working days.",
+        "To exercise any of these rights, email us at info.dxcreativestudio@gmail.com. We will respond within [5] working days.",
       ],
     },
     {
@@ -329,7 +329,7 @@ export const ACCESSIBILITY: LegalPage = {
       id: "feedback",
       title: "Feedback and Contact",
       paragraphs: [
-        "If you encounter an accessibility barrier on this site, we want to know about it. Please contact us at roshan.devworks@gmail.com with:",
+        "If you encounter an accessibility barrier on this site, we want to know about it. Please contact us at info.dxcreativestudio@gmail.com with:",
       ],
       items: [
         "A description of the barrier you encountered",

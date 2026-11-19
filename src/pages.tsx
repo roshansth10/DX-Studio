@@ -363,11 +363,11 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
   >
     <div className="flex flex-col items-start gap-6 rounded-2xl border p-6 sm:p-10 theme-border theme-bg-card">
       <a
-        href="mailto:roshan.devworks@gmail.com"
+        href="mailto:info.dxcreativestudio@gmail.com"
         className="inline-flex items-center gap-2 text-lg font-semibold text-blue-600 hover:underline"
       >
         <Mail className="h-5 w-5" />
-        roshan.devworks@gmail.com
+        info.dxcreativestudio@gmail.com
       </a>
       <a
         href="https://wa.me/9779764775438"
