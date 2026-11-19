@@ -396,6 +396,34 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     number: "03",
+    title: "Software Development",
+    category: "Custom Systems & Applications",
+    summary:
+      "Developing custom software solutions that help businesses manage operations, simplify workflows, and solve specific business problems.",
+    primaryFocus:
+      "Building practical, reliable software tailored to business requirements, with an emphasis on functionality, maintainability, and scalability.",
+    subItems: [
+      "Custom Software Development",
+      "Business Management Systems",
+      "Admin Panels & Dashboards",
+      "Inventory & POS Systems",
+      "Database Design & Integration",
+      "API Development & Integration",
+      "Workflow Automation",
+    ],
+    deliverables: [
+      "Custom Software Application",
+      "Admin Dashboard",
+      "Database Integration",
+      "API Integrations (where required)",
+      "Testing & Deployment",
+      "Technical Support",
+    ],
+    previewImage:
+      "/image/zentrix.png",
+  },
+  {
+    number: "04",
     title: "Search Engine Optimization (SEO)",
     category: "Search Visibility",
     summary:
@@ -421,7 +449,7 @@ export const SERVICES: ServiceItem[] = [
       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop",
   },
   {
-    number: "04",
+    number: "05",
     title: "Digital Marketing",
     category: "Campaigns & Promotion",
     summary:
@@ -446,7 +474,7 @@ export const SERVICES: ServiceItem[] = [
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
   },
   {
-    number: "05",
+    number: "06",
     title: "Social Media Management",
     category: "Publishing & Community",
     summary:
