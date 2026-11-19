@@ -64,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
               <BrandLogo theme={theme} size="lg" variant="full" />
             </a>
             <p className="mt-3 font-heading text-base font-bold sm:text-lg">
-              Design. Develop. Experience.
+              Design<span className="text-blue-600">.</span> Develop<span className="text-blue-600">.</span> Experience<span className="text-blue-600">.</span>
             </p>
           </div>
 

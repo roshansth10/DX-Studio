@@ -61,12 +61,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-mono uppercase tracking-[0.2em] font-semibold mb-6 transition-all duration-300">
               <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
-              <span
-                className={isDark ? "text-neutral-300" : "text-neutral-700"}
-              >
-                {t.hero.eyebrow}
-              </span>
-              <span className="text-neutral-400">•</span>
               <span className="text-blue-600 font-bold">
                 {t.hero.established}
               </span>
