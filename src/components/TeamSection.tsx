@@ -70,7 +70,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
               </span>
             </div>
 
-            <h2 className="mt-4 font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight max-w-3xl theme-text-primary">
+            <h2 className="mt-4 font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight max-w-3xl theme-text-primary">
               Meet the thinkers, makers, and architects.
             </h2>
           </div>
