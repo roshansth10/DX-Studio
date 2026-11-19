@@ -15,8 +15,11 @@ import { PROJECTS } from "./data/content";
 import {
   AboutPage,
   AccessibilityPage,
+  CareersPage,
   ContactPage,
   HomePage,
+  JOB_OPENINGS,
+  JobDetailPage,
   PhilosophyPage,
   PrivacyPage,
   ProcessPage,
@@ -62,7 +65,11 @@ export default function App() {
         ? "DX Studio — Digital Creative & Technology Studio"
         : pathname.startsWith("/work/")
           ? "Project Case Study — DX Studio"
-          : `${pathname
+          : pathname === "/careers"
+            ? "Careers — DX Studio"
+            : pathname.startsWith("/careers/")
+              ? "Career Opportunity — DX Studio"
+              : `${pathname
               .slice(1)
               .replace(/-/g, " ")
               .replace(/\b\w/g, (letter) => letter.toUpperCase())} — DX Studio`;
@@ -81,6 +88,10 @@ export default function App() {
     ? pathname.split("/")[2]
     : "";
   const project = PROJECTS.find((item) => item.id === projectSlug);
+  const jobSlug = pathname.startsWith("/careers/")
+    ? pathname.split("/")[2]
+    : "";
+  const position = JOB_OPENINGS.find((item) => item.id === jobSlug);
 
   let page: React.ReactNode;
   if (pathname === "/") page = <HomePage {...pageProps} />;
@@ -92,6 +103,9 @@ export default function App() {
   else if (pathname === "/team") page = <TeamPage {...pageProps} />;
   else if (pathname === "/sectors") page = <SectorsPage {...pageProps} />;
   else if (pathname === "/about") page = <AboutPage {...pageProps} />;
+  else if (pathname === "/careers") page = <CareersPage {...pageProps} />;
+  else if (pathname.startsWith("/careers/"))
+    page = <JobDetailPage {...pageProps} position={position} />;
   else if (pathname === "/contact") page = <ContactPage {...pageProps} />;
   else if (pathname === "/privacy") page = <PrivacyPage theme={theme} />;
   else if (pathname === "/terms") page = <TermsPage theme={theme} />;

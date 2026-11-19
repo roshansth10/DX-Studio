@@ -27,6 +27,37 @@ interface PageProps {
   onSelectProject: (project: ProjectItem) => void;
 }
 
+export interface JobPosition {
+  id: string;
+  title: string;
+  location: string;
+  employmentType: string;
+  description: string;
+  responsibilities: string[];
+  requirements: string[];
+}
+
+/*
+Sample future vacancy structure (not published or displayed):
+{
+  id: "front-end-developer",
+  title: "Front-End Developer",
+  location: "Kathmandu, Nepal",
+  employmentType: "Full-time",
+  description: "Build polished, accessible digital experiences for ambitious businesses.",
+  responsibilities: [
+    "Develop responsive interfaces with React and modern web technologies",
+    "Collaborate with designers and engineers from prototype to launch",
+  ],
+  requirements: [
+    "Strong TypeScript and React experience",
+    "A thoughtful approach to accessibility and responsive design",
+  ],
+}
+*/
+
+export const JOB_OPENINGS: JobPosition[] = [];
+
 const RouteButton: React.FC<{
   label: string;
   href: string;
@@ -711,6 +742,99 @@ export const AboutPage: React.FC<PageProps> = ({
     </main>
   );
 };
+export const CareersPage: React.FC<PageProps> = ({ theme }) => (
+  <PageShell
+    theme={theme}
+    eyebrow="Careers // DX Studio"
+    title="Build What's Next. With Us."
+    description="At DX Studio, meaningful work comes from curiosity, craft, and a willingness to keep learning. We're building a team that thinks carefully, collaborates openly, and helps businesses move forward."
+  >
+    <section className="py-6 sm:py-10">
+      <div className="mb-10 gsap-heading-reveal">
+        <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+          Opportunities
+        </span>
+      </div>
+
+      <div className="border-y py-12 sm:py-16 theme-border gsap-section-reveal">
+        <div className="mx-auto max-w-2xl text-center">
+          <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border text-blue-600 theme-border">
+            <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
+          </span>
+          <h2 className="mt-6 font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+            No Open Positions at the Moment.
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed theme-text-muted sm:text-lg">
+            We don't have any active openings right now, but we're always
+            interested in connecting with talented people. Check back soon!
+          </p>
+        </div>
+      </div>
+    </section>
+  </PageShell>
+);
+
+export const JobDetailPage: React.FC<PageProps & { position?: JobPosition }> = ({
+  theme,
+  position,
+}) => (
+  <PageShell
+    theme={theme}
+    eyebrow="Careers // DX Studio"
+    title={position?.title ?? "Position unavailable"}
+    description={
+      position
+        ? `${position.location} · ${position.employmentType}`
+        : "This position is no longer available."
+    }
+  >
+    {position ? (
+      <article className="grid gap-10 py-6 md:grid-cols-12 sm:py-10 gsap-section-reveal">
+        <div className="md:col-span-8">
+          <h2 className="font-heading text-2xl font-bold">About the role</h2>
+          <p className="mt-4 leading-relaxed theme-text-muted">
+            {position.description}
+          </p>
+
+          <h2 className="mt-10 font-heading text-2xl font-bold">
+            Responsibilities
+          </h2>
+          <ul className="mt-4 space-y-3">
+            {position.responsibilities.map((item) => (
+              <li key={item} className="flex items-start gap-3 theme-text-muted">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-blue-600" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <aside className="h-fit border-y py-6 md:col-span-4 theme-border">
+          <h2 className="font-heading text-xl font-bold">Requirements</h2>
+          <ul className="mt-4 space-y-3">
+            {position.requirements.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-sm theme-text-muted">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </article>
+    ) : (
+      <div className="border-y py-12 text-center theme-border">
+        <button
+          type="button"
+          onClick={() => navigateTo("/careers")}
+          className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-blue-500"
+        >
+          View Careers
+          <ArrowUpRight className="h-3.5 w-3.5" />
+        </button>
+      </div>
+    )}
+  </PageShell>
+);
+
 export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
   <PageShell
     theme={theme}

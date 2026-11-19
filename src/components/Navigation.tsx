@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrandLogo } from "./BrandLogo";
 import { ThemeMode } from "../types";
 import {
   ArrowUpRight,
+  ChevronDown,
   Menu,
   X,
   Palette,
@@ -21,6 +22,17 @@ interface NavigationProps {
   onOpenConcepts?: () => void;
 }
 
+interface NavigationItem {
+  label: string;
+  href: string | null;
+}
+
+interface NavigationGroup {
+  label: string;
+  href?: string;
+  items?: NavigationItem[];
+}
+
 export const Navigation: React.FC<NavigationProps> = ({
   theme,
   onSelectTheme,
@@ -32,6 +44,9 @@ export const Navigation: React.FC<NavigationProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [openDesktopMenu, setOpenDesktopMenu] = useState<string | null>(null);
+  const [openMobileMenu, setOpenMobileMenu] = useState<string | null>(null);
+  const navigationRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const unsub = studioAudio.subscribe(setIsMuted);
@@ -49,6 +64,39 @@ export const Navigation: React.FC<NavigationProps> = ({
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handlePointerDown = (event: PointerEvent) => {
+      if (
+        navigationRef.current &&
+        !navigationRef.current.contains(event.target as Node)
+      ) {
+        setOpenDesktopMenu(null);
+        setThemeMenuOpen(false);
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpenDesktopMenu(null);
+        setOpenMobileMenu(null);
+        setThemeMenuOpen(false);
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    setOpenDesktopMenu(null);
+    setOpenMobileMenu(null);
+    setThemeMenuOpen(false);
+  }, [pathname]);
 
   const isDark = theme === "obsidian";
   const isSand = theme === "sand-stone";
@@ -79,14 +127,21 @@ export const Navigation: React.FC<NavigationProps> = ({
     },
   ];
 
-  const navLinks = [
-    { label: "About", href: "/about" },
-    { label: t.nav.work, href: "/work" },
+  const navGroups: NavigationGroup[] = [
+    { label: "Home", href: "/" },
+    {
+      label: "Company",
+      items: [
+        { label: "About", href: "/about" },
+        { label: t.nav.philosophy, href: "/philosophy" },
+        { label: t.nav.process, href: "/process" },
+        { label: t.nav.team, href: "/team" },
+        { label: t.nav.sectors, href: "/sectors" },
+      ],
+    },
     { label: t.nav.services, href: "/services" },
-    { label: t.nav.philosophy, href: "/philosophy" },
-    { label: t.nav.process, href: "/process" },
-    { label: t.nav.team, href: "/team" },
-    { label: t.nav.sectors, href: "/sectors" },
+    { label: t.nav.work, href: "/work" },
+    { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -102,6 +157,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   return (
     <>
       <header
+        ref={navigationRef}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
             ? isDark
@@ -112,7 +168,7 @@ export const Navigation: React.FC<NavigationProps> = ({
             : "bg-transparent py-5"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between lg:justify-center lg:gap-6 xl:gap-8 px-6 lg:px-12">
+        <div className="mx-auto flex max-w-7xl items-center justify-between xl:justify-center xl:gap-8 px-6 lg:px-12">
           {/* Logo */}
           <MagneticElement strength={0.2}>
             <a
@@ -129,30 +185,110 @@ export const Navigation: React.FC<NavigationProps> = ({
           </MagneticElement>
 
           {/* Desktop Nav Links with GSAP Magnetic Hover Effect */}
-          <nav className="hidden items-center gap-4 xl:gap-6 lg:flex shrink-0">
-            {navLinks.map((link) => (
-              <MagneticElement key={link.label} strength={0.35}>
-                <a
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`group relative inline-block px-2 py-1 text-sm font-medium transition-colors duration-200 shrink-0 ${
-                    pathname === link.href ||
-                    (link.href === "/work" && pathname.startsWith("/work/"))
-                      ? "text-blue-600"
-                      : isDark
+          <nav className="hidden items-center gap-3 xl:gap-5 xl:flex shrink-0">
+            {navGroups.map((group) =>
+              group.items ? (
+                <div
+                  key={group.label}
+                  className="relative"
+                  onMouseEnter={() => setOpenDesktopMenu(group.label)}
+                  onMouseLeave={() => setOpenDesktopMenu(null)}
+                >
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setOpenDesktopMenu((current) =>
+                        current === group.label ? null : group.label,
+                      )
+                    }
+                    aria-haspopup="menu"
+                    aria-expanded={openDesktopMenu === group.label}
+                    className={`group inline-flex items-center gap-1 px-1 py-1 text-sm font-medium transition-colors ${
+                      isDark
                         ? "text-neutral-300 hover:text-white"
                         : "text-neutral-600 hover:text-neutral-950"
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  <span className="absolute -bottom-0.5 left-2 right-2 h-[1.5px] w-0 bg-blue-600 transition-all duration-300 group-hover:w-[calc(100%-16px)]" />
-                </a>
-              </MagneticElement>
-            ))}
+                    }`}
+                  >
+                    <span>{group.label}</span>
+                    <ChevronDown
+                      className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                        openDesktopMenu === group.label ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    role="menu"
+                    className={`absolute left-1/2 top-full z-50 mt-3 w-64 -translate-x-1/2 overflow-hidden rounded-xl border p-1.5 shadow-2xl backdrop-blur-xl transition-all duration-200 origin-top ${
+                      openDesktopMenu === group.label
+                        ? "visible translate-y-0 opacity-100"
+                        : "invisible -translate-y-1 opacity-0"
+                    } ${
+                      isDark
+                        ? "border-neutral-800 bg-neutral-900/95"
+                        : isSand
+                          ? "border-[#D8D4CC] bg-[#ECE9E2]/98"
+                          : "border-neutral-200 bg-white/98"
+                    }`}
+                  >
+                    {group.items.map((item) =>
+                      item.href ? (
+                        <a
+                          key={item.label}
+                          role="menuitem"
+                          href={item.href}
+                          onClick={(e) => handleNavClick(e, item.href)}
+                          className={`flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors ${
+                            pathname === item.href
+                              ? "bg-blue-600 text-white"
+                              : isDark
+                                ? "text-neutral-300 hover:bg-neutral-800 hover:text-white"
+                                : "text-neutral-700 hover:bg-neutral-100 hover:text-neutral-950"
+                          }`}
+                        >
+                          {item.label}
+                          <ArrowUpRight className="h-3.5 w-3.5 opacity-60" />
+                        </a>
+                      ) : (
+                        <div
+                          key={item.label}
+                          role="menuitem"
+                          aria-disabled="true"
+                          className={`flex items-center justify-between px-3 py-2.5 text-sm ${
+                            isDark ? "text-neutral-500" : "text-neutral-400"
+                          }`}
+                        >
+                          <span>{item.label}</span>
+                          <span className="font-mono text-[9px] uppercase tracking-wider">
+                            Soon
+                          </span>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <MagneticElement key={group.label} strength={0.35}>
+                  <a
+                    href={group.href ?? "/"}
+                    onClick={(e) => handleNavClick(e, group.href ?? "/")}
+                    className={`group relative inline-block px-1 py-1 text-sm font-medium transition-colors ${
+                      pathname === (group.href ?? "/")
+                        ? "text-blue-600"
+                        : isDark
+                          ? "text-neutral-300 hover:text-white"
+                          : "text-neutral-600 hover:text-neutral-950"
+                    }`}
+                  >
+                    {group.label}
+                    <span className="absolute -bottom-0.5 left-0 h-[1.5px] w-0 bg-blue-600 transition-all duration-300 group-hover:w-full" />
+                  </a>
+                </MagneticElement>
+              ),
+            )}
           </nav>
 
           {/* Actions: Ambient Audio Loop + Theme Selector + Contact CTA */}
-          <div className="hidden items-center gap-3 lg:flex shrink-0">
+          <div className="hidden items-center gap-3 xl:flex shrink-0">
             {/* Subtle Mute/Unmute Studio Ambient Soundscape Toggle */}
             <button
               type="button"
@@ -263,14 +399,14 @@ export const Navigation: React.FC<NavigationProps> = ({
                     : "bg-neutral-950 text-white hover:bg-blue-600"
                 }`}
               >
-                <span>{t.nav.letsTalk}</span>
+                <span>Start a Project</span>
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
             </MagneticElement>
           </div>
 
           {/* Mobile Menu Toggle & Compact Actions */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             {/* Mobile Ambient Audio Toggle */}
             <button
               onClick={handleToggleSound}
@@ -321,7 +457,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div
-          className={`fixed inset-0 top-16 z-30 flex flex-col justify-between p-6 backdrop-blur-xl lg:hidden transition-all duration-300 ${
+          className={`fixed inset-0 top-16 z-30 flex flex-col justify-between p-6 backdrop-blur-xl xl:hidden transition-all duration-300 ${
             isDark
               ? "bg-[#121214]/95 text-white border-b border-neutral-800"
               : isSand
@@ -330,23 +466,90 @@ export const Navigation: React.FC<NavigationProps> = ({
           }`}
         >
           <div className="flex flex-col space-y-4 pt-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`font-heading text-2xl font-bold transition-colors ${
-                  pathname === link.href ||
-                  (link.href === "/work" && pathname.startsWith("/work/"))
-                    ? "text-blue-600"
-                    : isDark
-                      ? "text-neutral-200 hover:text-white"
-                      : "text-neutral-800 hover:text-neutral-950"
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navGroups.map((group) =>
+              group.items ? (
+                <div key={group.label} className="border-b border-inherit pb-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setOpenMobileMenu((current) =>
+                        current === group.label ? null : group.label,
+                      )
+                    }
+                    aria-expanded={openMobileMenu === group.label}
+                    className={`flex w-full items-center justify-between py-1 text-left font-heading text-2xl font-bold ${
+                      isDark ? "text-neutral-200" : "text-neutral-800"
+                    }`}
+                  >
+                    {group.label}
+                    <ChevronDown
+                      className={`h-5 w-5 transition-transform duration-200 ${
+                        openMobileMenu === group.label ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ${
+                      openMobileMenu === group.label
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="min-h-0">
+                      <div className="space-y-1 py-2 pl-3">
+                        {group.items.map((item) =>
+                          item.href ? (
+                            <a
+                              key={item.label}
+                              href={item.href}
+                              onClick={(e) =>
+                                handleNavClick(e, item.href)
+                              }
+                              className={`block py-2 text-base font-medium ${
+                                pathname === item.href
+                                  ? "text-blue-600"
+                                  : isDark
+                                    ? "text-neutral-400 hover:text-white"
+                                    : "text-neutral-600 hover:text-neutral-950"
+                              }`}
+                            >
+                              {item.label}
+                            </a>
+                          ) : (
+                            <div
+                              key={item.label}
+                              className={`flex items-center justify-between py-2 text-base ${
+                                isDark ? "text-neutral-500" : "text-neutral-400"
+                              }`}
+                            >
+                              <span>{item.label}</span>
+                              <span className="font-mono text-[9px] uppercase tracking-wider">
+                                Coming soon
+                              </span>
+                            </div>
+                          ),
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={group.label}
+                  href={group.href ?? "/"}
+                  onClick={(e) => handleNavClick(e, group.href ?? "/")}
+                  className={`border-b border-inherit pb-2 font-heading text-2xl font-bold transition-colors ${
+                    pathname === (group.href ?? "/")
+                      ? "text-blue-600"
+                      : isDark
+                        ? "text-neutral-200 hover:text-white"
+                        : "text-neutral-800 hover:text-neutral-950"
+                  }`}
+                >
+                  {group.label}
+                </a>
+              ),
+            )}
           </div>
 
           <div className="space-y-4 border-t pt-4 border-inherit">
@@ -402,7 +605,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               }}
               className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 py-3 text-sm font-bold text-white uppercase tracking-wider"
             >
-              <span>{t.nav.letsTalk}</span>
+              <span>Start a Project</span>
               <ArrowUpRight className="h-4 w-4" />
             </button>
           </div>
