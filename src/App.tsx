@@ -20,6 +20,7 @@ import {
   HomePage,
   JOB_OPENINGS,
   JobDetailPage,
+  NotFoundPage,
   PrivacyPage,
   ProjectPage,
   ServicesPage,
@@ -211,12 +212,14 @@ export default function App() {
   else if (pathname === "/about") page = <AboutPage {...pageProps} />;
   else if (pathname === "/careers") page = <CareersPage {...pageProps} />;
   else if (pathname.startsWith("/careers/"))
-    page = <JobDetailPage {...pageProps} position={position} />;
+    page = position
+      ? <JobDetailPage {...pageProps} position={position} />
+      : <NotFoundPage {...pageProps} />;
   else if (pathname === "/contact") page = <ContactPage {...pageProps} />;
   else if (pathname === "/privacy") page = <PrivacyPage theme={theme} />;
   else if (pathname === "/terms") page = <TermsPage theme={theme} />;
   else if (pathname === "/accessibility") page = <AccessibilityPage theme={theme} />;
-  else page = <HomePage {...pageProps} />;
+  else page = <NotFoundPage {...pageProps} />;
 
   return (
     <div

@@ -56,6 +56,17 @@ Sample future vacancy structure (not published or displayed):
 
 export const JOB_OPENINGS: JobPosition[] = [];
 
+export const NotFoundPage: React.FC<PageProps> = ({ theme }) => (
+  <PageShell
+    theme={theme}
+    eyebrow="404"
+    title="Page not found"
+    description="The page you're looking for doesn't exist or may have moved."
+  >
+    <RouteButton label="Back to Home" href="/" />
+  </PageShell>
+);
+
 const RouteButton: React.FC<{
   label: string;
   href: string;
