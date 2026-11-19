@@ -49,13 +49,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       {/* Subtle Editorial Topographic / Grid lines */}
       <div
-        className={`pointer-events-none absolute inset-0 opacity-40 ${
+        className={`pointer-events-none absolute inset-0 opacity-25 ${
           isDark ? "editorial-grid-dark" : "editorial-grid"
         }`}
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-12 my-auto">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-start">
           {/* Left Column: Editorial Headline & Copy */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             {/* Eyebrow */}
@@ -121,45 +121,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </MagneticElement>
             </div>
 
-            {/* Editorial Metadata / Studio Signals */}
-            <div
-              className={`grid grid-cols-1 min-[400px]:grid-cols-3 gap-4 min-[400px]:gap-6 pt-6 border-t w-full max-w-lg text-left ${
-                isDark
-                  ? "border-neutral-800 text-neutral-400"
-                  : "border-neutral-300/80 text-neutral-600"
-              }`}
-            >
-              <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-neutral-400">
-                  {t.hero.locationLabel}
-                </div>
-                <div
-                  className={`font-medium text-sm mt-0.5 ${isDark ? "text-neutral-200" : "text-neutral-900"}`}
-                >
-                  {t.hero.locationVal}
-                </div>
-              </div>
-              <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-neutral-400">
-                  {t.hero.focusLabel}
-                </div>
-                <div
-                  className={`font-medium text-sm mt-0.5 ${isDark ? "text-neutral-200" : "text-neutral-900"}`}
-                >
-                  {t.hero.focusVal}
-                </div>
-              </div>
-              <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-neutral-400">
-                  {t.hero.methodologyLabel}
-                </div>
-                <div
-                  className={`font-medium text-sm mt-0.5 ${isDark ? "text-neutral-200" : "text-neutral-900"}`}
-                >
-                  {t.hero.methodologyVal}
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right Column: Layered Editorial Visual Composition */}
@@ -170,108 +131,111 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 transform: `perspective(1000px) rotateY(${mouseOffset.x * 0.4}deg) rotateX(${-mouseOffset.y * 0.4}deg) translate3d(${mouseOffset.x}px, ${mouseOffset.y}px, 0)`,
               }}
             >
-              {/* Primary Architectural Card (Layer 1) */}
+              <div className="relative pb-12 pr-2 sm:pb-14 sm:pr-5">
+              {/* Primary website preview */}
               <div
-                className={`relative overflow-hidden rounded-2xl border p-2 shadow-2xl transition-all duration-300 ${
+                className={`relative overflow-hidden rounded-xl border p-1.5 shadow-xl transition-all duration-300 ${
                   isDark
-                    ? "border-neutral-700/80 bg-neutral-900/90 shadow-black/60"
+                    ? "border-neutral-700/70 bg-neutral-900/90 shadow-black/40"
                     : isSand
-                      ? "border-[#D8D4CC] bg-white/90 shadow-neutral-400/20"
-                      : "border-neutral-200/90 bg-white/95 shadow-neutral-300/30"
+                      ? "border-[#D8D4CC] bg-white/90 shadow-neutral-400/15"
+                      : "border-neutral-200/80 bg-white/95 shadow-neutral-300/25"
                 }`}
               >
-                {/* Browser/Viewport header mockup bar */}
-                <div className="flex items-center justify-between border-b px-3 py-2 border-inherit">
+                {/* Minimal browser frame */}
+                <div className="flex h-7 items-center justify-between px-1.5 sm:h-8 sm:px-2">
                   <div className="flex items-center gap-1.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
                   </div>
-                  <div className="rounded bg-neutral-100 dark:bg-neutral-800 px-3 py-0.5 font-mono text-[10px] text-neutral-500">
-                    dxstudio.co/case/himaly
-                  </div>
-                  <div className="font-mono text-[10px] text-blue-600 font-semibold">
-                    {t.hero.liveTag}
+                  <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-neutral-400">
+                    DX / Selected Project
                   </div>
                 </div>
 
-                {/* Layered Project Imagery */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-neutral-950">
+                {/* Screenshot stays unmodified and undistorted */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900">
                   <img
                     src="/image/himalycover.png"
                     alt="Himaly Travel Discovery Platform"
-                    className="h-full w-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
+                    className="h-full w-full object-contain"
                   />
-                  {/* Subtle gradient vignette overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
+                </div>
 
-                  {/* Floating Metadata on the image */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-white">
-                    <div>
-                      <div className="font-mono text-[10px] uppercase tracking-widest text-blue-400">
-                        {t.hero.featuredCase}
-                      </div>
-                      <div className="font-heading text-lg font-bold">
-                        Himaly — Discover the Himalayas
-                      </div>
-                    </div>
-                    <div className="rounded-full bg-white/20 px-2.5 py-1 text-[11px] font-mono backdrop-blur-md">
-                      Destinations
-                    </div>
+                <div className="flex items-center justify-between px-1.5 pt-2 pb-0.5 sm:px-2">
+                  <div className="font-heading text-xs font-bold sm:text-sm">
+                    Himaly
+                  </div>
+                  <div className="font-mono text-[9px] uppercase tracking-widest text-blue-600">
+                    Travel Platform
                   </div>
                 </div>
+
               </div>
 
-              {/* Floating Layer 2: Mobile Interface Crop Preview */}
+              {/* Secondary mobile preview */}
               <div
-                className={`absolute -bottom-6 -left-6 z-20 w-44 rounded-xl border p-1.5 shadow-2xl transition-all duration-300 hidden sm:block ${
+                className={`absolute -bottom-1 -right-1 z-20 w-28 sm:w-36 lg:w-44 rounded-xl border p-1.5 shadow-xl transition-all duration-300 ${
                   isDark
-                    ? "border-neutral-700 bg-neutral-900 shadow-black"
-                    : "border-neutral-200 bg-white"
+                    ? "border-neutral-700 bg-neutral-900 shadow-black/30"
+                    : "border-neutral-200 bg-white shadow-neutral-300/25"
                 }`}
                 style={{
                   transform: `translate3d(${-mouseOffset.x * 1.5}px, ${-mouseOffset.y * 1.5}px, 20px)`,
                 }}
               >
-                <div className="overflow-hidden rounded-lg bg-neutral-950 aspect-[9/16]">
+                <div className="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[9/14]">
                   <img
                     src="/image/zentrix.png"
                     alt="Zentrix Sports Mobile UI"
-                    className="h-full w-full object-cover object-top"
+                    className="h-full w-full object-contain"
                   />
                 </div>
-                <div className="p-1.5 text-left">
-                  <div className="font-mono text-[9px] text-neutral-400 uppercase">
+                <div className="px-0.5 pt-1.5 pb-0.5 text-left">
+                  <div className="font-mono text-[8px] text-neutral-400 uppercase tracking-wider">
                     Zentrix Sports
-                  </div>
-                  <div className="text-[11px] font-bold leading-tight">
-                    Power Your Game
                   </div>
                 </div>
               </div>
+              </div>
 
-              {/* Floating Layer 3: Architectural Typographic Badge */}
+              {/* Right-column studio information */}
               <div
-                className={`absolute -top-5 -right-4 z-20 rounded-xl border p-3 shadow-xl backdrop-blur-md transition-all duration-300 ${
+                className={`mt-10 w-full grid grid-cols-1 gap-4 pt-6 border-t text-left sm:grid-cols-3 sm:gap-6 lg:mt-12 ${
                   isDark
-                    ? "border-neutral-700 bg-neutral-900/90 text-white"
-                    : "border-neutral-200 bg-white/95 text-neutral-900"
+                    ? "border-neutral-800 text-neutral-400"
+                    : "border-neutral-300/80 text-neutral-600"
                 }`}
-                style={{
-                  transform: `translate3d(${mouseOffset.x * 1.2}px, ${mouseOffset.y * 1.2}px, 15px)`,
-                }}
               >
-                <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white font-mono font-bold text-xs">
-                    DX
+                <div>
+                  <div className="font-mono text-xs uppercase tracking-widest text-neutral-400">
+                    {t.hero.locationLabel}
                   </div>
-                  <div>
-                    <div className="text-xs font-bold leading-none">
-                      Studio Quality
-                    </div>
-                    <div className="font-mono text-[10px] text-neutral-400 mt-0.5">
-                      Zero Templates
-                    </div>
+                  <div
+                    className={`font-medium text-sm mt-0.5 ${isDark ? "text-neutral-200" : "text-neutral-900"}`}
+                  >
+                    {t.hero.locationVal}
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono text-xs uppercase tracking-widest text-neutral-400">
+                    {t.hero.focusLabel}
+                  </div>
+                  <div
+                    className={`font-medium text-sm mt-0.5 ${isDark ? "text-neutral-200" : "text-neutral-900"}`}
+                  >
+                    {t.hero.focusVal}
+                  </div>
+                </div>
+                <div>
+                  <div className="font-mono text-xs uppercase tracking-widest text-neutral-400">
+                    {t.hero.methodologyLabel}
+                  </div>
+                  <div
+                    className={`font-medium text-sm mt-0.5 ${isDark ? "text-neutral-200" : "text-neutral-900"}`}
+                  >
+                    {t.hero.methodologyVal}
                   </div>
                 </div>
               </div>
