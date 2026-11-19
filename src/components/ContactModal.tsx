@@ -27,14 +27,6 @@ const BUDGET_TIERS = [
   "NPR 5L+",
 ];
 
-/**
- * Google Apps Script Web App endpoint that emails the project brief.
- * Deploy the script (see setup notes) and paste the resulting URL below.
- * It looks like: https://script.google.com/macros/s/AKfycb.../exec
- */
-const APPS_SCRIPT_ENDPOINT =
-  "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
-
 interface FormErrors {
   services?: string;
   budget?: string;
@@ -54,6 +46,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [projectOverview, setProjectOverview] = useState("");
+  const [website, setWebsite] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
@@ -75,6 +68,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       setName("");
       setEmail("");
       setProjectOverview("");
+      setWebsite("");
       setSubmitted(false);
       setErrors({});
       setTouched({});
@@ -268,28 +262,34 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     setSendError(null);
 
     try {
-      // Posts the brief to a Google Apps Script Web App bound to your own
-      // Google account (info.dxcreativestudio@gmail.com). No third-party processor.
-      // `no-cors` is required because Apps Script Web Apps don't return CORS
-      // headers; the request still delivers, the response is just opaque.
-      await fetch(APPS_SCRIPT_ENDPOINT, {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          subject: `New Project Brief — ${name}`,
           name,
           email,
           services: selectedServices.join(", "),
           budget: selectedBudget,
-          overview: projectOverview,
+          message: projectOverview,
+          website,
         }),
       });
 
+      if (!response.ok) {
+        const result = (await response.json().catch(() => null)) as
+          | { error?: string }
+          | null;
+        throw new Error(
+          result?.error || "We couldn't send your project brief."
+        );
+      }
+
       setSubmitted(true);
-    } catch {
+    } catch (error) {
       setSendError(
-        "We couldn't send your brief automatically. Please email info.dxcreativestudio@gmail.com directly."
+        error instanceof Error
+          ? error.message
+          : "We couldn't send your brief automatically. Please email info.dxcreativestudio@gmail.com directly."
       );
     } finally {
       setSending(false);
@@ -323,6 +323,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           </div>
         ) : (
           <form onSubmit={handleSubmit} noValidate className="space-y-9">
+            <input
+              type="text"
+              name="website"
+              value={website}
+              onChange={(event) => setWebsite(event.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+            />
             <div>
               <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-blue-600">
                 // Project Inquiry
@@ -572,6 +582,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             ) : (
               /* ── Form ── */
               <form onSubmit={handleSubmit} noValidate className="space-y-7">
+                <input
+                  type="text"
+                  name="website"
+                  value={website}
+                  onChange={(event) => setWebsite(event.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                />
                 {/* Intro */}
                 <div>
                   <h3
