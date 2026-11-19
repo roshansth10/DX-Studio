@@ -408,14 +408,14 @@ export const AboutPage: React.FC<PageProps> = ({
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
               // About DX Studio
             </span>
-            <h1 className="mt-7 max-w-[1100px] font-heading text-5xl font-bold leading-[0.96] tracking-tight sm:text-7xl lg:text-[6.5rem]">
+            <h1 className="mt-7 max-w-[1000px] font-heading text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">
               We build what moves{" "}
               <span className="text-blue-600">businesses forward.</span>
             </h1>
           </div>
 
           <div className="mt-10 grid gap-8 border-t pt-7 theme-border md:grid-cols-12 gsap-heading-reveal">
-            <p className="max-w-2xl text-lg leading-relaxed theme-text-muted md:col-span-7 sm:text-xl">
+            <p className="max-w-2xl text-base leading-relaxed theme-text-muted md:col-span-7 sm:text-lg">
               DX Studio brings together design, technology, and digital
               strategy to help businesses turn ideas into impactful digital
               experiences.
