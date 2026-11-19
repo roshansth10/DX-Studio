@@ -55,11 +55,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-12 my-auto">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 gap-0 lg:grid-cols-12 lg:gap-8 items-start">
           {/* Left Column: Editorial Headline & Copy */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <div className="contents lg:col-span-7 lg:flex lg:flex-col items-start text-left">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-mono uppercase tracking-[0.2em] font-semibold mb-6 transition-all duration-300">
+            <div className="order-2 inline-flex w-fit justify-self-start items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-mono uppercase tracking-[0.2em] font-semibold mb-6 transition-all duration-300 lg:order-none">
               <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
               <span className="text-blue-600 font-bold">
                 {t.hero.established}
@@ -67,7 +67,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* Main Editorial Headline with Scramble Effect */}
-            <div className="relative group w-full mb-6">
+            <div className="order-3 relative group w-full mb-6 lg:order-none">
               <ScrambleHeadline
                 preText={t.hero.headlinePre}
                 highlightText={t.hero.headlineHighlight}
@@ -82,7 +82,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
             {/* Supporting Editorial Copy */}
             <p
-              className={`max-w-xl text-lg sm:text-xl font-body font-normal leading-relaxed mb-8 ${
+              className={`order-4 max-w-xl text-lg sm:text-xl font-body font-normal leading-relaxed mb-8 lg:order-none ${
                 isDark ? "text-neutral-300" : "text-neutral-600"
               }`}
             >
@@ -90,7 +90,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </p>
 
             {/* CTAs with Magnetic Hover */}
-            <div className="flex w-full flex-col items-stretch gap-3 mb-10 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
+            <div className="order-5 flex w-full flex-col items-stretch gap-3 mb-10 sm:w-auto sm:flex-row sm:items-center sm:gap-4 lg:order-none">
               <MagneticElement strength={0.25}>
                 <button
                   onClick={onExploreWork}
@@ -124,17 +124,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Right Column: Layered Editorial Visual Composition */}
-          <div className="lg:col-span-5 relative">
+          <div className="order-1 lg:order-none lg:col-span-5 relative lg:pt-12">
             <div
-              className="relative transition-transform duration-300 ease-out"
+              className="relative w-full lg:w-[125%] transition-transform duration-300 ease-out"
               style={{
                 transform: `perspective(1000px) rotateY(${mouseOffset.x * 0.4}deg) rotateX(${-mouseOffset.y * 0.4}deg) translate3d(${mouseOffset.x}px, ${mouseOffset.y}px, 0)`,
               }}
             >
-              <div className="relative pb-12 pr-2 sm:pb-14 sm:pr-5">
+              <div className="relative pb-10 pr-1 sm:pb-12 sm:pr-4">
               {/* Primary website preview */}
               <div
-                className={`relative overflow-hidden rounded-xl border p-1.5 shadow-xl transition-all duration-300 ${
+                className={`relative overflow-hidden rounded-xl border p-1 shadow-xl transition-all duration-300 ${
                   isDark
                     ? "border-neutral-700/70 bg-neutral-900/90 shadow-black/40"
                     : isSand
@@ -143,7 +143,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 }`}
               >
                 {/* Minimal browser frame */}
-                <div className="flex h-7 items-center justify-between px-1.5 sm:h-8 sm:px-2">
+                <div className="flex h-6 items-center justify-between px-1 sm:h-7 sm:px-1.5">
                   <div className="flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
                     <span className="h-1.5 w-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
@@ -155,15 +155,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
 
                 {/* Screenshot stays unmodified and undistorted */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900">
+                <div className="relative aspect-[1908/879] w-full overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900">
                   <img
-                    src="/image/himalycover.png"
+                    src="/image/himaly-mockup.png"
                     alt="Himaly Travel Discovery Platform"
                     className="h-full w-full object-contain"
                   />
                 </div>
 
-                <div className="flex items-center justify-between px-1.5 pt-2 pb-0.5 sm:px-2">
+                <div className="flex items-center justify-between px-1 pt-1.5 pb-0.5 sm:px-1.5">
                   <div className="font-heading text-xs font-bold sm:text-sm">
                     Himaly
                   </div>
@@ -176,7 +176,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* Secondary mobile preview */}
               <div
-                className={`absolute -bottom-1 -right-1 z-20 w-28 sm:w-36 lg:w-44 rounded-xl border p-1.5 shadow-xl transition-all duration-300 ${
+                className={`hidden sm:block absolute -bottom-4 -right-1 z-20 w-24 sm:w-32 lg:w-36 rounded-xl border p-1.5 shadow-xl transition-all duration-300 ${
                   isDark
                     ? "border-neutral-700 bg-neutral-900 shadow-black/30"
                     : "border-neutral-200 bg-white shadow-neutral-300/25"
@@ -185,9 +185,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   transform: `translate3d(${-mouseOffset.x * 1.5}px, ${-mouseOffset.y * 1.5}px, 20px)`,
                 }}
               >
-                <div className="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[9/14]">
+                <div className="overflow-hidden rounded-lg bg-neutral-100 dark:bg-neutral-900 aspect-[340/747]">
                   <img
-                    src="/image/zentrix.png"
+                    src="/image/zentrix-mockup.png"
                     alt="Zentrix Sports Mobile UI"
                     className="h-full w-full object-contain"
                   />
@@ -202,7 +202,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* Right-column studio information */}
               <div
-                className={`mt-10 w-full grid grid-cols-1 gap-4 pt-6 border-t text-left sm:grid-cols-3 sm:gap-6 lg:mt-12 ${
+                className={`mt-10 hidden w-full grid-cols-1 gap-4 pt-6 border-t text-left sm:grid sm:grid-cols-3 sm:gap-6 lg:mt-12 ${
                   isDark
                     ? "border-neutral-800 text-neutral-400"
                     : "border-neutral-300/80 text-neutral-600"

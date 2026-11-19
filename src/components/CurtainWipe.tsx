@@ -95,7 +95,7 @@ export const CurtainWipe: React.FC = () => {
         </div>
 
         <h2 className="font-heading text-3xl sm:text-5xl font-bold tracking-tight text-white mb-3">
-          Digital Craftsmanship
+          Digital Creative Studio
         </h2>
 
         <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-widest text-neutral-400">
