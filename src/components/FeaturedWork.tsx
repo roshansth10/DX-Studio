@@ -87,7 +87,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                 {/* Category Row */}
                 <div className="flex items-center gap-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400">
                   <span>
-                    {project.shortCategory || project.portfolioCategory || project.category}
+                    {project.number} // {project.shortCategory || project.portfolioCategory || project.category}
                   </span>
                 </div>
 
@@ -180,7 +180,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     {/* Floating Tag */}
                     <div className="absolute top-6 left-6 right-16 flex items-center gap-2 z-20">
                       <span className="rounded-full bg-neutral-900/70 backdrop-blur-md px-3.5 py-1 text-xs font-mono text-white font-medium border border-white/30 truncate max-w-full">
-                        {PROJECTS[0].category}
+                        {PROJECTS[0].number} // {PROJECTS[0].category}
                       </span>
                     </div>
 
@@ -242,7 +242,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
 
                       <div className="absolute top-6 left-6 right-14">
                         <span className="inline-block rounded-full bg-neutral-900/70 backdrop-blur-md px-3 py-1 text-xs font-mono text-white border border-white/20 truncate max-w-full">
-                          {PROJECTS[1].category}
+                          {PROJECTS[1].number} // {PROJECTS[1].category}
                         </span>
                       </div>
 
@@ -303,7 +303,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
 
                       <div className="absolute top-6 left-6 right-14">
                         <span className="inline-block rounded-full bg-neutral-900/70 backdrop-blur-md px-3 py-1 text-xs font-mono text-white border border-white/20 truncate max-w-full">
-                          {PROJECTS[2].category}
+                          {PROJECTS[2].number} // {PROJECTS[2].category}
                         </span>
                       </div>
 
@@ -365,7 +365,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
 
                     <div className="absolute top-6 left-6">
                       <span className="rounded-full bg-white/20 backdrop-blur-md px-3.5 py-1 text-xs font-mono text-white border border-white/30">
-                        {PROJECTS[3].category}
+                        {PROJECTS[3].number} // {PROJECTS[3].category}
                       </span>
                     </div>
 

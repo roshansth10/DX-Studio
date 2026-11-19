@@ -125,6 +125,7 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ theme }) => {
           >
             <div className="flex items-center gap-3 font-mono text-xs">
               <span className="font-bold text-blue-600">
+                {currentTestimonial.number} / {TESTIMONIALS.length}
               </span>
               <span className="theme-text-subtle">•</span>
               <span className="theme-text-secondary font-medium">

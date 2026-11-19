@@ -196,7 +196,7 @@ const ProjectCard: React.FC<{
     <div className="p-5 sm:p-6 flex flex-col flex-1">
       <div className="flex items-center justify-between gap-3">
         <span className="font-mono text-xs uppercase tracking-widest text-blue-600 truncate">
-          {project.category}
+          {project.number} // {project.category}
         </span>
         <span className="font-mono text-xs theme-text-subtle shrink-0">
           {project.year}
@@ -530,7 +530,9 @@ export const AboutPage: React.FC<PageProps> = ({
                 key={item.number}
                 className="grid gap-5 py-8 transition-colors duration-300 hover:text-blue-600 md:grid-cols-12 sm:py-10 gsap-stagger-item"
               >
-                <span className="md:col-span-1" aria-hidden="true" />
+                <span className="font-mono text-xs text-blue-600 md:col-span-1">
+                  {item.number}
+                </span>
                 <h3 className="font-heading text-3xl font-bold sm:text-4xl md:col-span-3">
                   {item.title}
                 </h3>
@@ -569,6 +571,9 @@ export const AboutPage: React.FC<PageProps> = ({
                 }`}
               >
                 <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs text-blue-600">
+                    {service.number}
+                  </span>
                   <ArrowUpRight className="h-4 w-4 opacity-50 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-100" />
                 </div>
                 <h3

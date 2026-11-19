@@ -186,6 +186,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
                   {/* Top Corner Badges: Number & Location */}
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
                     <span className="rounded-full bg-neutral-950/70 backdrop-blur-md px-2.5 py-1 font-mono text-[11px] font-bold text-white border border-white/20 shadow-sm">
+                      {member.number}
                     </span>
                     <span className="inline-flex items-center gap-1 rounded-full bg-neutral-950/70 backdrop-blur-md px-2.5 py-1 font-mono text-[11px] font-medium text-neutral-100 border border-white/20 shadow-sm">
                       <MapPin className="h-3 w-3 text-blue-400" />

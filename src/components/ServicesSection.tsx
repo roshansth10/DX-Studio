@@ -86,6 +86,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ theme, onSelec
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 w-full items-center">
                     {/* Number */}
                     <div className="md:col-span-2 font-mono text-xs sm:text-sm font-semibold tracking-widest text-neutral-400 group-hover:text-blue-600 transition-colors">
+                      {service.number}
                     </div>
 
                     {/* Title & Category */}
