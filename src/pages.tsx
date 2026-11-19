@@ -140,7 +140,7 @@ const PreviewBand: React.FC<{
       <RouteButton
         label={label}
         href={href}
-        className="mx-auto w-full sm:mx-0 sm:w-auto"
+        className="mx-auto sm:mx-0"
       />
     </div>
   </section>
