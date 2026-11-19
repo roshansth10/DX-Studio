@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ThemeMode } from "../types";
 import { ArrowUpRight, Check } from "lucide-react";
+import { navigateTo } from "../routing";
 
 interface FinalCTAProps {
   theme: ThemeMode;
@@ -100,7 +101,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ theme, onOpenContact }) => {
           ) : (
             <div className="flex flex-col sm:flex-row items-center gap-3">
               <button
-                onClick={onOpenContact}
+                onClick={() => navigateTo("/contact#project-inquiry")}
                 className={`w-full group inline-flex items-center justify-center gap-3 rounded-full py-4 px-8 text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-xl ${
                   isDark
                     ? "bg-blue-600 text-white hover:bg-blue-500 hover:shadow-blue-900/40"

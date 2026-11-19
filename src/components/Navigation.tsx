@@ -388,7 +388,7 @@ export const Navigation: React.FC<NavigationProps> = ({
             {/* Magnetic Contact CTA Button */}
             <MagneticElement strength={0.25}>
               <button
-                onClick={onOpenContact}
+                onClick={() => navigateTo("/contact#project-inquiry")}
                 id="nav-cta-talk"
                 className={`group relative inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm overflow-hidden ${
                   isDark
@@ -598,7 +598,7 @@ export const Navigation: React.FC<NavigationProps> = ({
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenContact();
+                navigateTo("/contact#project-inquiry");
               }}
               className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 py-3 text-sm font-bold text-white uppercase tracking-wider"
             >

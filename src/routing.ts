@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export const normalizePath = (path: string) => {
-  const cleanPath = path.split('?')[0].replace(/\/+$/, '');
+  const cleanPath = path.split(/[?#]/)[0].replace(/\/+$/, '');
   return cleanPath || '/';
 };
 

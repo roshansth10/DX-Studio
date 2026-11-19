@@ -57,6 +57,16 @@ export default function App() {
       theme === "obsidian",
     );
     document.body.className = `antialiased selection:bg-blue-600 selection:text-white ${themeBackground(theme)}`;
+    const hash = window.location.hash;
+    if (hash) {
+      window.setTimeout(() => {
+        document.querySelector(hash)?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 120);
+    } else {
+    }
     const pageTitle =
       pathname === "/"
         ? "DX Studio — Digital Creative & Technology Studio"

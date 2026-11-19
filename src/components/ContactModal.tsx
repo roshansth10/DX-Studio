@@ -8,6 +8,7 @@ interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
   theme: ThemeMode;
+  embedded?: boolean;
 }
 
 const AVAILABLE_SERVICES = [
@@ -45,6 +46,8 @@ interface FormErrors {
 export const ContactModal: React.FC<ContactModalProps> = ({
   isOpen,
   onClose,
+  embedded = false,
+  theme,
 }) => {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [selectedBudget, setSelectedBudget] = useState<string>("");
@@ -65,7 +68,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
   // Reset form and manage entrance animation when modal opens/closes
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen || embedded) {
       prevFocusRef.current = document.activeElement as HTMLElement | null;
       setSelectedServices([]);
       setSelectedBudget("");
@@ -95,7 +98,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     } else {
       setIsEntered(false);
     }
-  }, [isOpen]);
+  }, [isOpen, embedded]);
 
   // ESC key handler and focus trap
   useEffect(() => {
@@ -185,7 +188,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     };
   }, [isOpen]);
 
-  if (!isOpen || typeof document === "undefined") return null;
+  if ((!isOpen && !embedded) || typeof document === "undefined") return null;
 
   const toggleService = (svc: string) => {
     setSelectedServices((prev) =>
@@ -292,6 +295,205 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       setSending(false);
     }
   };
+
+  if (embedded) {
+    const isDark = theme === "obsidian";
+
+    return (
+      <div
+        id="project-inquiry"
+        className={`scroll-mt-28 border-y px-0 py-8 sm:py-10 md:px-8 md:border-y-0 md:border-l ${
+          isDark
+            ? "border-neutral-800 text-white"
+            : "border-neutral-300 text-neutral-950"
+        }`}
+      >
+        {submitted ? (
+          <div className="flex min-h-80 flex-col items-center justify-center text-center">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-500">
+              <Check className="h-6 w-6" />
+            </div>
+            <h3 className="font-heading text-2xl font-bold">
+              Brief received.
+            </h3>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed theme-text-muted">
+              Thanks for reaching out, {name.split(" ")[0] || "there"}.
+              We'll review your project and get back to you soon.
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} noValidate className="space-y-9">
+            <div>
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-blue-600">
+                08.1 // Project Inquiry
+              </span>
+              <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+                Start the brief.
+              </h2>
+            </div>
+
+            <div>
+              <label className="mb-3 flex items-baseline justify-between font-mono text-[10px] font-semibold uppercase tracking-widest theme-text-subtle">
+                <span>01 / Services Needed</span>
+                <span className="normal-case tracking-normal opacity-70">Select one or more</span>
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {AVAILABLE_SERVICES.map((svc) => {
+                  const isSelected = selectedServices.includes(svc);
+                  return (
+                    <button
+                      type="button"
+                      key={svc}
+                      onClick={() => toggleService(svc)}
+                      className={`border px-3.5 py-2.5 text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                        isSelected
+                          ? "border-blue-600 bg-blue-600 text-white"
+                          : isDark
+                            ? "border-neutral-700 text-neutral-300 hover:border-blue-500 hover:text-blue-400"
+                            : "border-neutral-300 text-neutral-700 hover:border-blue-600 hover:text-blue-600"
+                      }`}
+                    >
+                      {isSelected && <span className="mr-1.5">×</span>}
+                      {svc}
+                    </button>
+                  );
+                })}
+              </div>
+              {touched.services && errors.services && (
+                <p className="mt-2 text-xs text-red-500">{errors.services}</p>
+              )}
+            </div>
+
+            <div>
+              <label className="mb-3 flex items-baseline justify-between font-mono text-[10px] font-semibold uppercase tracking-widest theme-text-subtle">
+                <span>02 / Project Budget</span>
+                <span className="normal-case tracking-normal opacity-70">NPR</span>
+              </label>
+              <div className={`grid grid-cols-2 border-l border-t sm:grid-cols-3 ${isDark ? "border-neutral-800" : "border-neutral-300"}`}>
+                {BUDGET_TIERS.map((tier) => {
+                  const isSelected = selectedBudget === tier;
+                  return (
+                    <button
+                      type="button"
+                      key={tier}
+                      onClick={() => {
+                        setSelectedBudget(tier);
+                        setTouched((value) => ({ ...value, budget: true }));
+                        setErrors((value) => ({ ...value, budget: undefined }));
+                      }}
+                      className={`min-h-12 border-b border-r px-3 py-3 text-left text-xs transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500 ${
+                        isSelected
+                          ? "border-blue-600 bg-blue-600 text-white"
+                          : isDark
+                            ? "border-neutral-800 text-neutral-300 hover:bg-neutral-800"
+                            : "border-neutral-300 text-neutral-700 hover:bg-neutral-100"
+                      }`}
+                    >
+                      {tier}
+                    </button>
+                  );
+                })}
+              </div>
+              {touched.budget && errors.budget && (
+                <p className="mt-2 text-xs text-red-500">{errors.budget}</p>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label className="mb-2 block font-mono text-[10px] font-semibold uppercase tracking-widest theme-text-subtle">
+                  03 / Your Name
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  onBlur={() => {
+                    setTouched((value) => ({ ...value, name: true }));
+                    validateField("name");
+                  }}
+                  placeholder="e.g. Roshan Shrestha"
+                  className={`w-full border-0 border-b px-0 py-3 text-sm outline-none transition-colors focus:border-blue-500 ${
+                    isDark
+                      ? "border-neutral-700 bg-transparent text-white placeholder-neutral-500"
+                      : "border-neutral-300 bg-transparent text-neutral-950 placeholder-neutral-400"
+                  }`}
+                />
+                {touched.name && errors.name && (
+                  <p className="mt-1.5 text-xs text-red-500">{errors.name}</p>
+                )}
+              </div>
+              <div>
+                <label className="mb-2 block font-mono text-[10px] font-semibold uppercase tracking-widest theme-text-subtle">
+                  04 / Work Email
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  onBlur={() => {
+                    setTouched((value) => ({ ...value, email: true }));
+                    validateField("email");
+                  }}
+                  placeholder="you@company.com"
+                  className={`w-full border-0 border-b px-0 py-3 text-sm outline-none transition-colors focus:border-blue-500 ${
+                    isDark
+                      ? "border-neutral-700 bg-transparent text-white placeholder-neutral-500"
+                      : "border-neutral-300 bg-transparent text-neutral-950 placeholder-neutral-400"
+                  }`}
+                />
+                {touched.email && errors.email && (
+                  <p className="mt-1.5 text-xs text-red-500">{errors.email}</p>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label className="mb-2 block font-mono text-[10px] font-semibold uppercase tracking-widest theme-text-subtle">
+                05 / Project Overview / Goals
+              </label>
+              <textarea
+                rows={5}
+                value={projectOverview}
+                onChange={(event) => setProjectOverview(event.target.value)}
+                onBlur={() => {
+                  setTouched((value) => ({ ...value, overview: true }));
+                  validateField("overview");
+                }}
+                placeholder="Tell us about your brand, current challenges, project goals, target launch date, and anything else we should know..."
+                className={`w-full resize-none border-0 border-b px-0 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-blue-500 ${
+                  isDark
+                    ? "border-neutral-700 bg-transparent text-white placeholder-neutral-500"
+                    : "border-neutral-300 bg-transparent text-neutral-950 placeholder-neutral-400"
+                }`}
+              />
+              {touched.overview && errors.overview && (
+                <p className="mt-1.5 text-xs text-red-500">
+                  {errors.overview}
+                </p>
+              )}
+            </div>
+
+            {sendError && (
+              <p className="text-xs leading-relaxed text-red-500">
+                {sendError}
+              </p>
+            )}
+            <button
+              type="submit"
+              disabled={sending}
+              className="group flex w-full items-center justify-between bg-blue-600 px-5 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <span>{sending ? "Sending..." : "Send Project Brief"}</span>
+              <span className="flex h-8 w-8 items-center justify-center border border-white/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+                <Send className="h-3.5 w-3.5" />
+              </span>
+            </button>
+          </form>
+        )}
+      </div>
+    );
+  }
 
   return createPortal(
     <div

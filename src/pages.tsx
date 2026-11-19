@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowUpRight, CheckCircle2, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { LegalLayout } from "./components/LegalLayout";
 import { PRIVACY, TERMS, ACCESSIBILITY } from "./data/legalContent";
 import { ThemeMode, ProjectItem } from "./types";
@@ -16,6 +16,7 @@ import { ServicesSection } from "./components/ServicesSection";
 import { TeamSection } from "./components/TeamSection";
 import { FinalCTA } from "./components/FinalCTA";
 import { HeroSection } from "./components/HeroSection";
+import { ContactModal } from "./components/ContactModal";
 import { navigateTo } from "./routing";
 
 interface PageProps {
@@ -78,7 +79,7 @@ export const HomePage: React.FC<PageProps> = ({
     <HeroSection
       theme={theme}
       onExploreWork={() => navigateTo("/work")}
-      onStartProject={onOpenContact}
+      onStartProject={() => navigateTo("/contact#project-inquiry")}
       onOpenConcepts={() => undefined}
     />
     <FeaturedWork theme={theme} onSelectProject={onSelectProject} preview />
@@ -90,7 +91,10 @@ export const HomePage: React.FC<PageProps> = ({
       href="/about"
       label="About DX Studio"
     />
-    <FinalCTA theme={theme} onOpenContact={onOpenContact} />
+    <FinalCTA
+      theme={theme}
+      onOpenContact={() => navigateTo("/contact#project-inquiry")}
+    />
   </main>
 );
 
@@ -295,7 +299,7 @@ export const ProjectPage: React.FC<PageProps & { project: ProjectItem }> = ({
         <p className="font-heading text-2xl font-bold theme-text-primary">
           Build something with us.
         </p>
-        <RouteButton label="Start a Project" href="/contact" />
+        <RouteButton label="Start a Project" href="/contact#project-inquiry" />
       </div>
       <div className="mt-16">
         <h2 className="font-heading text-3xl font-bold theme-text-primary">
@@ -319,7 +323,7 @@ export const ServicesPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
   <PageShell theme={theme}>
     <ServicesSection theme={theme} />
     <div className="mt-4 pb-2 text-center">
-      <RouteButton label="Start a Project" href="/contact" />
+      <RouteButton label="Start a Project" href="/contact#project-inquiry" />
     </div>
   </PageShell>
 );
@@ -687,7 +691,7 @@ export const AboutPage: React.FC<PageProps> = ({
             </div>
             <div className="flex flex-col gap-3 sm:flex-row md:col-span-4 md:justify-end">
               <button
-                onClick={onOpenContact}
+                onClick={() => navigateTo("/contact#project-inquiry")}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-blue-500"
               >
                 Start a Project
@@ -805,37 +809,177 @@ export const JobDetailPage: React.FC<PageProps & { position?: JobPosition }> = (
 );
 
 export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
-  <PageShell
-    theme={theme}
-    eyebrow="08 // Initiation"
-    title="Have something worth building?"
-    description="Tell us what you are working on. We will figure out the rest and review your brief within 24 hours."
+  <main
+    className={`flex-1 pt-28 sm:pt-36 ${
+      theme === "obsidian"
+        ? "bg-[#121214] text-white"
+        : theme === "sand-stone"
+          ? "bg-[#ECE9E2] text-neutral-950"
+          : "bg-[#F7F7F5] text-neutral-950"
+    }`}
   >
-    <div className="flex flex-col items-start gap-6 rounded-2xl border p-6 sm:p-10 theme-border theme-bg-card">
-      <a
-        href="mailto:info.dxcreativestudio@gmail.com"
-        className="inline-flex items-center gap-2 text-lg font-semibold text-blue-600 hover:underline"
-      >
-        <Mail className="h-5 w-5" />
-        info.dxcreativestudio@gmail.com
-      </a>
-      <a
-        href="https://wa.me/9779764775438"
-        target="_blank"
-        rel="noreferrer"
-        className="inline-flex items-center gap-2 text-lg font-semibold text-blue-600 hover:underline"
-      >
-        <MessageCircle className="h-5 w-5" />
-        WhatsApp
-      </a>
-      <button
-        onClick={onOpenContact}
-        className="rounded-full bg-blue-600 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-blue-500"
-      >
-        Open Project Brief
-      </button>
-    </div>
-  </PageShell>
+    <section
+      className={`relative overflow-hidden pb-14 sm:pb-20 lg:pb-24 ${
+        theme === "obsidian" ? "editorial-grid-dark" : "editorial-grid"
+      }`}
+    >
+      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <div className="grid items-start gap-12 md:grid-cols-12 md:gap-10 lg:gap-16">
+          <div className="relative md:col-span-5 lg:col-span-5 gsap-heading-reveal">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+              08 // Start a Conversation
+            </span>
+            <h1 className="mt-6 font-heading text-[3.25rem] font-bold leading-[0.92] tracking-[-0.055em] sm:text-7xl lg:text-[5.25rem]">
+              Let's Build
+              <span className="block text-blue-600">Something Together.</span>
+            </h1>
+            <p className="mt-8 max-w-lg text-lg leading-relaxed theme-text-muted sm:text-xl">
+              Have an idea, a challenge, or a digital project in mind? We'd
+              like to understand what you're trying to build and explore how
+              we can help.
+            </p>
+            <p className="mt-5 max-w-lg border-l-2 border-blue-600 pl-4 text-sm leading-relaxed theme-text-muted">
+              Share a little context about your goals, budget, and timeline.
+              We'll review your brief and respond within 24 hours.
+            </p>
+            <div className="mt-8 grid max-w-lg grid-cols-3 border-y theme-border">
+              {[
+                ["01", "Discuss"],
+                ["02", "Define"],
+                ["03", "Build"],
+              ].map(([number, label]) => (
+                <div
+                  key={number}
+                  className="border-r py-3 pr-3 last:border-r-0 last:pl-3 theme-border"
+                >
+                  <span className="font-mono text-[10px] text-blue-600">{number}</span>
+                  <span className="mt-1 block font-heading text-sm font-bold">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="md:col-span-7 lg:col-span-7 md:justify-self-end md:w-full gsap-heading-reveal">
+            <ContactModal
+              isOpen={false}
+              embedded
+              onClose={() => undefined}
+              theme={theme}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="border-t py-14 theme-border sm:py-20 lg:py-20 gsap-section-reveal">
+      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <div className="mb-10 flex items-end justify-between border-b pb-5 theme-border gsap-heading-reveal">
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+            09 // Contact Information
+          </span>
+          <span className="hidden font-mono text-[10px] uppercase tracking-widest theme-text-subtle sm:block">
+            Kathmandu · Nepal · UTC+5:45
+          </span>
+        </div>
+        <div className="grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <a
+              href="mailto:info.dxcreativestudio@gmail.com"
+              className="group block border-b pb-6 theme-border"
+            >
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
+                01 / Email
+              </span>
+              <span className="mt-3 flex items-center justify-between gap-4 font-heading text-xl font-bold transition-colors group-hover:text-blue-600 sm:text-3xl">
+                <span className="break-all">info.dxcreativestudio@gmail.com</span>
+                <ArrowUpRight className="h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+              </span>
+            </a>
+            <div className="grid sm:grid-cols-2">
+              <div className="border-b py-7 pr-0 sm:border-r sm:pr-7 theme-border">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
+                  02 / Phone / WhatsApp
+                </span>
+                <a
+                  href="https://wa.me/9779764775438"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 block font-heading text-xl font-bold hover:text-blue-600 sm:text-2xl"
+                >
+                  +977 9764775438
+                </a>
+              </div>
+              <div className="border-b py-7 sm:pl-7 theme-border">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
+                  03 / Instagram
+                </span>
+                <a
+                  href="https://www.instagram.com/dxcreativestudio/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 font-heading text-xl font-bold hover:text-blue-600 sm:text-2xl"
+                >
+                  @dxcreativestudio
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+            <div className="py-7">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
+                04 / Office
+              </span>
+              <p className="mt-3 max-w-md font-heading text-2xl font-bold leading-tight sm:text-3xl">
+                Kathmandu, Nepal
+                <span className="block text-base font-medium theme-text-muted sm:text-lg">
+                  Goldhunga, Tarkeshwor-5
+                </span>
+              </p>
+            </div>
+          </div>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Goldhunga%2C+Tarkeshwor-5%2C+Kathmandu%2C+Nepal"
+            target="_blank"
+            rel="noreferrer"
+            className={`group relative flex min-h-72 overflow-hidden border p-6 lg:col-span-5 gsap-heading-reveal ${
+              theme === "obsidian"
+                ? "border-neutral-800 bg-[#18181b]"
+                : "border-neutral-300 bg-[#E8E7E2]"
+            }`}
+          >
+            <div
+              className={`absolute inset-0 opacity-50 ${
+                theme === "obsidian" ? "editorial-grid-dark" : "editorial-grid"
+              }`}
+            />
+            <svg
+              viewBox="0 0 240 180"
+              fill="none"
+              className="absolute right-[-8%] top-[-5%] h-[78%] w-[78%] text-neutral-400/40"
+              aria-hidden="true"
+            >
+              <path d="M16 142C55 108 48 70 92 54C128 41 158 60 224 18" stroke="currentColor" strokeWidth="1" />
+              <path d="M24 38C64 58 93 88 132 118C158 138 190 148 226 154" stroke="currentColor" strokeWidth="1" />
+              <circle cx="136" cy="82" r="30" stroke="currentColor" />
+              <circle cx="136" cy="82" r="18" stroke="currentColor" strokeDasharray="3 5" />
+            </svg>
+            <div className="relative z-10 mt-auto">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
+                05 / Google Maps
+              </span>
+              <div className="mt-3 flex items-center gap-3 font-heading text-3xl font-bold">
+                View Location
+                <span className="flex h-9 w-9 items-center justify-center bg-blue-600 text-white transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
+                  <ArrowUpRight className="h-4 w-4" />
+                </span>
+              </div>
+              <p className="mt-2 text-sm theme-text-muted">
+                Kathmandu, Nepal
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 );
 
 // ─── Legal Pages ──────────────────────────────────────────────────────────────
