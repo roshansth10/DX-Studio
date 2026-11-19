@@ -448,37 +448,44 @@ export const AboutPage: React.FC<PageProps> = ({
             </h1>
           </div>
 
-          <div className="mt-10 grid items-end gap-10 md:grid-cols-12 gsap-heading-reveal">
+          <div className="mt-10 grid gap-8 border-t pt-7 theme-border md:grid-cols-12 gsap-heading-reveal">
             <p className="max-w-2xl text-lg leading-relaxed theme-text-muted md:col-span-7 sm:text-xl">
               DX Studio brings together design, technology, and digital
               strategy to help businesses turn ideas into impactful digital
               experiences.
             </p>
-            <div className="md:col-span-5 md:justify-self-end">
-              <div className="flex min-w-[280px] items-center justify-between border-y py-4 theme-border">
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-blue-600">
-                  Our philosophy
-                </span>
-                <span className="font-heading text-sm font-bold">
-                  DESIGN. DEVELOP. EXPERIENCE.
-                </span>
-              </div>
+            <div className="md:col-span-5 md:justify-self-end md:text-right">
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-blue-600">
+                Digital design · Engineering · Strategy
+              </span>
+              <p className="mt-3 font-heading text-sm font-bold">
+                Kathmandu, Nepal
+              </p>
             </div>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 gap-px border theme-border md:grid-cols-4 gsap-stagger-container">
-            {["Strategy", "Interface", "Engineering", "Outcome"].map(
-              (item, index) => (
+          <div className="mt-12 border-y theme-border sm:mt-16 gsap-stagger-container">
+            <div className="grid sm:grid-cols-3">
+              {[
+                ["01", "Design"],
+                ["02", "Develop"],
+                ["03", "Experience"],
+              ].map(([number, label], index) => (
                 <div
-                  key={item}
-                  className="relative min-h-28 p-5 theme-bg-card gsap-stagger-item sm:min-h-36 sm:p-7"
+                  key={label}
+                  className={`flex items-baseline gap-4 py-5 sm:px-6 first:pl-0 sm:first:px-6 sm:[&:not(:last-child)]:border-r theme-border gsap-stagger-item ${
+                    index === 0 ? "border-b sm:border-b-0" : ""
+                  }`}
                 >
-                  <span className="absolute bottom-5 left-5 font-heading text-lg font-bold sm:bottom-7 sm:left-7 sm:text-2xl">
-                    {item}
+                  <span className="font-mono text-xs text-blue-600">
+                    {number}
+                  </span>
+                  <span className="font-heading text-2xl font-bold sm:text-3xl">
+                    {label}
                   </span>
                 </div>
-              ),
-            )}
+              ))}
+            </div>
           </div>
         </div>
       </section>
