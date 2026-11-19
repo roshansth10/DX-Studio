@@ -29,7 +29,7 @@ export const WhyDXSection: React.FC<WhyDXSectionProps> = ({ theme }) => {
         <div className="mb-20 gsap-heading-reveal">
           <div className="flex items-center gap-3 mb-4">
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold inline-block">
-              Core Principles
+              // Core Principles
             </span>
           </div>
           <h2 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.08] max-w-4xl text-balance">

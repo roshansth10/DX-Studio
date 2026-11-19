@@ -39,7 +39,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
           <div>
             <div className="flex items-center gap-3 mb-3">
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
-                {t.work.eyebrow}
+                // {t.work.eyebrow}
               </span>
             </div>
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">

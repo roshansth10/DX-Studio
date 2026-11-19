@@ -325,7 +325,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           <form onSubmit={handleSubmit} noValidate className="space-y-9">
             <div>
               <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-blue-600">
-                Project Inquiry
+                // Project Inquiry
               </span>
               <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">
                 Start the brief.
@@ -520,7 +520,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
         <div className="flex items-center justify-between gap-4 border-b border-neutral-800 px-5 py-4 sm:px-7 shrink-0 bg-neutral-900">
           <div className="flex min-w-0 flex-wrap items-center gap-2">
             <span className="font-mono text-[11px] font-bold uppercase tracking-widest text-blue-500">
-              START A PROJECT
+              // START A PROJECT
             </span>
             <span className="text-neutral-600">•</span>
             <span className="text-[11px] font-mono text-neutral-400">

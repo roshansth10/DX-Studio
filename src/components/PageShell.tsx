@@ -38,7 +38,7 @@ export const PageShell: React.FC<PageShellProps> = ({
           >
             <div className="flex items-center gap-3 flex-wrap">
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
-                {eyebrow}
+                // {eyebrow}
               </span>
             </div>
             <h1 className="mt-5 font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-balance">

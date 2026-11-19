@@ -116,7 +116,7 @@ const PreviewBand: React.FC<{
     <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 sm:flex-row sm:items-end sm:justify-between lg:px-12">
       <div className="max-w-3xl">
         <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
-          {eyebrow}
+          // {eyebrow}
         </span>
         <h2 className="mt-4 font-heading text-4xl sm:text-6xl font-bold tracking-tight theme-text-primary">
           {title}
@@ -440,7 +440,7 @@ export const AboutPage: React.FC<PageProps> = ({
         <div className="relative mx-auto max-w-7xl px-6 pb-20 sm:px-6 sm:pb-28 lg:px-12 lg:pb-36">
           <div className="gsap-heading-reveal">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              About DX Studio
+              // About DX Studio
             </span>
             <h1 className="mt-7 max-w-[1100px] font-heading text-5xl font-bold leading-[0.96] tracking-tight sm:text-7xl lg:text-[6.5rem]">
               We build what moves{" "}
@@ -487,7 +487,7 @@ export const AboutPage: React.FC<PageProps> = ({
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 lg:px-12">
           <div className="md:col-span-4">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              Who We Are
+              // Who We Are
             </span>
           </div>
           <div className="md:col-span-8">
@@ -517,7 +517,7 @@ export const AboutPage: React.FC<PageProps> = ({
           <div className="mb-12 flex items-end justify-between border-b pb-6 theme-border">
             <div>
               <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-                Our Philosophy
+                // Our Philosophy
               </span>
               <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight sm:text-6xl">
                 Design. Develop. Experience.
@@ -547,7 +547,7 @@ export const AboutPage: React.FC<PageProps> = ({
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="mb-12 max-w-3xl gsap-heading-reveal">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              What We Do
+              // What We Do
             </span>
             <h2 className="mt-4 font-heading text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
               One team across the digital system.
@@ -595,7 +595,7 @@ export const AboutPage: React.FC<PageProps> = ({
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="mb-14 max-w-3xl gsap-heading-reveal">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              How We Work
+              // How We Work
             </span>
             <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight sm:text-6xl">
               From an idea to something real.
@@ -637,7 +637,7 @@ export const AboutPage: React.FC<PageProps> = ({
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 lg:px-12">
           <div className="md:col-span-4">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              Our Approach
+              // Our Approach
             </span>
           </div>
           <div className="md:col-span-8 gsap-heading-reveal">
@@ -666,7 +666,7 @@ export const AboutPage: React.FC<PageProps> = ({
           <div className="grid items-end gap-10 md:grid-cols-12 gsap-heading-reveal">
             <div className="md:col-span-8">
               <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-                Initiation
+                // Initiation
               </span>
               <h2 className="mt-5 max-w-4xl font-heading text-4xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
                 Have something in mind? Let's build it.
@@ -706,14 +706,14 @@ export const AboutPage: React.FC<PageProps> = ({
 export const CareersPage: React.FC<PageProps> = ({ theme }) => (
   <PageShell
     theme={theme}
-    eyebrow="Careers // DX Studio"
+    eyebrow="Careers"
     title="Build What's Next. With Us."
     description="At DX Studio, meaningful work comes from curiosity, craft, and a willingness to keep learning. We're building a team that thinks carefully, collaborates openly, and helps businesses move forward."
   >
     <section className="py-6 sm:py-10">
       <div className="mb-10 gsap-heading-reveal">
         <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-          Opportunities
+          // Opportunities
         </span>
       </div>
 
@@ -741,7 +741,7 @@ export const JobDetailPage: React.FC<PageProps & { position?: JobPosition }> = (
 }) => (
   <PageShell
     theme={theme}
-    eyebrow="Careers // DX Studio"
+    eyebrow="Careers"
     title={position?.title ?? "Position unavailable"}
     description={
       position
@@ -815,7 +815,7 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
         <div className="grid items-start gap-12 md:grid-cols-12 md:gap-10 lg:gap-16">
           <div className="relative md:col-span-5 lg:col-span-5 gsap-heading-reveal">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              Start a Conversation
+              // Start a Conversation
             </span>
             <h1 className="mt-6 font-heading text-[3.25rem] font-bold leading-[0.92] tracking-[-0.055em] sm:text-7xl lg:text-[5.25rem]">
               Let's Build
@@ -862,7 +862,7 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="mb-10 flex items-end justify-between border-b pb-5 theme-border gsap-heading-reveal">
           <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-            Contact Information
+            // Contact Information
           </span>
           <span className="hidden font-mono text-[10px] uppercase tracking-widest theme-text-subtle sm:block">
             Kathmandu · Nepal · UTC+5:45

@@ -40,7 +40,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ theme, onSelec
           <div>
             <div className="flex items-center gap-3 mb-3">
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
-                {t.services.eyebrow}
+                // {t.services.eyebrow}
               </span>
             </div>
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">

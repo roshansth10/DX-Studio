@@ -72,7 +72,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ theme, onOpenContact }) => {
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-12 gsap-heading-reveal">
         <div className="inline-flex items-center gap-3 mb-4">
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
-            Initiation
+            // Initiation
           </span>
         </div>
 

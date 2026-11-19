@@ -66,7 +66,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
           <div>
             <div className="flex items-center flex-wrap gap-3">
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
-                Collective
+                // Collective
               </span>
             </div>
 
