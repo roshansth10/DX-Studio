@@ -132,6 +132,17 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ theme, onSelec
                       isDark ? 'border-neutral-800/60 bg-neutral-900/30' : 'border-neutral-200 bg-white/40'
                     }`}
                   >
+                    <div className="lg:col-span-12 pt-5">
+                      <div className="font-mono text-xs uppercase tracking-widest text-blue-600 font-bold mb-2">
+                        Primary Focus
+                      </div>
+                      <p className={`max-w-3xl text-base leading-relaxed ${
+                        isDark ? 'text-neutral-300' : 'text-neutral-600'
+                      }`}>
+                        {service.primaryFocus}
+                      </p>
+                    </div>
+
                     {/* Capabilities list */}
                     <div className="lg:col-span-6">
                       <div className="font-mono text-xs uppercase tracking-widest text-blue-600 font-bold mb-3">

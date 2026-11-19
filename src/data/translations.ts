@@ -148,10 +148,10 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       directImpactHeadline: "Zero Fluff. 100% Commercial Execution.",
     },
     services: {
-      eyebrow: "Capabilities",
-      title: "What we do.",
+      eyebrow: "What We Do",
+      title: "One team across the digital system.",
       subtitle:
-        "We partner with ambitious founders and enterprises to craft enduring brand identities, frictionless product interfaces, and scalable web architectures.",
+        "We help businesses establish, improve, and grow their digital presence through focused design, development, and practical digital solutions.",
       viewCaseStudies: "View Case Studies",
     },
     work: {

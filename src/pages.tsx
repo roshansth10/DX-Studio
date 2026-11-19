@@ -339,40 +339,6 @@ export const AboutPage: React.FC<PageProps> = ({
   const isDark = theme === "obsidian";
   const isSand = theme === "sand-stone";
 
-  const services = [
-    {
-      number: "01",
-      title: "Website Design & Development",
-      description:
-        "Editorial, responsive websites built around clear positioning and dependable engineering.",
-      featured: true,
-    },
-    {
-      number: "02",
-      title: "Custom Web Applications",
-      description:
-        "Purpose-built tools and platforms that streamline work and connect with business systems.",
-    },
-    {
-      number: "03",
-      title: "Digital Solutions",
-      description:
-        "Practical technology initiatives shaped around a specific challenge or opportunity.",
-    },
-    {
-      number: "04",
-      title: "Digital Marketing",
-      description:
-        "Search, content, and campaign direction focused on measurable growth.",
-    },
-    {
-      number: "05",
-      title: "Social Media Management",
-      description:
-        "Consistent, brand-led publishing designed to build reach and audience trust.",
-    },
-  ];
-
   const processSteps = [
     {
       number: "01",
@@ -545,57 +511,6 @@ export const AboutPage: React.FC<PageProps> = ({
                 </h3>
                 <p className="max-w-xl text-base leading-relaxed theme-text-muted md:col-span-7 sm:text-lg">
                   {item.description}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y py-20 theme-border sm:py-28 lg:py-36 gsap-section-reveal">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="mb-12 max-w-3xl gsap-heading-reveal">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
-              // What We Do
-            </span>
-            <h2 className="mt-4 font-heading text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
-              One team across the digital system.
-            </h2>
-          </div>
-
-          <div className="grid gap-px border theme-border md:grid-cols-2 lg:grid-cols-6 gsap-stagger-container">
-            {services.map((service) => (
-              <article
-                key={service.number}
-                className={`group min-h-64 p-6 theme-bg-card transition-colors duration-300 gsap-stagger-item ${
-                  isDark
-                    ? "hover:bg-blue-600 hover:text-white"
-                    : "hover:bg-blue-50 hover:text-neutral-950"
-                } ${
-                  service.featured
-                    ? "md:col-span-2 lg:col-span-2 lg:row-span-2"
-                    : "md:col-span-1 lg:col-span-2"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs text-blue-600">
-                    {service.number}
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 opacity-50 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-100" />
-                </div>
-                <h3
-                  className={`mt-12 font-heading font-bold leading-tight ${
-                    service.featured ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl"
-                  }`}
-                >
-                  {service.title}
-                </h3>
-                <p
-                  className={`mt-5 max-w-sm text-sm leading-relaxed theme-text-muted ${
-                    isDark ? "group-hover:text-white/80" : ""
-                  }`}
-                >
-                  {service.description}
                 </p>
               </article>
             ))}

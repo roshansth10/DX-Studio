@@ -35,6 +35,7 @@ export interface ServiceItem {
   title: string;
   category: string;
   summary: string;
+  primaryFocus: string;
   subItems: string[];
   deliverables: string[];
   previewImage: string;
