@@ -9,7 +9,6 @@ import {
   SERVICES,
   TEAM_MEMBERS,
   PROCESS_STEPS,
-  PRINCIPLES,
 } from "./data/content";
 import { PageShell } from "./components/PageShell";
 import { FeaturedWork } from "./components/FeaturedWork";
@@ -329,31 +328,389 @@ export const SectorsPage: React.FC<PageProps> = ({ theme }) => (
     <TrustSection theme={theme} />
   </PageShell>
 );
-export const AboutPage: React.FC<PageProps> = ({ theme }) => (
-  <PageShell
-    theme={theme}
-    eyebrow="About DX Studio"
-    title="Small team. Serious craft."
-    description="DX Studio is a Kathmandu-based creative technology studio helping ambitious organizations turn complex ideas into clear, durable digital experiences."
-  >
-    <div className="grid gap-8 md:grid-cols-3">
-      {PRINCIPLES.map((item) => (
+export const AboutPage: React.FC<PageProps> = ({
+  theme,
+  onOpenContact,
+}) => {
+  const isDark = theme === "obsidian";
+  const isSand = theme === "sand-stone";
+
+  const services = [
+    {
+      number: "01",
+      title: "Website Design & Development",
+      description:
+        "Editorial, responsive websites built around clear positioning and dependable engineering.",
+      featured: true,
+    },
+    {
+      number: "02",
+      title: "Custom Web Applications",
+      description:
+        "Purpose-built tools and platforms that streamline work and connect with business systems.",
+    },
+    {
+      number: "03",
+      title: "Digital Solutions",
+      description:
+        "Practical technology initiatives shaped around a specific challenge or opportunity.",
+    },
+    {
+      number: "04",
+      title: "Digital Marketing",
+      description:
+        "Search, content, and campaign direction focused on measurable growth.",
+    },
+    {
+      number: "05",
+      title: "Social Media Management",
+      description:
+        "Consistent, brand-led publishing designed to build reach and audience trust.",
+    },
+  ];
+
+  const processSteps = [
+    {
+      number: "01",
+      title: "Understand",
+      description:
+        "Understand the business, its challenges, and its objectives.",
+    },
+    {
+      number: "02",
+      title: "Strategize",
+      description:
+        "Identify the right approach, technology, and direction.",
+    },
+    {
+      number: "03",
+      title: "Build",
+      description:
+        "Design, develop, test, and refine the solution.",
+    },
+    {
+      number: "04",
+      title: "Deliver",
+      description:
+        "Launch, support, and improve the experience.",
+    },
+  ];
+
+  const philosophy = [
+    {
+      number: "01",
+      title: "Design",
+      description:
+        "Good design is more than appearance. It's about clarity, usability, and creating experiences that make sense.",
+    },
+    {
+      number: "02",
+      title: "Develop",
+      description:
+        "We turn ideas into functional digital products through thoughtful engineering, modern technologies, and reliable development practices.",
+    },
+    {
+      number: "03",
+      title: "Experience",
+      description:
+        "The final result matters. We focus on building digital experiences that are useful, intuitive, and meaningful to the people who use them.",
+    },
+  ];
+
+  return (
+    <main
+      className={`flex-1 pt-28 sm:pt-36 ${
+        isDark
+          ? "bg-[#121214] text-white"
+          : isSand
+            ? "bg-[#ECE9E2] text-neutral-950"
+            : "bg-[#F7F7F5] text-neutral-950"
+      }`}
+    >
+      <section className="relative overflow-hidden">
         <div
-          key={item.number}
-          className="rounded-2xl border p-6 theme-border theme-bg-card"
-        >
-          <span className="font-mono text-xs text-blue-600">{item.number}</span>
-          <h2 className="mt-4 font-heading text-2xl font-bold theme-text-primary">
-            {item.title}
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed theme-text-muted">
-            {item.details}
-          </p>
+          className={`pointer-events-none absolute inset-0 ${
+            isDark ? "editorial-grid-dark" : "editorial-grid"
+          } opacity-70`}
+        />
+        <div className="relative mx-auto max-w-7xl px-6 pb-20 sm:px-6 sm:pb-28 lg:px-12 lg:pb-36">
+          <div className="gsap-heading-reveal">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+              01 // About DX Studio
+            </span>
+            <h1 className="mt-7 max-w-[1100px] font-heading text-5xl font-bold leading-[0.96] tracking-tight sm:text-7xl lg:text-[6.5rem]">
+              We build what moves{" "}
+              <span className="text-blue-600">businesses forward.</span>
+            </h1>
+          </div>
+
+          <div className="mt-10 grid items-end gap-10 md:grid-cols-12 gsap-heading-reveal">
+            <p className="max-w-2xl text-lg leading-relaxed theme-text-muted md:col-span-7 sm:text-xl">
+              DX Studio brings together design, technology, and digital
+              strategy to help businesses turn ideas into impactful digital
+              experiences.
+            </p>
+            <div className="md:col-span-5 md:justify-self-end">
+              <div className="flex min-w-[280px] items-center justify-between border-y py-4 theme-border">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-blue-600">
+                  Our philosophy
+                </span>
+                <span className="font-heading text-sm font-bold">
+                  DESIGN. DEVELOP. EXPERIENCE.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 grid grid-cols-2 gap-px border theme-border md:grid-cols-4 gsap-stagger-container">
+            {["Strategy", "Interface", "Engineering", "Outcome"].map(
+              (item, index) => (
+                <div
+                  key={item}
+                  className="relative min-h-28 p-5 theme-bg-card gsap-stagger-item sm:min-h-36 sm:p-7"
+                >
+                  <span className="font-mono text-[10px] text-blue-600">
+                    0{index + 1}
+                  </span>
+                  <span className="absolute bottom-5 left-5 font-heading text-lg font-bold sm:bottom-7 sm:left-7 sm:text-2xl">
+                    {item}
+                  </span>
+                </div>
+              ),
+            )}
+          </div>
         </div>
-      ))}
-    </div>
-  </PageShell>
-);
+      </section>
+
+      <section className="border-y py-20 theme-border sm:py-28 lg:py-36 gsap-section-reveal">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 lg:px-12">
+          <div className="md:col-span-4">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+              02 // Who We Are
+            </span>
+          </div>
+          <div className="md:col-span-8">
+            <h2 className="max-w-4xl font-heading text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+              More than just a digital studio.
+            </h2>
+            <div className="mt-8 grid gap-6 text-base leading-relaxed theme-text-muted sm:text-lg md:grid-cols-2">
+              <p>
+                DX Studio is a technology-focused company built around solving
+                real business challenges through digital solutions. From
+                developing functional websites to creating meaningful digital
+                experiences, we combine creativity with engineering to deliver
+                solutions that serve a purpose.
+              </p>
+              <p>
+                We believe technology should not simply make businesses look
+                better online. It should help them work better, connect better,
+                and grow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 sm:py-28 lg:py-36 gsap-section-reveal">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="mb-12 flex items-end justify-between border-b pb-6 theme-border">
+            <div>
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+                03 // Our Philosophy
+              </span>
+              <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight sm:text-6xl">
+                Design. Develop. Experience.
+              </h2>
+            </div>
+          </div>
+          <div className="divide-y border-b theme-border gsap-stagger-container">
+            {philosophy.map((item) => (
+              <article
+                key={item.number}
+                className="grid gap-5 py-8 transition-colors duration-300 hover:text-blue-600 md:grid-cols-12 sm:py-10 gsap-stagger-item"
+              >
+                <span className="font-mono text-xs text-blue-600 md:col-span-2">
+                  {item.number}
+                </span>
+                <h3 className="font-heading text-3xl font-bold sm:text-4xl md:col-span-3">
+                  {item.title}
+                </h3>
+                <p className="max-w-xl text-base leading-relaxed theme-text-muted md:col-span-7 sm:text-lg">
+                  {item.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y py-20 theme-border sm:py-28 lg:py-36 gsap-section-reveal">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="mb-12 max-w-3xl gsap-heading-reveal">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+              04 // What We Do
+            </span>
+            <h2 className="mt-4 font-heading text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
+              One team across the digital system.
+            </h2>
+          </div>
+
+          <div className="grid gap-px border theme-border md:grid-cols-2 lg:grid-cols-6 gsap-stagger-container">
+            {services.map((service) => (
+              <article
+                key={service.number}
+                className={`group min-h-64 p-6 theme-bg-card transition-colors duration-300 gsap-stagger-item ${
+                  isDark
+                    ? "hover:bg-blue-600 hover:text-white"
+                    : "hover:bg-blue-50 hover:text-neutral-950"
+                } ${
+                  service.featured
+                    ? "md:col-span-2 lg:col-span-2 lg:row-span-2"
+                    : "md:col-span-1 lg:col-span-2"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span
+                    className={`font-mono text-xs text-blue-600 ${
+                      isDark ? "group-hover:text-white" : ""
+                    }`}
+                  >
+                    {service.number}
+                  </span>
+                  <ArrowUpRight className="h-4 w-4 opacity-50 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-100" />
+                </div>
+                <h3
+                  className={`mt-12 font-heading font-bold leading-tight ${
+                    service.featured ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl"
+                  }`}
+                >
+                  {service.title}
+                </h3>
+                <p
+                  className={`mt-5 max-w-sm text-sm leading-relaxed theme-text-muted ${
+                    isDark ? "group-hover:text-white/80" : ""
+                  }`}
+                >
+                  {service.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 sm:py-28 lg:py-36 gsap-section-reveal">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="mb-14 max-w-3xl gsap-heading-reveal">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+              05 // How We Work
+            </span>
+            <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight sm:text-6xl">
+              From an idea to something real.
+            </h2>
+          </div>
+          <div className="relative gsap-stagger-container">
+            <div
+              className="absolute left-5 top-0 h-full w-px bg-blue-600/40 md:left-0 md:right-0 md:top-5 md:h-px md:w-full"
+              aria-hidden="true"
+            />
+            <div className="grid gap-10 md:grid-cols-4 md:gap-6">
+              {processSteps.map((step) => (
+                <article
+                  key={step.number}
+                  className="relative pl-14 md:pl-0 md:pt-14 gsap-stagger-item"
+                >
+                  <span className="absolute left-2.5 top-0 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 md:left-0 md:top-3" />
+                  <span className="font-mono text-xs text-blue-600">
+                    {step.number}
+                  </span>
+                  <h3 className="mt-3 font-heading text-2xl font-bold">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 max-w-xs text-sm leading-relaxed theme-text-muted sm:text-base">
+                    {step.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className={`border-y py-20 sm:py-28 lg:py-36 ${
+          isDark ? "border-neutral-800" : "border-[#DEDEDA]"
+        } gsap-section-reveal`}
+      >
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 lg:px-12">
+          <div className="md:col-span-4">
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+              06 // Our Approach
+            </span>
+          </div>
+          <div className="md:col-span-8 gsap-heading-reveal">
+            <h2 className="font-heading text-4xl font-bold tracking-tight sm:text-6xl">
+              Technology with a purpose.
+            </h2>
+            <p className="mt-8 max-w-3xl text-xl leading-relaxed theme-text-secondary sm:text-2xl">
+              We don't believe in building digital products simply for the sake
+              of having them. Every project should solve a problem, improve an
+              experience, or create an opportunity.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className={`relative overflow-hidden py-20 sm:py-28 lg:py-36 ${
+          isDark
+            ? "bg-[#0E0E10]"
+            : isSand
+              ? "bg-[#DCD8D0]"
+              : "bg-[#EDEDEA]"
+        }`}
+      >
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="grid items-end gap-10 md:grid-cols-12 gsap-heading-reveal">
+            <div className="md:col-span-8">
+              <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+                07 // Initiation
+              </span>
+              <h2 className="mt-5 max-w-4xl font-heading text-4xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
+                Have something in mind? Let's build it.
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed theme-text-muted">
+                Whether you're starting with an idea or looking to improve an
+                existing digital presence, we're ready to explore what's
+                possible.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row md:col-span-4 md:justify-end">
+              <button
+                onClick={onOpenContact}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-blue-500"
+              >
+                Start a Project
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </button>
+              <button
+                onClick={() => navigateTo("/work")}
+                className={`inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 text-xs font-bold uppercase tracking-wider transition-colors ${
+                  isDark
+                    ? "border-neutral-700 text-white hover:border-blue-500 hover:text-blue-400"
+                    : "border-neutral-300 text-neutral-950 hover:border-blue-600 hover:text-blue-600"
+                }`}
+              >
+                Explore Our Work
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+};
 export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
   <PageShell
     theme={theme}

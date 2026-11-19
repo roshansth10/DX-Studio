@@ -80,6 +80,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   ];
 
   const navLinks = [
+    { label: "About", href: "/about" },
     { label: t.nav.work, href: "/work" },
     { label: t.nav.services, href: "/services" },
     { label: t.nav.philosophy, href: "/philosophy" },

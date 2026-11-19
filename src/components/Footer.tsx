@@ -98,6 +98,18 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
             <ul className="space-y-2.5">
               <li>
                 <a
+                  href="/about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/about");
+                  }}
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  About DX Studio
+                </a>
+              </li>
+              <li>
+                <a
                   href="/work"
                   onClick={(e) => {
                     e.preventDefault();
