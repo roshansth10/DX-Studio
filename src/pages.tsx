@@ -147,7 +147,7 @@ export const WorkPage: React.FC<PageProps> = ({ theme, onSelectProject }) => {
     <PageShell
       theme={theme}
       eyebrow="Portfolio"
-      title="Selected Work"
+      title="Featured Work"
       description="A considered collection of digital products, identities, and experiences built for ambitious teams."
     >
       <div className="flex flex-wrap gap-2 mb-10">
@@ -935,47 +935,18 @@ export const ContactPage: React.FC<PageProps> = ({ theme, onOpenContact }) => (
               </p>
             </div>
           </div>
-          <a
-            href="https://www.google.com/maps/search/?api=1&query=Goldhunga%2C+Tarkeshwor-5%2C+Kathmandu%2C+Nepal"
-            target="_blank"
-            rel="noreferrer"
-            className={`group relative flex min-h-72 overflow-hidden border p-6 lg:col-span-5 gsap-heading-reveal ${
-              theme === "obsidian"
-                ? "border-neutral-800 bg-[#18181b]"
-                : "border-neutral-300 bg-[#E8E7E2]"
-            }`}
-          >
-            <div
-              className={`absolute inset-0 opacity-50 ${
-                theme === "obsidian" ? "editorial-grid-dark" : "editorial-grid"
-              }`}
+          <div className="lg:col-span-5 overflow-hidden border theme-border gsap-heading-reveal">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3209.1522171328875!2d85.2902064!3d27.748547999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb18b5aa6a5107%3A0xdcaa504ec372fcbc!2s5%20Goldhunga%20Rd%2C%20Tarakeshwar%2C%20Bagmati%20Province%2044600!5e1!3m2!1sen!2snp!4v1795070575223!5m2!1sen!2snp"
+              width="600"
+              height="450"
+              className="h-72 w-full border-0 lg:h-full lg:min-h-72"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="DX Studio office location"
             />
-            <svg
-              viewBox="0 0 240 180"
-              fill="none"
-              className="absolute right-[-8%] top-[-5%] h-[78%] w-[78%] text-neutral-400/40"
-              aria-hidden="true"
-            >
-              <path d="M16 142C55 108 48 70 92 54C128 41 158 60 224 18" stroke="currentColor" strokeWidth="1" />
-              <path d="M24 38C64 58 93 88 132 118C158 138 190 148 226 154" stroke="currentColor" strokeWidth="1" />
-              <circle cx="136" cy="82" r="30" stroke="currentColor" />
-              <circle cx="136" cy="82" r="18" stroke="currentColor" strokeDasharray="3 5" />
-            </svg>
-            <div className="relative z-10 mt-auto">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-600">
-                Google Maps
-              </span>
-              <div className="mt-3 flex items-center gap-3 font-heading text-3xl font-bold">
-                View Location
-                <span className="flex h-9 w-9 items-center justify-center bg-blue-600 text-white transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
-                  <ArrowUpRight className="h-4 w-4" />
-                </span>
-              </div>
-              <p className="mt-2 text-sm theme-text-muted">
-                Kathmandu, Nepal
-              </p>
-            </div>
-          </a>
+          </div>
         </div>
       </div>
     </section>

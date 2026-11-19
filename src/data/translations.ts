@@ -155,7 +155,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       viewCaseStudies: "View Case Studies",
     },
     work: {
-      eyebrow: "Selected Work",
+      eyebrow: "Featured Work",
       title: "Engineered for distinction.",
       subtitle:
         "A curated selection of recent client engagements spanning luxury commerce, fintech systems, and editorial monographs.",

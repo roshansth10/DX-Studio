@@ -117,7 +117,7 @@ export const Footer: React.FC<FooterProps> = ({ theme }) => {
                   }}
                   className="hover:text-blue-600 transition-colors"
                 >
-                  Selected Work
+                  Featured Work
                 </a>
               </li>
               <li>
