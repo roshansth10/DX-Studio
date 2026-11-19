@@ -450,7 +450,7 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     number: "05",
-    title: "Digital Marketing",
+    title: "Digital Advertising & Campaigns",
     category: "Campaigns & Promotion",
     summary:
       "Planning and executing digital campaigns that help businesses promote their products, services, and brand online.",

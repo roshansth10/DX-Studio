@@ -122,7 +122,7 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
       headlineHighlight: "digital",
       headlinePost: " experiences that move businesses forward.",
       subtitle:
-        "Strategy, identity, design, and technology for ambitious brands ready to grow. Human-designed, mathematically sound, and engineered for high commercial impact.",
+        "DX Studio is a design and technology studio in Kathmandu, Nepal, building websites, software, and digital experiences that help businesses work and grow.",
       exploreWork: "Explore our work",
       startProject: "Start a project",
       locationLabel: "Location",

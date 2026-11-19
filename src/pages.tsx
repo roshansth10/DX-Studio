@@ -234,6 +234,7 @@ export const ProjectPage: React.FC<PageProps & { project: ProjectItem }> = ({
           src={project.image}
           alt={project.title}
           className="block w-full h-auto object-contain"
+          loading="lazy"
           referrerPolicy="no-referrer"
         />
       </div>

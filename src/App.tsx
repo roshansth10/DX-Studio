@@ -35,6 +35,78 @@ const themeBackground = (theme: ThemeMode) =>
       ? "bg-[#ECE9E2] text-neutral-950"
       : "bg-[#F7F7F5] text-neutral-950";
 
+const SITE_URL = "https://dxcreativestudio.vercel.app";
+
+interface PageMetadata {
+  title: string;
+  description: string;
+  url: string;
+  type?: "website" | "article";
+}
+
+const PAGE_METADATA: Record<string, PageMetadata> = {
+  "/": {
+    title: "DX Studio | Website Design & Development in Kathmandu, Nepal",
+    description:
+      "DX Studio is a Kathmandu-based design and technology studio offering website design, website development, software, SEO, social media, and digital campaigns.",
+    url: `${SITE_URL}/`,
+  },
+  "/about": {
+    title: "About DX Studio | Design. Develop. Experience.",
+    description:
+      "Learn how DX Studio combines design, engineering, and purposeful digital experiences to help businesses in Nepal and beyond.",
+    url: `${SITE_URL}/about`,
+  },
+  "/services": {
+    title: "Digital Services in Nepal | DX Studio",
+    description:
+      "Explore DX Studio services for website design, website development, software development, SEO, social media management, and digital advertising campaigns.",
+    url: `${SITE_URL}/services`,
+  },
+  "/work": {
+    title: "Featured Work | DX Studio Portfolio",
+    description:
+      "View DX Studio's selected websites and digital projects across ecommerce, travel, branding, sports, and other industries.",
+    url: `${SITE_URL}/work`,
+  },
+  "/team": {
+    title: "Meet the Team | DX Studio",
+    description:
+      "Meet the DX Studio team working across design, development, strategy, and project delivery.",
+    url: `${SITE_URL}/team`,
+  },
+  "/careers": {
+    title: "Careers at DX Studio | Kathmandu, Nepal",
+    description:
+      "Explore career opportunities and opportunities to grow with DX Studio.",
+    url: `${SITE_URL}/careers`,
+  },
+  "/contact": {
+    title: "Contact DX Studio | Start a Project",
+    description:
+      "Contact DX Studio in Kathmandu, Nepal to discuss website design, development, software, SEO, social media, or digital campaign needs.",
+    url: `${SITE_URL}/contact`,
+  },
+  "/privacy": {
+    title: "Privacy Policy | DX Studio",
+    description:
+      "Read the DX Studio privacy policy and how information collected through the website is handled.",
+    url: `${SITE_URL}/privacy`,
+  },
+  "/terms": {
+    title: "Terms of Engagement | DX Studio",
+    description:
+      "Review DX Studio terms for website projects and digital service engagements.",
+    url: `${SITE_URL}/terms`,
+  },
+  "/accessibility": {
+    title: "Accessibility Statement | DX Studio",
+    description:
+      "Read DX Studio's accessibility statement and how to report a barrier.",
+    url: `${SITE_URL}/accessibility`,
+  },
+};
+
 export default function App() {
   const pathname = usePathname();
   const [theme, setTheme] = useState<ThemeMode>("warm-light");
@@ -66,22 +138,52 @@ export default function App() {
         });
       }, 120);
     } else {
+      window.scrollTo({ top: 0, behavior: "auto" });
     }
-    const pageTitle =
-      pathname === "/"
-        ? "DX Studio — Digital Creative & Technology Studio"
-        : pathname.startsWith("/work/")
-          ? "Project Case Study — DX Studio"
-          : pathname === "/careers"
-            ? "Careers — DX Studio"
-            : pathname.startsWith("/careers/")
-              ? "Career Opportunity — DX Studio"
-              : `${pathname
-              .slice(1)
-              .replace(/-/g, " ")
-              .replace(/\b\w/g, (letter) => letter.toUpperCase())} — DX Studio`;
-    document.title = pageTitle;
-    window.scrollTo({ top: 0, behavior: "auto" });
+    const projectSlug = pathname.startsWith("/work/")
+      ? pathname.split("/")[2]
+      : "";
+    const project = PROJECTS.find((item) => item.id === projectSlug);
+    const metadata: PageMetadata =
+      project
+        ? {
+            title: `${project.title} | DX Studio Project`,
+            description: project.tagline,
+            url: `${SITE_URL}/work/${project.id}`,
+            type: "article",
+          }
+        : PAGE_METADATA[pathname] ?? {
+            title: "DX Studio | Digital Creative & Technology Studio",
+            description:
+              "DX Studio provides design, development, software, SEO, social media, and digital campaign services.",
+            url: `${SITE_URL}${pathname === "/" ? "/" : pathname}`,
+          };
+
+    document.title = metadata.title;
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", metadata.description);
+    document
+      .querySelector('link[rel="canonical"]')
+      ?.setAttribute("href", metadata.url);
+    document
+      .querySelector('meta[property="og:title"]')
+      ?.setAttribute("content", metadata.title);
+    document
+      .querySelector('meta[property="og:description"]')
+      ?.setAttribute("content", metadata.description);
+    document
+      .querySelector('meta[property="og:url"]')
+      ?.setAttribute("content", metadata.url);
+    document
+      .querySelector('meta[property="og:type"]')
+      ?.setAttribute("content", metadata.type ?? "website");
+    document
+      .querySelector('meta[name="twitter:title"]')
+      ?.setAttribute("content", metadata.title);
+    document
+      .querySelector('meta[name="twitter:description"]')
+      ?.setAttribute("content", metadata.description);
   }, [pathname, theme]);
 
   const openProject = (project: ProjectItem) =>
