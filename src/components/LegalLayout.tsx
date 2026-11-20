@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowUpRight, ChevronDown, Mail } from "lucide-react";
 import { ThemeMode } from "../types";
 import { LegalPage, LegalSection } from "../data/legalContent";
 import { navigateTo } from "../routing";
+import { AccentTitle } from "./PageShell";
 
 interface LegalLayoutProps {
   page: LegalPage;
@@ -262,7 +263,7 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({
                 isDark ? "text-neutral-50" : "text-neutral-950"
               }`}
             >
-              {page.title}
+              <AccentTitle title={page.title} />
             </h1>
             <p
               className={`mt-3 font-mono text-xs ${

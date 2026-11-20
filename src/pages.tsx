@@ -652,6 +652,7 @@ export const CareersPage: React.FC<PageProps> = ({ theme }) => (
     theme={theme}
     eyebrow="Careers"
     title="Build What's Next. With Us."
+    descriptionOnRight
     description="At DX Studio, meaningful work comes from curiosity, craft, and a willingness to keep learning. We're building a team that thinks carefully, collaborates openly, and helps businesses move forward."
   >
     <section className="py-6 sm:py-10">

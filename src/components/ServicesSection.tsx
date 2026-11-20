@@ -44,7 +44,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ theme, onSelec
               </span>
             </div>
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-              {t.services.title}
+              One team across the{" "}
+              <span className="text-blue-600">digital system.</span>
             </h2>
           </div>
           <p
