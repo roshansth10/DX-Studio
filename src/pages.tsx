@@ -17,6 +17,7 @@ import { TeamSection } from "./components/TeamSection";
 import { FinalCTA } from "./components/FinalCTA";
 import { HeroSection } from "./components/HeroSection";
 import { ContactModal } from "./components/ContactModal";
+import { WhyDXSection } from "./components/WhyDXSection";
 import { navigateTo } from "./routing";
 
 interface PageProps {
@@ -95,14 +96,8 @@ export const HomePage: React.FC<PageProps> = ({
       onOpenConcepts={() => undefined}
     />
     <FeaturedWork theme={theme} onSelectProject={onSelectProject} preview />
-    <PreviewBand
-      theme={theme}
-      eyebrow="Company"
-      title="Built with purpose."
-      description="Meet the approach, philosophy, and working method behind every DX Studio project."
-      href="/about"
-      label="About DX Studio"
-    />
+    <WhyDXSection theme={theme} />
+    <AboutPreviewSection theme={theme} />
     <FinalCTA
       theme={theme}
       onOpenContact={() => navigateTo("/contact#project-inquiry")}
@@ -110,41 +105,52 @@ export const HomePage: React.FC<PageProps> = ({
   </main>
 );
 
-const PreviewBand: React.FC<{
-  theme: ThemeMode;
-  eyebrow: string;
-  title: string;
-  description: string;
-  href: string;
-  label: string;
-}> = ({ theme, eyebrow, title, description, href, label }) => (
-  <section
-    className="border-b py-10 sm:py-14 lg:py-16"
-    style={{
-      backgroundColor: "var(--theme-bg-page)",
-      borderColor: "var(--theme-border)",
-    }}
-  >
-    <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 sm:flex-row sm:items-end sm:justify-between lg:px-12">
-      <div className="max-w-3xl">
-        <span className="font-mono text-xs uppercase tracking-[0.25em] text-blue-600 font-bold">
-          // {eyebrow}
-        </span>
-        <h2 className="mt-4 font-heading text-4xl sm:text-6xl font-bold tracking-tight theme-text-primary">
-          {title}
-        </h2>
-        <p className="mt-5 max-w-xl text-base sm:text-lg leading-relaxed theme-text-muted">
-          {description}
-        </p>
+const AboutPreviewSection: React.FC<{ theme: ThemeMode }> = ({ theme }) => {
+  const isDark = theme === "obsidian";
+  const isSand = theme === "sand-stone";
+
+  return (
+    <section
+      className={`border-b py-12 sm:py-16 lg:py-20 ${
+        isDark
+          ? "bg-[#121214] text-white border-neutral-800"
+          : isSand
+            ? "bg-[#ECE9E2] text-neutral-950 border-[#D8D4CC]"
+            : "bg-[#F7F7F5] text-neutral-950 border-[#E5E5E2]"
+      }`}
+    >
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-2 md:items-center lg:gap-16 lg:px-12">
+        <div className="group overflow-hidden rounded-3xl border theme-border">
+          <img
+            src="/image/photography.png"
+            alt="DX Studio creative workspace"
+            className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            loading="lazy"
+          />
+        </div>
+        <div className="max-w-xl">
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
+            // About DX Studio
+          </span>
+          <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight sm:text-5xl">
+            Ideas to Impact.
+          </h2>
+          <p className="mt-5 text-base leading-relaxed theme-text-muted sm:text-lg">
+            DX Studio is a design and technology studio based in Kathmandu,
+            Nepal. We combine creative thinking, thoughtful design, and solid
+            engineering to turn ideas into digital solutions that help
+            businesses work, grow, and move forward.
+          </p>
+          <RouteButton
+            label="About DX Studio"
+            href="/about"
+            className="mt-7"
+          />
+        </div>
       </div>
-      <RouteButton
-        label={label}
-        href={href}
-        className="mx-auto sm:mx-0"
-      />
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export const WorkPage: React.FC<PageProps> = ({ theme, onSelectProject }) => {
   const categories = [

@@ -156,9 +156,9 @@ export const TRANSLATIONS: Record<Language, TranslationDictionary> = {
     },
     work: {
       eyebrow: "Featured Work",
-      title: "Engineered for distinction.",
+      title: "Ideas brought to life.",
       subtitle:
-        "A curated selection of recent client engagements spanning luxury commerce, fintech systems, and editorial monographs.",
+        "A look at the websites, digital products, and creative solutions we've built, bringing ideas to life.",
       viewCaseStudy: "View Case Study",
       featuredDeliverables: "Core Deliverables",
     },
