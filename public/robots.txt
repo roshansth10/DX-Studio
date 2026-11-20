@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dxcreativestudio.vercel.app/sitemap.xml
+Sitemap: https://www.dxcreativestudio.com/sitemap.xml

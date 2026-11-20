@@ -36,7 +36,7 @@ const themeBackground = (theme: ThemeMode) =>
       ? "bg-[#ECE9E2] text-neutral-950"
       : "bg-[#F7F7F5] text-neutral-950";
 
-const SITE_URL = "https://dxcreativestudio.vercel.app";
+const SITE_URL = "https://www.dxcreativestudio.com";
 
 interface PageMetadata {
   title: string;
