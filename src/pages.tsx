@@ -420,7 +420,7 @@ export const AboutPage: React.FC<PageProps> = ({
             isDark ? "editorial-grid-dark" : "editorial-grid"
           } opacity-70`}
         />
-        <div className="relative mx-auto max-w-7xl px-6 pb-20 sm:px-6 sm:pb-28 lg:px-12 lg:pb-36">
+        <div className="relative mx-auto max-w-7xl px-6 pb-12 sm:px-6 sm:pb-16 lg:px-12 lg:pb-20">
           <div className="gsap-heading-reveal">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
               // About DX Studio
@@ -473,7 +473,7 @@ export const AboutPage: React.FC<PageProps> = ({
         </div>
       </section>
 
-      <section className="border-y py-20 theme-border sm:py-28 lg:py-36 gsap-section-reveal">
+      <section className="border-y py-12 theme-border sm:py-16 lg:py-20 gsap-section-reveal">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-12 lg:px-12">
           <div className="md:col-span-4">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
@@ -502,7 +502,7 @@ export const AboutPage: React.FC<PageProps> = ({
         </div>
       </section>
 
-      <section className="py-20 sm:py-28 lg:py-36 gsap-section-reveal">
+      <section className="py-12 sm:py-16 lg:py-20 gsap-section-reveal">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="mb-12 flex items-end justify-between border-b pb-6 theme-border">
             <div>
@@ -535,7 +535,7 @@ export const AboutPage: React.FC<PageProps> = ({
         </div>
       </section>
 
-      <section className="py-20 sm:py-28 lg:py-36 gsap-section-reveal">
+      <section className="py-12 sm:py-16 lg:py-20 gsap-section-reveal">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="mb-14 max-w-3xl gsap-heading-reveal">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-blue-600">
@@ -574,7 +574,7 @@ export const AboutPage: React.FC<PageProps> = ({
       </section>
 
       <section
-        className={`border-y py-20 sm:py-28 lg:py-36 ${
+        className={`border-y py-12 sm:py-16 lg:py-20 ${
           isDark ? "border-neutral-800" : "border-[#DEDEDA]"
         } gsap-section-reveal`}
       >
@@ -598,7 +598,7 @@ export const AboutPage: React.FC<PageProps> = ({
       </section>
 
       <section
-        className={`relative overflow-hidden py-20 sm:py-28 lg:py-36 ${
+        className={`relative overflow-hidden py-12 sm:py-16 lg:py-20 ${
           isDark
             ? "bg-[#0E0E10]"
             : isSand
