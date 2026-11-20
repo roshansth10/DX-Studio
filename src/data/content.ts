@@ -645,7 +645,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: "Leading the studio while shaping frontend experiences, technical direction, and the systems that bring thoughtful digital products to life.",
     quote:
       "Good digital work makes complexity feel considered, clear, and human.",
-    portrait: "/Team Picture/Roshan.jpeg",
+    portrait: "/Team Picture/roshan.png",
     portraitPosition: "center 18%",
     experience: "Studio Founder",
     specialties: [
@@ -762,7 +762,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     location: "Kathmandu, Nepal",
     bio: "",
     quote: "",
-    portrait: "/Team Picture/team-placeholder.svg",
+    portrait: "/Team Picture/muna.png",
     experience: "",
     specialties: [],
     ledProjects: [],
@@ -777,7 +777,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     location: "Kathmandu, Nepal",
     bio: "",
     quote: "",
-    portrait: "/Team Picture/ashish.jpg",
+    portrait: "/Team Picture/aashish.png",
     experience: "",
     specialties: [],
     ledProjects: [],
