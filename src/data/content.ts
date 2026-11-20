@@ -670,7 +670,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: "Building reliable server-side systems, APIs, and data foundations that keep digital products fast, secure, and dependable.",
     quote:
       "Strong products are built on infrastructure users never have to think about.",
-    portrait: "/Team Picture/Aachal.jpg",
+    portrait: "/Team Picture/aachal.png",
     portraitPosition: "center 20%",
     experience: "Backend Engineering",
     specialties: [
