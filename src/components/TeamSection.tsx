@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { ThemeMode, TeamMember } from "../types";
+import { ThemeMode } from "../types";
 import { TEAM_MEMBERS } from "../data/content";
-import { ArrowUpRight, ShieldCheck, MapPin } from "lucide-react";
-import { TeamMemberModal } from "./TeamMemberModal";
+import { ShieldCheck, MapPin } from "lucide-react";
 
 interface TeamSectionProps {
   theme: ThemeMode;
@@ -10,8 +9,6 @@ interface TeamSectionProps {
 
 export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
   const [activeFilter, setActiveFilter] = useState<string>("all");
-  const [, setHoveredMember] = useState<string | null>(null);
-  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const filterOptions = [
     { id: "all", label: "All Collective", count: TEAM_MEMBERS.length },
@@ -143,20 +140,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
             return (
               <div
                 key={member.id}
-                role="button"
-                tabIndex={0}
-                aria-haspopup="dialog"
-                aria-label={`View profile for ${member.name}`}
-                onMouseEnter={() => setHoveredMember(member.id)}
-                onMouseLeave={() => setHoveredMember(null)}
-                onClick={() => setSelectedMember(member)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setSelectedMember(member);
-                  }
-                }}
-                className="group relative flex flex-col rounded-3xl border overflow-hidden cursor-pointer transition-all duration-300 gsap-stagger-item hover:shadow-xl hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                className="group relative flex flex-col rounded-3xl border overflow-hidden transition-all duration-300 gsap-stagger-item hover:shadow-xl hover:-translate-y-1"
                 style={{
                   backgroundColor: "var(--theme-bg-card)",
                   borderColor: "var(--theme-border-card)",
@@ -194,10 +178,6 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
                     </span>
                   </div>
 
-                  {/* Quick Expand Button on image corner */}
-                  <div className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-white/95 text-neutral-950 shadow-md backdrop-blur-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 group-hover:scale-110">
-                    <ArrowUpRight className="h-4 w-4" />
-                  </div>
                 </div>
 
                 {/* Card Body - Dynamic CSS Variable Typography */}
@@ -248,10 +228,6 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
                   >
                     <span className="font-mono text-xs font-semibold theme-text-subtle truncate">
                       {member.experience}
-                    </span>
-                    <span className="shrink-0 text-xs font-bold text-blue-600 group-hover:underline inline-flex items-center gap-1">
-                      <span>View Profile</span>
-                      <ArrowUpRight className="h-3 w-3" />
                     </span>
                   </div>
                 </div>
@@ -330,12 +306,6 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ theme }) => {
         </div>
       </div>
 
-      {/* Member Details Modal */}
-      <TeamMemberModal
-        member={selectedMember}
-        onClose={() => setSelectedMember(null)}
-        theme={theme}
-      />
     </section>
   );
 };
