@@ -91,7 +91,8 @@ export const PROJECTS: ProjectItem[] = [
     shortCategory: "Spices & Food",
     portfolioCategory: "Ecommerce",
     year: "2026",
-    tagline: "Authentic Nepali Spices & Masala Blends.",
+    tagline:
+      "Authentic Nepali spices and masala blends, presented through a modern digital storefront.",
     description:
       "A modern digital storefront and brand platform for Sunaulo Jyoti (Jyoti Food Product), Chitwan's trusted spice manufacturer since 2008. Designed to showcase authentic Nepali spices, aromatic blends, and pure culinary essentials with seamless online ordering.",
     metrics: [
@@ -120,7 +121,8 @@ export const PROJECTS: ProjectItem[] = [
     shortCategory: "Travel & Trek",
     portfolioCategory: "Travel & Trek",
     year: "2025",
-    tagline: "Discover the Himalayas.",
+    tagline:
+      "Discover Himalayan destinations, trails, culture, and experiences through an immersive travel platform.",
     description:
       "A modern travel discovery platform designed to showcase Himalayan destinations, trails, culture, and experiences through an immersive visual interface.",
     metrics: [

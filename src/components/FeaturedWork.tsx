@@ -84,11 +84,9 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
 
               {/* Card Body on solid surface with 16px to 20px padding and 12px vertical rhythm */}
               <div className="p-4 sm:p-5 flex flex-col gap-3">
-                {/* Category Row */}
+                {/* Project Number */}
                 <div className="flex items-center gap-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400">
-                  <span>
-                    {project.number} // {project.shortCategory || project.portfolioCategory || project.category}
-                  </span>
+                  <span>{project.number}</span>
                 </div>
 
                 {/* Title (22px to 24px) */}
@@ -104,46 +102,6 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                 >
                   {project.tagline || project.description}
                 </p>
-
-                {/* Stats Row (if present) */}
-                {project.stats && (
-                  <div
-                    className={`flex items-center gap-2 rounded-lg px-2.5 py-1 font-mono text-xs w-fit ${
-                      isDark
-                        ? "bg-neutral-800/80 text-neutral-300 border border-neutral-700/60"
-                        : isSand
-                          ? "bg-[#DFDBD0] text-neutral-800 border border-[#D0CBC0]"
-                          : "bg-neutral-100 text-neutral-800 border border-neutral-200"
-                    }`}
-                  >
-                    <span className="text-neutral-400 uppercase text-[10px]">
-                      {project.stats.label}:
-                    </span>
-                    <span className="font-bold text-blue-600 dark:text-blue-400">
-                      {project.stats.value}
-                    </span>
-                  </div>
-                )}
-
-                {/* Deliverables Tags Row */}
-                {project.deliverables && project.deliverables.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 pt-0.5">
-                    {project.deliverables.slice(0, 3).map((d) => (
-                      <span
-                        key={d}
-                        className={`rounded-md px-2 py-0.5 font-mono text-[11px] font-medium border ${
-                          isDark
-                            ? "bg-neutral-800/50 border-neutral-800 text-neutral-400"
-                            : isSand
-                              ? "bg-[#E5E1D8] border-[#D8D4CC] text-neutral-700"
-                              : "bg-neutral-50 border-neutral-200 text-neutral-600"
-                        }`}
-                      >
-                        {d}
-                      </span>
-                    ))}
-                  </div>
-                )}
 
                 {/* Case Details Link (own line, left aligned, min 44px tap target) */}
                 <div className="pt-0.5">
