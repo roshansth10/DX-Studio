@@ -140,7 +140,7 @@ export const PROJECTS: ProjectItem[] = [
     aspect: "wide",
     colorAccent: "#1E3A8A",
     stats: { label: "Destinations", value: "120+" },
-    link: "https://himaly.vercel.app",
+    link: "https://himaly.dxcreativestudio.com/",
   },
   {
     id: "zentrix",
@@ -169,7 +169,7 @@ export const PROJECTS: ProjectItem[] = [
     aspect: "tall",
     colorAccent: "#0D9488",
     stats: { label: "Catalog Items", value: "1000+" },
-    link: "https://zentrixsports.vercel.app",
+    link: "https://zentrix.dxcreativestudio.com/",
   },
   {
     id: "luxecart",
@@ -198,7 +198,7 @@ export const PROJECTS: ProjectItem[] = [
     aspect: "tall",
     colorAccent: "#7C3AED",
     stats: { label: "Catalog Items", value: "500+" },
-    link: "https://luxecart-eta.vercel.app",
+    link: "https://luxecart.dxcreativestudio.com/",
   },
   {
     id: "apex-abroad",
@@ -226,7 +226,7 @@ export const PROJECTS: ProjectItem[] = [
     aspect: "wide",
     colorAccent: "#0E7490",
     stats: { label: "Students Guided", value: "5000+" },
-    link: "https://apexabroad.vercel.app",
+    link: "https://apexabroad.dxcreativestudio.com/",
   },
   {
     id: "photography-portfolio",
@@ -254,7 +254,7 @@ export const PROJECTS: ProjectItem[] = [
     aspect: "wide",
     colorAccent: "#B45309",
     stats: { label: "Speciality", value: "Travel & Documentary" },
-    link: "https://photoportfoli0.vercel.app",
+    link: "https://photographer.dxcreativestudio.com/",
   },
   {
     id: "velant",
@@ -283,7 +283,7 @@ export const PROJECTS: ProjectItem[] = [
     aspect: "wide",
     colorAccent: "#2563EB",
     stats: { label: "Category", value: "Fashion & Apparel" },
-    link: "https://velant.vercel.app/",
+    link: "https://velant.dxcreativestudio.com/",
   },
   {
     id: "botaniq",
@@ -312,7 +312,7 @@ export const PROJECTS: ProjectItem[] = [
     aspect: "wide",
     colorAccent: "#059669",
     stats: { label: "Category", value: "Natural Skincare" },
-    link: "https://botaniqnepal.vercel.app/",
+    link: "https://botaniqnepal.dxcreativestudio.com/",
   },
   {
     id: "altitude-fitness",
@@ -341,7 +341,7 @@ export const PROJECTS: ProjectItem[] = [
     aspect: "wide",
     colorAccent: "#DC2626",
     stats: { label: "Focus", value: "Gym & Fitness" },
-    link: "https://altitudefitness.vercel.app/",
+    link: "https://altitudefitness.dxcreativestudio.com/",
   },
 ];
 
